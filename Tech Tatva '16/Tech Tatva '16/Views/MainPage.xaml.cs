@@ -74,9 +74,15 @@ namespace Tech_Tatva__16.Views
             event2.Name = "Hello1";
             event2.Image = "ms-appx:///Assets/Square71x71Logo.scale-240.png";
 
-            defaultViewModel.Add("1",event1);
-            defaultViewModel.Add("2", event2);
-            List1.ItemsSource = defaultViewModel.Values;
+            List<EventClass> l = new List<EventClass>();
+            l.Add(event1);
+            l.Add(event2);
+
+            this.defaultViewModel["Events"] = l;
+
+
+            //ListView List1 = FindChildControl<ListView>(this, "List1") as ListView;
+            //List1.ItemsSource = defaultViewModel.Values;
         }
 
         /// <summary>
@@ -122,5 +128,7 @@ namespace Tech_Tatva__16.Views
         {
             Frame.Navigate(typeof(EventPage), e.ClickedItem as EventClass);
         }
+
+        
     }
 }

@@ -6,7 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{StaticResource BackgroundBrush}">
+    Background="{StaticResource BackgroundBrush}"
+    DataContext="{Binding DefaultViewModel , RelativeSource={RelativeSource Self}}">
 
     
     <Page.BottomAppBar>
@@ -21,7 +22,23 @@
         </CommandBar>
     </Page.BottomAppBar>
 
-    <Grid x:Name="LayoutRoot">
+    <Page.Resources>
+        <Style TargetType="HubSection">
+            <Setter Property="HeaderTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}"
+                           FontSize="30"
+                           FontFamily="Segoe WP Light"
+                           Foreground="White"
+                           FontWeight="SemiLight"/>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid x:Name="LayoutRoot" DataContext="{Binding}">
 
         <Grid.ChildrenTransitions>
             <TransitionCollection>
@@ -34,43 +51,78 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Title Panel -->
-        <TextBlock Text="techtatva" FontSize="47" Margin="10,10,0,0" Foreground="{StaticResource AppAccentColorBrush}" FontFamily="Segoe WP SemiLight"/>
-
-        <Pivot Grid.Row="1" Margin="10,9.5,10,0">
-            <Pivot.HeaderTemplate>
+       
+        <Hub x:Name="MyHub" Grid.Row="1" Margin="10,9.5,10,0" Header="techtatva" DataContext="{Binding}">
+            <Hub.HeaderTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding}" CharacterSpacing="{StaticResource PivotHeaderItemCharacterSpacing}" FontSize="30" FontFamily="Segoe WP Light" Margin="0, 0, 20, 0"/>
+                    <TextBlock Text="{Binding}" CharacterSpacing="{StaticResource HubSectionHeaderCharacterSpacing}" FontSize="60" FontFamily="Segoe WP SemiLight" Margin="0, 9, 0,0" Foreground="{StaticResource AppAccentColorBrush}"/>
                 </DataTemplate>
-            </Pivot.HeaderTemplate>
+            </Hub.HeaderTemplate>
 
-            <PivotItem x:Name="Day1" Header="day 1">
-                <ListView x:Name="List1" SelectionMode="None" IsItemClickEnabled="True" ItemClick="Event_Clicked"> 
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
-                                <Image Source="{Binding Image}" Stretch="Fill" Height="51" Width="51"></Image>
-                                <TextBlock Text="{Binding Name}" TextAlignment="Center" VerticalAlignment="Center" Margin="20,0,0,0" FontFamily="Segoe WP Light" FontSize="22" ></TextBlock>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </PivotItem>
-            <PivotItem x:Name="Day2" Header="day 2">
+            <!--<Hub.Background>
+                <ImageBrush ImageSource="/Assets/techtatva15.png" Stretch="UniformToFill" Opacity="0.3"/>
+            </Hub.Background>-->
 
-            </PivotItem>
-            <PivotItem x:Name="Day3" Header="day 3">
 
-            </PivotItem>
-            <PivotItem x:Name="Day4" Header="day 4">
+            <HubSection x:Name="Day1" Header="DAY 1" DataContext="{Binding Events}">
+                <DataTemplate>
+                    <ListView x:Name="List1" SelectionMode="None" IsItemClickEnabled="True" ItemClick="Event_Clicked" ItemsSource="{Binding}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+                                    <Image Source="{Binding Image}" Stretch="Fill" Height="51" Width="51"></Image>
+                                    <TextBlock Text="{Binding Name}" TextAlignment="Center" VerticalAlignment="Center" Margin="20,0,0,0" FontFamily="Segoe WP Light" FontSize="22" ></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </DataTemplate>
+            </HubSection>
 
-            </PivotItem>
-            <PivotItem x:Name="Register" Header="register">
+            <HubSection x:Name="Day2" Header="DAY 2">
+                <DataTemplate>
+                    <ListView x:Name="List2" SelectionMode="None" IsItemClickEnabled="True" ItemClick="Event_Clicked">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+                                    <Image Source="{Binding Image}" Stretch="Fill" Height="51" Width="51"></Image>
+                                    <TextBlock Text="{Binding Name}" TextAlignment="Center" VerticalAlignment="Center" Margin="20,0,0,0" FontFamily="Segoe WP Light" FontSize="22" ></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </DataTemplate>
+            </HubSection>
 
-            </PivotItem>
-            <PivotItem x:Name="Online" Header="online events">
+            <HubSection x:Name="Day3" Header="DAY 3">
+                <DataTemplate>
+                    <ListView x:Name="List3" SelectionMode="None" IsItemClickEnabled="True" ItemClick="Event_Clicked">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+                                    <Image Source="{Binding Image}" Stretch="Fill" Height="51" Width="51"></Image>
+                                    <TextBlock Text="{Binding Name}" TextAlignment="Center" VerticalAlignment="Center" Margin="20,0,0,0" FontFamily="Segoe WP Light" FontSize="22" ></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </DataTemplate>
+            </HubSection>
 
-            </PivotItem>
-        </Pivot>
+            <HubSection x:Name="Day4" Header="DAY 4">
+                <DataTemplate>
+                    <ListView x:Name="List4" SelectionMode="None" IsItemClickEnabled="True" ItemClick="Event_Clicked">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+                                    <Image Source="{Binding Image}" Stretch="Fill" Height="51" Width="51"></Image>
+                                    <TextBlock Text="{Binding Name}" TextAlignment="Center" VerticalAlignment="Center" Margin="20,0,0,0" FontFamily="Segoe WP Light" FontSize="22" ></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </DataTemplate>
+            </HubSection>
+        </Hub>
     </Grid>
 </Page>

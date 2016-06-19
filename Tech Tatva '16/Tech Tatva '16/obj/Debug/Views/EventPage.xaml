@@ -6,9 +6,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{StaticResource BackgroundBrush}">
+    Background="{StaticResource BackgroundBrush}"
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}">
 
-    <Grid x:Name="LayoutRoot">
+    <Grid x:Name="LayoutRoot" DataContext="{Binding}">
 
         <Grid.ChildrenTransitions>
             <TransitionCollection>
@@ -29,8 +30,8 @@
 
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="10,0,0,0">
-            <TextBlock Text="techTatva" FontSize="47" Margin="0,12,0,0" Foreground="{StaticResource AppAccentColorBrush}"/>
-            <TextBlock Text="Event Name" Margin="0,6.5,0,15" FontSize="25" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Foreground="{StaticResource AppAccentColorBrush}"/>
+            <TextBlock Text="techtatva" FontSize="47" Margin="0,12,0,0" Foreground="{StaticResource AppAccentColorBrush}" FontFamily="Segoe WP SemiLight"/>
+            <TextBlock Text="{Binding Name}" Margin="0,6.5,0,15" FontSize="25" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Foreground="{StaticResource AppAccentColorBrush}"/>
             <Line X1="0" X2="1" Stretch="Fill" Stroke="SkyBlue" StrokeThickness="1" Margin="-10,3,0,0"/>
         </StackPanel>
 
