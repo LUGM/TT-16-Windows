@@ -1,5 +1,8 @@
+Assets\back.jpg
 Assets\date-icon.png
 Assets\fav-icon.png
+Assets\fav-icon_disabled.png
+Assets\fav-icon_enabled.png
 Assets\group-icon.png
 Assets\loc-icon.png
 Assets\Logo.scale-240.png
@@ -13,5 +16,6 @@ Assets\time-icon.png
 Assets\WideLogo.scale-240.png
 App.xbf
 Tech Tatva '16.xr.xml
-Views\EventPage.xbf
+Views\DetailsPage.xbf
+Views\EventsPage.xbf
 Views\MainPage.xbf

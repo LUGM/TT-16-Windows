@@ -80,7 +80,11 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <Page Include="Views\EventPage.xaml">
+    <Page Include="Views\DetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EventsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -99,8 +103,11 @@
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Classes\EventClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\EventPage.xaml.cs">
-      <DependentUpon>EventPage.xaml</DependentUpon>
+    <Compile Include="Views\DetailsPage.xaml.cs">
+      <DependentUpon>DetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EventsPage.xaml.cs">
+      <DependentUpon>EventsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -112,8 +119,11 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\back.jpg" />
     <Content Include="Assets\date-icon.png" />
     <Content Include="Assets\fav-icon.png" />
+    <Content Include="Assets\fav-icon_disabled.png" />
+    <Content Include="Assets\fav-icon_enabled.png" />
     <Content Include="Assets\group-icon.png" />
     <Content Include="Assets\loc-icon.png" />
     <Content Include="Assets\Logo.scale-240.png" />

@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Tech_Tatva__16.Views;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -23,12 +24,13 @@ namespace Tech_Tatva__16.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class EventsPage : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
+        public Day day = new Day();
 
-        public MainPage()
+        public EventsPage()
         {
             this.InitializeComponent();
 
@@ -67,56 +69,15 @@ namespace Tech_Tatva__16.Views
         /// session.  The state will be null the first time a page is visited.</param>
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            EventClass event1 = new EventClass();
-            event1.Name = "Hello";
-            event1.Image = "ms-appx:///Assets/Square71x71Logo.scale-240.png";
-            event1.Fav_Image = "ms-appx:///Assets/fav-icon_enabled.png";
 
-            EventClass event2 = new EventClass();
-            event2.Name = "Hello1";
-            event2.Image = "ms-appx:///Assets/Square71x71Logo.scale-240.png";
-            event2.Fav_Image = "ms-appx:///Assets/fav-icon_disabled.png";
+            day = e.NavigationParameter as Day;
+            this.defaultViewModel["Day"] = day;
 
-            List<EventClass> l = new List<EventClass>();
-            l.Add(event1);
-            l.Add(event2);
-
-            List<Day> list = new List<Day>();
-            Day day1 = new Day();
-            day1.Events = l;
-            day1.day = "day 1";
-
-            Day day2 = new Day();
-            day2.Events = l;
-            day2.day = "day 2";
-
-            Day day3 = new Day();
-            day3.Events = l;
-            day3.day = "day 3";
-
-            Day day4 = new Day();
-            day4.Events = l;
-            day4.day = "day 4";
-
-
-            list.Add(day1);
-            list.Add(day2);
-            list.Add(day3);
-            list.Add(day4);
-
-            List<Results> res = new List<Results>();
-
-            Results results = new Results();
-            results.EventName = "Magnet Gun(Round 1)";
-            results.Image = "ms-appx:///Assets/Square71x71Logo.scale-240.png";
-
-            res.Add(results);
-            res.Add(results);
-
-            this.defaultViewModel["Days"] = list;
-            this.defaultViewModel["Insta"] = "ms-appx:///Assets/back.jpg";
-            this.defaultViewModel["Results"] = res;
-
+            foreach(PivotItem p in MyPivot.Items)
+            {
+                if (p.Header.ToString().Equals(day.day))
+                    MyPivot.SelectedItem = p;
+            }
         }
 
         /// <summary>
@@ -158,10 +119,11 @@ namespace Tech_Tatva__16.Views
 
         #endregion
 
-
-        private void Day_Clicked(object sender, ItemClickEventArgs e)
+        private void Event_Clicked(object sender, ItemClickEventArgs e)
         {
-            Frame.Navigate(typeof(EventsPage), e.ClickedItem as Day);
+            
+            Frame.Navigate(typeof(DetailsPage), e.ClickedItem as EventClass);
         }
+
     }
 }

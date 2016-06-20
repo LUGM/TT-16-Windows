@@ -21,11 +21,20 @@
     <AppxPackagedFile Include="C:\Users\Gauth\Documents\GitHub\New folder\TT-16-Windows\Tech Tatva %2716\Tech Tatva %2716\bin\Debug\Tech Tatva %2716.exe">
       <PackagePath>Tech Tatva %2716.exe</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gauth\Documents\GitHub\New folder\TT-16-Windows\Tech Tatva %2716\Tech Tatva %2716\Assets\back.jpg">
+      <PackagePath>Assets\back.jpg</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Gauth\Documents\GitHub\New folder\TT-16-Windows\Tech Tatva %2716\Tech Tatva %2716\Assets\date-icon.png">
       <PackagePath>Assets\date-icon.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Gauth\Documents\GitHub\New folder\TT-16-Windows\Tech Tatva %2716\Tech Tatva %2716\Assets\fav-icon.png">
       <PackagePath>Assets\fav-icon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gauth\Documents\GitHub\New folder\TT-16-Windows\Tech Tatva %2716\Tech Tatva %2716\Assets\fav-icon_disabled.png">
+      <PackagePath>Assets\fav-icon_disabled.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gauth\Documents\GitHub\New folder\TT-16-Windows\Tech Tatva %2716\Tech Tatva %2716\Assets\fav-icon_enabled.png">
+      <PackagePath>Assets\fav-icon_enabled.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Gauth\Documents\GitHub\New folder\TT-16-Windows\Tech Tatva %2716\Tech Tatva %2716\Assets\group-icon.png">
       <PackagePath>Assets\group-icon.png</PackagePath>
@@ -72,8 +81,11 @@
     <AppxPackagedFile Include="C:\Users\Gauth\Documents\GitHub\New folder\TT-16-Windows\Tech Tatva %2716\Tech Tatva %2716\bin\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Gauth\Documents\GitHub\New folder\TT-16-Windows\Tech Tatva %2716\Tech Tatva %2716\bin\Debug\Views\EventPage.xbf">
-      <PackagePath>Views\EventPage.xbf</PackagePath>
+    <AppxPackagedFile Include="C:\Users\Gauth\Documents\GitHub\New folder\TT-16-Windows\Tech Tatva %2716\Tech Tatva %2716\bin\Debug\Views\DetailsPage.xbf">
+      <PackagePath>Views\DetailsPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Gauth\Documents\GitHub\New folder\TT-16-Windows\Tech Tatva %2716\Tech Tatva %2716\bin\Debug\Views\EventsPage.xbf">
+      <PackagePath>Views\EventsPage.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Gauth\Documents\GitHub\New folder\TT-16-Windows\Tech Tatva %2716\Tech Tatva %2716\bin\Debug\Views\MainPage.xbf">
       <PackagePath>Views\MainPage.xbf</PackagePath>

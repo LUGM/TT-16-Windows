@@ -23,12 +23,12 @@ namespace Tech_Tatva__16.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class EventPage : Page
+    public sealed partial class DetailsPage : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        public EventPage()
+        public DetailsPage()
         {
             this.InitializeComponent();
 

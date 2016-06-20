@@ -3,8 +3,15 @@
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="DefaultViewModel" />
     <RootPropertyPathName Name="Name" />
-    <RootPropertyPathName Name="Image" />
+    <RootPropertyPathName Name="Day" />
     <RootPropertyPathName Name="Events" />
+    <RootPropertyPathName Name="Fav_Image" />
+    <RootPropertyPathName Name="Image" />
+    <RootPropertyPathName Name="Insta" />
+    <RootPropertyPathName Name="Results" />
+    <RootPropertyPathName Name="EventName" />
+    <RootPropertyPathName Name="Days" />
+    <RootPropertyPathName Name="day" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application">
@@ -30,8 +37,12 @@
       <RootProperty Name="ChildrenTransitions" />
       <RootProperty Name="RowDefinitions" />
       <RootProperty Name="Children" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="ColumnDefinitions" />
       <RootMethod Name="GetRow" />
       <RootMethod Name="SetRow" />
+      <RootMethod Name="GetColumn" />
+      <RootMethod Name="SetColumn" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.Animation.TransitionCollection" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.EntranceThemeTransition" />
@@ -55,22 +66,24 @@
       <RootProperty Name="Source" />
       <RootProperty Name="Height" />
       <RootProperty Name="Width" />
+      <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Stretch" />
+      <RootProperty Name="Margin" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
       <RootProperty Name="Text" />
       <RootProperty Name="FontSize" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="TextWrapping" />
       <RootProperty Name="TextAlignment" />
       <RootProperty Name="Foreground" />
       <RootProperty Name="FontFamily" />
       <RootProperty Name="CharacterSpacing" />
       <RootProperty Name="FontWeight" />
-      <RootProperty Name="VerticalAlignment" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.Tools.DirectUI.ProxyTypes.ThemeResourceExtension" />
-    <RootType FullName="Tech_Tatva__16.Views.EventPage" />
+    <RootType FullName="Tech_Tatva__16.Views.DetailsPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
       <RootProperty Name="SecondaryCommands" />
       <RootProperty Name="PrimaryCommands" />
@@ -79,38 +92,50 @@
       <RootProperty Name="Label" />
       <RootProperty Name="Icon" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Pivot">
+      <RootProperty Name="HeaderTemplate" />
+      <RootProperty Name="Items" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.DataTemplate">
+      <RootProperty Name="Template" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.PivotItem">
+      <RootProperty Name="Header" />
+      <RootProperty Name="DataContext" />
+      <RootProperty Name="Content" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ListView">
+      <RootProperty Name="ItemsSource" />
+      <RootProperty Name="SelectionMode" />
+      <RootProperty Name="IsItemClickEnabled" />
+      <RootProperty Name="ItemContainerStyle" />
+      <RootProperty Name="ItemTemplate" />
+      <RootEvent Name="ItemClick" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ListViewItem" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Control">
+      <RootProperty Name="HorizontalContentAlignment" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Setter">
+      <RootProperty Name="Property" />
+      <RootProperty Name="Value" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ColumnDefinition">
+      <RootProperty Name="Width" />
+    </RootType>
+    <RootType FullName="Tech_Tatva__16.Views.EventsPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.HubSection">
       <RootProperty Name="HeaderTemplate" />
       <RootProperty Name="Header" />
       <RootProperty Name="DataContext" />
       <RootProperty Name="ContentTemplate" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Setter">
-      <RootProperty Name="Property" />
-      <RootProperty Name="Value" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.DataTemplate">
-      <RootProperty Name="Template" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Hub">
       <RootProperty Name="Margin" />
       <RootProperty Name="Header" />
       <RootProperty Name="DataContext" />
       <RootProperty Name="HeaderTemplate" />
-      <RootProperty Name="Background" />
       <RootProperty Name="Sections" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Media.ImageBrush">
-      <RootProperty Name="ImageSource" />
-      <RootProperty Name="Stretch" />
-      <RootProperty Name="Opacity" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ListView">
-      <RootProperty Name="SelectionMode" />
-      <RootProperty Name="IsItemClickEnabled" />
-      <RootProperty Name="ItemTemplate" />
-      <RootProperty Name="ItemsSource" />
-      <RootEvent Name="ItemClick" />
     </RootType>
     <RootType FullName="Tech_Tatva__16.Views.MainPage" />
   </Roots.RootTypes>
