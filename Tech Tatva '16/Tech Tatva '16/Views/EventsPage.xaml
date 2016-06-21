@@ -6,7 +6,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}">
     <Page.BottomAppBar>
         <CommandBar>
@@ -44,6 +43,9 @@
                         <TextBlock Text="{Binding}" FontSize="30" FontFamily="Segoe WP SemiLight" FontWeight="SemiLight"/>
                     </DataTemplate>
                 </Pivot.HeaderTemplate>
+                
+
+                
                 <PivotItem x:Name="Day1" Header="day 1" DataContext="{Binding Events}">
                     <ListView ItemsSource="{Binding}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="Event_Clicked">
                         <ListView.ItemContainerStyle>

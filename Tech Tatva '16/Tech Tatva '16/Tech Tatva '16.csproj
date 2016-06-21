@@ -120,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\back.jpg" />
+    <Content Include="Assets\back_main.png" />
     <Content Include="Assets\date-icon.png" />
     <Content Include="Assets\fav-icon.png" />
     <Content Include="Assets\fav-icon_disabled.png" />

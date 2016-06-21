@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{StaticResource BackgroundBrush}"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     DataContext="{Binding DefaultViewModel , RelativeSource={RelativeSource Self}}"
     >
 
@@ -31,7 +31,6 @@
                         <TextBlock Text="{Binding}"
                            FontSize="40"
                            FontFamily="Segoe WP Light"
-                           Foreground="White"
                            FontWeight="SemiLight"/>
                     </DataTemplate>
                 </Setter.Value>
@@ -39,7 +38,7 @@
         </Style>
     </Page.Resources>
 
-    <Grid x:Name="LayoutRoot" DataContext="{Binding}">
+    <Grid x:Name="LayoutRoot" DataContext="{Binding}" >
 
         <Grid.ChildrenTransitions>
             <TransitionCollection>
@@ -53,16 +52,16 @@
         </Grid.RowDefinitions>
 
        
-        <Hub x:Name="MyHub" Grid.Row="1" Margin="10,9.5,10,5" Header="techtatva" DataContext="{Binding}">
+        <Hub x:Name="MyHub" Grid.Row="1"  Header="techtatva" DataContext="{Binding}">
             <Hub.HeaderTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding}" CharacterSpacing="{StaticResource HubSectionHeaderCharacterSpacing}" FontSize="60" FontFamily="Segoe WP SemiLight" Margin="0, 9, 0,0" Foreground="{StaticResource AppAccentColorBrush}"/>
                 </DataTemplate>
             </Hub.HeaderTemplate>
 
-            <!--<Hub.Background>
-                <ImageBrush ImageSource="/Assets/back.jpg" Stretch="UniformToFill" Opacity="0.3"/>
-            </Hub.Background>-->
+            <Hub.Background>
+                <ImageBrush ImageSource="/Assets/back_main.png" Stretch="UniformToFill" Opacity="0.3"/>
+            </Hub.Background>
 
 
             <HubSection x:Name="Events" Header="events" DataContext="{Binding}">
