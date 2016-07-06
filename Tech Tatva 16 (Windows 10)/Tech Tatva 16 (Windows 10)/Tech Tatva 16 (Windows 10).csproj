@@ -96,6 +96,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\EventClass.cs" />
+    <Compile Include="Classes\FixedSizeObservableCollection.cs" />
     <Compile Include="Classes\Insta.cs" />
     <Compile Include="Views\EventsPage.xaml.cs">
       <DependentUpon>EventsPage.xaml</DependentUpon>

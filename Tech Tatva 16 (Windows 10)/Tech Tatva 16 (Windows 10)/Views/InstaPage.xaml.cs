@@ -21,7 +21,8 @@ namespace Tech_Tatva_16__Windows_10_.Views
     /// </summary>
     public sealed partial class InstaPage : Page
     {
-        public ObservableCollection<BitmapImage> bmi = new ObservableCollection<BitmapImage>();
+        public FixedSizeObservableCollection<BitmapImage> bmi9 = new FixedSizeObservableCollection<BitmapImage>(9);
+        public FixedSizeObservableCollection<BitmapImage> bmi25 = new FixedSizeObservableCollection<BitmapImage>(25);
         Insta instagram = new Insta();
 
         public static InstaPage Instance { get; private set; }
@@ -32,6 +33,8 @@ namespace Tech_Tatva_16__Windows_10_.Views
             this.Loaded += InstaPage_Loaded;
 
             Instance = this;
+
+            
         }
 
 
@@ -94,7 +97,7 @@ namespace Tech_Tatva_16__Windows_10_.Views
                 using (HttpClient client = new HttpClient())
                 {
                     Insta insta = new Insta();
-                    var response = await client.GetStringAsync("https://api.instagram.com/v1/tags/MIT/media/recent?access_token=630237785.f53975e.8dcfa635acf14fcbb99681c60519d04c&count=9");
+                    var response = await client.GetStringAsync("https://api.instagram.com/v1/tags/techtatva16/media/recent?access_token=630237785.f53975e.8dcfa635acf14fcbb99681c60519d04c");
                     insta = JsonConvert.DeserializeObject<Insta>(response);
 
                     instagram = insta;
@@ -104,7 +107,8 @@ namespace Tech_Tatva_16__Windows_10_.Views
                         b.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
                         b.UriSource = new Uri(d.images.thumbnail.url);
 
-                        bmi.Add(b);
+                        bmi9.Add(b);
+                        bmi25.Add(b);
                     }
 
               
@@ -131,5 +135,7 @@ namespace Tech_Tatva_16__Windows_10_.Views
             }
 
         }
+
+     
     }
 }

@@ -127,33 +127,5 @@ namespace Tech_Tatva_16__Windows_10_.Classes
         public Meta meta { get; set; }
         public List<Datum> data { get; set; }
     }
-
-    public class InstaSource
-    {
-        public Insta insta { get; set; }
-
-        private InstaSource(Insta Instagram)
-        {
-            this.insta = Instagram;
-        }
-
-        public static async Task<InstaSource> GetInstaAsync()
-        {
-            try
-            {
-                using (HttpClient client = new HttpClient())
-                {
-                    Insta insta = new Insta();
-                    var response = await client.GetStringAsync("https://api.instagram.com/v1/tags/MIT/media/recent?access_token=630237785.f53975e.8dcfa635acf14fcbb99681c60519d04c&count=9");
-                    insta = JsonConvert.DeserializeObject<Insta>(response);
-
-                    return new InstaSource(insta);
-                }
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-        }
-    }
+    
 }

@@ -8,26 +8,65 @@
     xmlns:Classes="using:Tech_Tatva_16__Windows_10_.Classes"
     mc:Ignorable="d">
 
-   
+    <Page.Resources>
+        <ItemsPanelTemplate x:Key="Narrow">
+            <WrapGrid Orientation="Horizontal" MaximumRowsOrColumns="3"/>
+        </ItemsPanelTemplate>
+
+        <ItemsPanelTemplate x:Key="Wide">
+            <WrapGrid Orientation="Horizontal" MaximumRowsOrColumns="5"/>
+        </ItemsPanelTemplate>
+
+    </Page.Resources>
+    
+
     <Pivot Name="MyPivot" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Style="{StaticResource HeaderlessPivotStyle}">
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="InstaGridNarrow.ItemsPanel" Value="{StaticResource Narrow}" />
+                        <Setter Target="InstaGridWide.Visibility" Value="Collapsed" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="582" />
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="InstaGridWide.ItemsPanel" Value="{StaticResource Wide}" />
+                        <Setter Target="InstaGridNarrow.Visibility" Value="Collapsed" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
         <PivotItem>
             <Grid Margin="0,10,0,0">
                 <Viewbox VerticalAlignment="Top">
-                    <GridView Name="InstaGrid" ItemsSource="{x:Bind bmi}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="Insta_Clicked">
+                    <Grid>
+                            <GridView Name="InstaGridNarrow" ItemsSource="{x:Bind bmi9}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="Insta_Clicked">
+                                <GridView.ItemTemplate>
+                                    <DataTemplate x:DataType="BitmapImage">
+                                        <Image Stretch="Fill" Source="{x:Bind}" Margin="1" />
+                                    </DataTemplate>
+                                </GridView.ItemTemplate>
+                            </GridView>
 
-                        <GridView.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapGrid Name="Change" Orientation="Horizontal" MaximumRowsOrColumns="3"/>
-                            </ItemsPanelTemplate>
-                        </GridView.ItemsPanel>
-
-                        <GridView.ItemTemplate>
-                            <DataTemplate x:DataType="BitmapImage">
-                                <Image Stretch="Fill" Source="{x:Bind}" Margin="1"/>
-                            </DataTemplate>
-                        </GridView.ItemTemplate>
-
-                    </GridView>
+                            <GridView Name="InstaGridWide" ItemsSource="{x:Bind bmi25}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="Insta_Clicked">
+                                <GridView.ItemTemplate>
+                                    <DataTemplate x:DataType="BitmapImage">
+                                        <Image Stretch="Fill" Source="{x:Bind}" Margin="1" />
+                                    </DataTemplate>
+                                </GridView.ItemTemplate>
+                            </GridView>
+                        </Grid>
                 </Viewbox>
             </Grid>
         </PivotItem>
@@ -81,4 +120,6 @@
             </Grid>
         </PivotItem>
     </Pivot>
+    
+    
 </Page>
