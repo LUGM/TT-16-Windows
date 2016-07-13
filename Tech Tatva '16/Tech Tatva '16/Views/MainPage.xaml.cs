@@ -144,12 +144,12 @@ namespace Tech_Tatva__16.Views
             EventClass event1 = new EventClass();
             event1.Name = "Hello";
             event1.Image = "ms-appx:///Assets/Square71x71Logo.scale-240.png";
-            event1.Fav_Image = "ms-appx:///Assets/fav-icon_enabled.png";
+            event1.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_enabled.png";
 
             EventClass event2 = new EventClass();
             event2.Name = "Hello1";
             event2.Image = "ms-appx:///Assets/Square71x71Logo.scale-240.png";
-            event2.Fav_Image = "ms-appx:///Assets/fav-icon_disabled.png";
+            event2.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_disabled.png";
 
             List<EventClass> l = new List<EventClass>();
             l.Add(event1);
@@ -285,5 +285,9 @@ namespace Tech_Tatva__16.Views
         }
 
 
+        private void Abt_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(AboutPage));
+        }
     }
 }

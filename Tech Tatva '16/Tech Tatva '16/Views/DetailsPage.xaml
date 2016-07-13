@@ -42,34 +42,34 @@
         </StackPanel>
 
         <StackPanel Grid.Row="2" Margin="10,40,0,0" Orientation="Horizontal">
-            <Image Source="/Assets/loc-icon.png" Height="45" Width="45"></Image>
+            <Image Source="/Assets/Icons/loc-icon.png" Height="45" Width="45"></Image>
             <TextBlock Text="NLH 203" FontSize="25" Margin="10,0,0,0" VerticalAlignment="Center"></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Margin="10,0,0,0" Orientation="Horizontal">
-            <Image Source="/Assets/time-icon.png" Height="45" Width="45"></Image>
+            <Image Source="/Assets/Icons/time-icon.png" Height="45" Width="45"></Image>
             <TextBlock Text="2 pm to 5 pm" FontSize="25" Margin="10,0,0,0" VerticalAlignment="Center"></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="4" Margin="10,0,0,0" Orientation="Horizontal">
-            <Image Source="/Assets/date-icon.png" Height="45" Width="45"></Image>
+            <Image Source="/Assets/Icons/date-icon.png" Height="45" Width="45"></Image>
             <TextBlock Text="26 May 2016" FontSize="25" Margin="10,0,0,0" VerticalAlignment="Center"></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="5" Margin="10,0,0,0" Orientation="Horizontal">
-            <Image Source="/Assets/group-icon.png" Height="45" Width="45"></Image>
+            <Image Source="/Assets/Icons/group-icon.png" Height="45" Width="45"></Image>
             <TextBlock Text="2-3 per team" FontSize="25" Margin="10,0,0,0" VerticalAlignment="Center"></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="6" Margin="10,0,0,0" Orientation="Horizontal">
-            <Image Source="/Assets/phone-icon.png" Height="45" Width="45"></Image>
+            <Image Source="/Assets/Icons/phone-icon.png" Height="45" Width="45"></Image>
             <TextBlock Text="9945616566" FontSize="25" Margin="10,0,0,0" VerticalAlignment="Center"></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="7" Margin="0,30,0,0">
             <Line X1="0" X2="1" Stretch="Fill" Stroke="SkyBlue" StrokeThickness="1"/>
             <StackPanel Orientation="Horizontal" Margin="10,5,0,5">
-                <Image Source="/Assets/fav-icon.png" Height="35" Width="35"></Image>
+                <Image Source="/Assets/Icons/fav-icon.png" Height="35" Width="35"></Image>
                 <TextBlock Text="bookmark event" FontSize="25" Margin="10,0,0,0" VerticalAlignment="Center"></TextBlock>
             </StackPanel>
             <Line X1="0" X2="1" Stretch="Fill" Stroke="SkyBlue" StrokeThickness="1"/>

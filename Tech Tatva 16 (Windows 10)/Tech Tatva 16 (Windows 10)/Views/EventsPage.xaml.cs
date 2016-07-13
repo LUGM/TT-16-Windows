@@ -8,6 +8,7 @@ using Tech_Tatva_16__Windows_10_.Classes;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -69,11 +70,34 @@ namespace Tech_Tatva_16__Windows_10_.Views
 
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+
+            string myPages = "";
+            foreach (PageStackEntry page in Frame.BackStack)
+            {
+                myPages += page.SourcePageType.ToString() + "\n";
+            }
+
+            if (Frame.CanGoBack && Frame.BackStackDepth > 1)
+            {
+                // Show UI in title bar if opted-in and in-app backstack is not empty.
+                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
+                    AppViewBackButtonVisibility.Visible;
+            }
+            else
+            {
+                // Remove the UI from the title bar if in-app back stack is empty.
+                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
+                    AppViewBackButtonVisibility.Collapsed;
+            }
+        }
+
+
+
 
         private void Event_Clicked(object sender, SelectionChangedEventArgs e)
         {
-
-
             foreach (var item in e.AddedItems)
             {
                 ListViewItem _Item = (sender as ListView).ContainerFromItem(item) as ListViewItem;

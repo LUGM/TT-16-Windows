@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 using Tech_Tatva_16__Windows_10_.Classes;
 using Windows.Foundation.Metadata;
 using Windows.UI;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
+using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -33,15 +35,18 @@ namespace Tech_Tatva_16__Windows_10_.Views
             this.Loaded += InstaPage_Loaded;
 
             Instance = this;
-
-            
+        
         }
 
 
-        public void BackPivot()
+        public int PivotPosition()
+        {
+            return MyPivot.SelectedIndex;
+        }
+
+        public void GoBack()
         {
             MyPivot.SelectedItem = MyPivot.Items[0];
-            MainPage.instance.HideBack();
         }
 
         private void InstaPage_Loaded(object sender, RoutedEventArgs e)
@@ -51,16 +56,6 @@ namespace Tech_Tatva_16__Windows_10_.Views
 
         private void Insta_Clicked(object sender, ItemClickEventArgs e)
         {
-            Platform platform = DetectPlatform();
-            if(platform.Equals(Platform.WindowsPhone))
-            {
-                Windows.Phone.UI.Input.HardwareButtons.BackPressed += HardwareButtons_BackPressed;
-                   
-            }
-
-            else
-                    { MainPage.instance.RevealBack(); }
-
             foreach (Datum d in instagram.data)
             {
                 if ((e.ClickedItem as BitmapImage).UriSource.ToString().Equals(d.images.thumbnail.url))
@@ -75,18 +70,12 @@ namespace Tech_Tatva_16__Windows_10_.Views
 
                     BitmapImage bmi1 = new BitmapImage();
                     bmi1.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
-                    bmi1.UriSource = new Uri(d.images.standard_resolution.url, UriKind.RelativeOrAbsolute);
+
+                    string url = d.images.standard_resolution.url;
+                    url = url.Replace("s640x640", "1080x1080");
+                    bmi1.UriSource = new Uri(url, UriKind.RelativeOrAbsolute);
                     Img.Source = bmi1;
                 }
-            }
-        }
-
-        private void HardwareButtons_BackPressed(object sender, Windows.Phone.UI.Input.BackPressedEventArgs e)
-        {
-            if(MyPivot.SelectedItem == MyPivot.Items[1])
-            {
-                e.Handled = true;
-                MyPivot.SelectedItem = MyPivot.Items[0];
             }
         }
 
@@ -118,22 +107,6 @@ namespace Tech_Tatva_16__Windows_10_.Views
             {
                
             }
-        }
-
-        public static Platform DetectPlatform()
-        {
-            bool isHardwareButtonsAPIPresent =
-                ApiInformation.IsTypePresent("Windows.Phone.UI.Input.HardwareButtons");
-
-            if (isHardwareButtonsAPIPresent)
-            {
-                return Platform.WindowsPhone;
-            }
-            else
-            {
-                return Platform.Windows;
-            }
-
         }
 
      

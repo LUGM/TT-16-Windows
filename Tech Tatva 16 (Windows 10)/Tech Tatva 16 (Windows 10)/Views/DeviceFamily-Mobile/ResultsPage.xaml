@@ -15,16 +15,10 @@
                 <EntranceThemeTransition/>
             </TransitionCollection>
         </Grid.ChildrenTransitions>
-
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-        <TextBlock Text="Results" Style="{StaticResource HeaderTextBlockStyle}" Margin="10"/>
-
         <!--TODO: Content should be placed within the following grid-->
-        <StackPanel Name="ContentRoot" Margin="0,9.5,5,0" Grid.Row="1">
+        <StackPanel Name="ContentRoot" Margin="0,9.5,5,0" >
+
+            <TextBlock Text="Latest Arrivals..." Style="{StaticResource HeaderTextBlockStyle}" Margin="10,0,0,4"/>
 
             <ListView Name="Results" ItemsSource="{x:Bind Result}" SelectionMode="Single" SelectionChanged="Event_Clicked" Margin="0,10,0,0">
                 <ListView.ItemContainerStyle>

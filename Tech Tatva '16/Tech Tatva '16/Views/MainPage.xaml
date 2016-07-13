@@ -17,7 +17,7 @@
                 <AppBarButton x:Name="Fav" Label="favourites"/>
                 <AppBarButton x:Name="Res" Label="results"/>
                 <AppBarButton x:Name="Dev" Label="developers"/>
-                <AppBarButton x:Name="Abt" Label="about"/>
+                <AppBarButton x:Name="Abt" Label="about" Click="Abt_Click"/>
             </CommandBar.SecondaryCommands>
             <AppBarButton Icon="Refresh" Label="refresh"/>
         </CommandBar>

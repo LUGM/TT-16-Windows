@@ -6,6 +6,8 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Tech_Tatva_16__Windows_10_.Views;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System.Profile;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -23,30 +25,104 @@ namespace Tech_Tatva_16__Windows_10_
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        public static MainPage instance { get; private set; }
+        private Frame contentFrame;
+        Windows.Storage.ApplicationDataContainer roamingSettings =
+       Windows.Storage.ApplicationData.Current.RoamingSettings;
+        Windows.Storage.StorageFolder roamingFolder =
+            Windows.Storage.ApplicationData.Current.RoamingFolder;
 
-        public MainPage()
+
+        public MainPage(Frame frame)
         {
+            
+            this.contentFrame = frame;
             this.InitializeComponent();
-            MyFrame.Navigate(typeof(Views.EventsPage));
-            this.Events_Button.IsChecked = true;
-            this.Title.Text = "EVENTS";
+            this.HamburgerMenu.Content = frame;
 
-            instance = this;
+            var update = new Action(() =>
+             {
+                 SystemNavigationManager.GetForCurrentView().BackRequested += MainPage_BackRequested;
+                 // update radiobuttons after frame navigates 
+                 var type = frame.CurrentSourcePageType;
+ 
+                 if (type == typeof(EventsPage))
+                 {
+                     Events_Button.IsChecked = true;
+                     if(AnalyticsInfo.VersionInfo.DeviceFamily == "Windows.Mobile")
+                     {
+                         this.Title.Text = "EVENTS";
+                         this.HamburgerMenu.IsPaneOpen = false;
+                     }
+                 }
+                 if (type == typeof(ResultsPage))
+                 {
+                     Results_Button.IsChecked = true;
+                     if (AnalyticsInfo.VersionInfo.DeviceFamily == "Windows.Mobile")
+                     {
+                         this.Title.Text = "RESULTS";
+                         this.HamburgerMenu.IsPaneOpen = false;
+                     }
+                 }
+                 if (type == typeof(InstaPage))
+                 {
+                     Insta_Button.IsChecked = true;
+                     if (AnalyticsInfo.VersionInfo.DeviceFamily == "Windows.Mobile")
+                     {
+                         this.Title.Text = "INSTAGRAM";
+                         this.HamburgerMenu.IsPaneOpen = false;
+                     }
+                 }
+
+                 if (type == typeof(SettingsPage))
+                 {
+                     SettingsButton.IsChecked = true;
+                     if (AnalyticsInfo.VersionInfo.DeviceFamily == "Windows.Mobile")
+                     {
+                         this.Title.Text = "SETTINGS";
+                         this.HamburgerMenu.IsPaneOpen = false;
+                     }
+                 }
+
+                 if (type == typeof(AboutPage))
+                 {
+                     SettingsButton.IsChecked = true;
+                     if (AnalyticsInfo.VersionInfo.DeviceFamily == "Windows.Mobile")
+                     {
+                         this.Title.Text = "ABOUT US";
+                         this.HamburgerMenu.IsPaneOpen = false;
+                     }
+                 }
+
+                 SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = contentFrame.CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
+
+              });
+            frame.Navigated += (s, e) => update();
+            this.Loaded += (s, e) => update();
+            this.DataContext = this;
         }
 
-        public void RevealBack()
+        private void MainPage_BackRequested(object sender, BackRequestedEventArgs e)
         {
-            this.Title.Visibility = Visibility.Collapsed;
-            this.BackButton.Visibility = Visibility.Visible;
+            if(contentFrame == null)
+            {
+                return;
+            }
+
+            if (contentFrame.SourcePageType == typeof(InstaPage) && InstaPage.Instance.PivotPosition() == 1)
+            {
+                InstaPage.Instance.GoBack();
+                e.Handled = true;
+            }
+
+            else if (contentFrame.CanGoBack && e.Handled == false)
+            {
+                e.Handled = true;
+                contentFrame.GoBack();
+            }
         }
 
-        public void HideBack()
-        {
-            this.Title.Visibility = Visibility.Visible;
-            this.BackButton.Visibility = Visibility.Collapsed;
-        }
-
+       
+       
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
             HamburgerMenu.IsPaneOpen = !HamburgerMenu.IsPaneOpen;
@@ -54,23 +130,23 @@ namespace Tech_Tatva_16__Windows_10_
 
         private void Events_Button_Checked(object sender, RoutedEventArgs e)
         {
-            this.Title.Text = "EVENTS";
-            MyFrame.Navigate(typeof(Views.EventsPage));
-            HamburgerMenu.IsPaneOpen = false;
+          
+            if(contentFrame.SourcePageType != typeof(EventsPage))
+                this.contentFrame.Navigate(typeof(EventsPage));
         }
 
         private void Results_Button_Checked(object sender, RoutedEventArgs e)
         {
-            this.Title.Text = "RESULTS";
-            MyFrame.Navigate(typeof(Views.ResultsPage));
-            HamburgerMenu.IsPaneOpen = false;
+           
+            if (contentFrame.SourcePageType != typeof(ResultsPage))
+                this.contentFrame.Navigate(typeof(ResultsPage));
         }
 
         private void Insta_Button_Checked(object sender, RoutedEventArgs e)
         {
-            this.Title.Text = "INSTAGRAM";
-            MyFrame.Navigate(typeof(Views.InstaPage));
-            HamburgerMenu.IsPaneOpen = false;
+
+            if (contentFrame.SourcePageType != typeof(InstaPage))
+                this.contentFrame.Navigate(typeof(InstaPage));
         }
 
         private void Register_Button_Checked(object sender, RoutedEventArgs e)
@@ -83,9 +159,10 @@ namespace Tech_Tatva_16__Windows_10_
 
         }
 
-        private void BackButton_Click(object sender, RoutedEventArgs e)
+        private void SettingsButton_Checked(object sender, RoutedEventArgs e)
         {
-            InstaPage.Instance.BackPivot();
+            if (contentFrame.SourcePageType != typeof(SettingsPage))
+                this.contentFrame.Navigate(typeof(SettingsPage));
         }
     }
 }

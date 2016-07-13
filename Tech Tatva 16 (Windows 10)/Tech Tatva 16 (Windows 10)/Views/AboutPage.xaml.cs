@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using Tech_Tatva_16__Windows_10_.Classes;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -22,24 +20,11 @@ namespace Tech_Tatva_16__Windows_10_.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ResultsPage : Page
+    public sealed partial class AboutPage : Page
     {
-        public List<Results>  Result= new List<Results>();
-
-        public ResultsPage()
+        public AboutPage()
         {
             this.InitializeComponent();
-
-            Results event1 = new Results();
-            event1.EventName = "Hello";
-            event1.Image = "ms-appx:///Assets/Square44x44Logo.scale-200.png";
-
-            Result.Add(event1);
-        }
-
-        private void Event_Clicked(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }

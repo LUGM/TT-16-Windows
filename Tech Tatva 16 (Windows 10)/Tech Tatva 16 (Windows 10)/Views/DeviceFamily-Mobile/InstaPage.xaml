@@ -36,7 +36,7 @@
                 </VisualState>
                 <VisualState>
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="580" />
+                        <AdaptiveTrigger MinWindowWidth="582" />
                     </VisualState.StateTriggers>
 
                     <VisualState.Setters>
@@ -51,19 +51,14 @@
             <Grid Margin="0,10,0,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-
-                <TextBlock Grid.Row="0" Text="Instagram" Style="{StaticResource HeaderTextBlockStyle}" Margin="10" />
-
-                <TextBlock Grid.Row="1" Foreground="{StaticResource AppAccentColorBrush}" Style="{StaticResource SubheaderTextBlockStyle}" Margin="5,2.5,0,2.5">
+                <TextBlock Foreground="{StaticResource AppAccentColorBrush}" Style="{StaticResource HeaderTextBlockStyle}" Margin="5,2.5,0,2.5">
                     <TextBlock.Text>
                         #techtatva16
                     </TextBlock.Text>
                 </TextBlock>
-                
-                <Viewbox VerticalAlignment="Top" Grid.Row="2">
+                <Viewbox VerticalAlignment="Top" Grid.Row="1">
                     <Grid>
                             <GridView Name="InstaGridNarrow" ItemsSource="{x:Bind bmi9}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="Insta_Clicked">
                                 <GridView.ItemTemplate>

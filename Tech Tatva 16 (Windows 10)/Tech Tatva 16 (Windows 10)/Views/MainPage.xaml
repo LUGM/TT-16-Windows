@@ -7,60 +7,39 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    
-    <Page.BottomAppBar>
-        <CommandBar>
-            <CommandBar.SecondaryCommands>
-                <AppBarButton Name="Favourites" Label="Favorites"/>
-                <AppBarButton Name="Dev" Label="Developers"/>
-                <AppBarButton Name="Abt" Label="About"/>
-            </CommandBar.SecondaryCommands>
-            <AppBarButton Icon="Refresh" Label="refresh"/>
-        </CommandBar>
-    </Page.BottomAppBar>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Name="LayoutRoot" HorizontalAlignment="Stretch">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Name="LayoutRoot" >
 
-        <RelativePanel Background="#2e2e2e">
-            <Button Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" FontSize="15" Background="Transparent" Padding="15" Click="HamburgerButton_Click"></Button>
-            <Button Name="BackButton" FontFamily="Segoe MDL2 Assets" Content="&#xE0D5;" FontSize="15" Background="Transparent" Padding="15" Click="BackButton_Click" RelativePanel.RightOf="HamburgerButton" Visibility="Collapsed"></Button>
-            <TextBlock Name="Title" RelativePanel.AlignTopWith="HamburgerButton" RelativePanel.RightOf="HamburgerButton" RelativePanel.AlignBottomWith="HamburgerButton" Text="Home" FontSize="15" FontFamily="Segoe UI" FontWeight="Bold" VerticalAlignment="Center" Margin="10,0,0,0" CharacterSpacing="75"></TextBlock>
-        </RelativePanel>
-        <SplitView IsPaneOpen="False" Grid.Row="1" Name="HamburgerMenu" DisplayMode="CompactOverlay" CompactPaneLength="39" HorizontalAlignment="Stretch">
+        <SplitView IsPaneOpen="True" Name="HamburgerMenu" DisplayMode="CompactInline" CompactPaneLength="48" HorizontalAlignment="Stretch">
             <SplitView.Pane>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <StackPanel>
+                        <Button Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" FontSize="15" Background="Transparent" Padding="15" Click="HamburgerButton_Click"></Button>
+
                         <RadioButton Name="Events_Button" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Content="Events" Tag="&#xE11D;" Foreground="White" HorizontalAlignment="Stretch" Checked="Events_Button_Checked"/>
                         <RadioButton Name="Results_Button" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Content="Results" Tag="&#xE129;" Foreground="White" HorizontalAlignment="Stretch" Checked="Results_Button_Checked"/>
                         <RadioButton Name="Insta_Button"  GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Content="Instagram" Tag="&#xEC80;" Foreground="White" HorizontalAlignment="Stretch" Checked="Insta_Button_Checked"/>
                         <RadioButton Name="Register_Button" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Content="Register" Tag="&#xE1E2;" Foreground="White" HorizontalAlignment="Stretch" Checked="Register_Button_Checked"/>
                         <RadioButton Name="Online_Button" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Content="Online Events" Tag="&#xE128;" Foreground="White" HorizontalAlignment="Stretch" Checked="Online_Button_Checked"/>
                     </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Grid.Row="1">
+                        <Line X1="0" X2="1" Stretch="Fill" Stroke="{StaticResource AppAccentColorBrush}" StrokeThickness="1" Margin="10,10,10,5"/>
+                        <RadioButton Name="FavouritesButton" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Content="Faourites" Tag="&#xE1CE;" Foreground="White" HorizontalAlignment="Stretch" Checked="SettingsButton_Checked"/>
+                    </StackPanel>
+
+                    <StackPanel VerticalAlignment="Bottom" Orientation="Vertical" Grid.Row="2">
+                        <Line X1="0" X2="1" Stretch="Fill" Stroke="{StaticResource AppAccentColorBrush}" StrokeThickness="1" Margin="10,10,10,5"/>
+                        <RadioButton Name="SettingsButton" Margin="0,0,0,5" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Content="Settings" Tag="&#xE115;" Foreground="White" HorizontalAlignment="Stretch" Checked="SettingsButton_Checked"/>
+                    </StackPanel>
                 </Grid>
             </SplitView.Pane>
-
-            <SplitView.Content>
-                <Frame x:Name="MyFrame">
-                    <Frame.ContentTransitions>
-                        <TransitionCollection>
-                            <NavigationThemeTransition>
-                                <NavigationThemeTransition.DefaultNavigationTransitionInfo>
-                                    <EntranceNavigationTransitionInfo/>
-                                </NavigationThemeTransition.DefaultNavigationTransitionInfo>
-                            </NavigationThemeTransition>
-                        </TransitionCollection>
-                    </Frame.ContentTransitions>
-                </Frame>
-            </SplitView.Content>
         </SplitView>
     </Grid>
 </Page>
