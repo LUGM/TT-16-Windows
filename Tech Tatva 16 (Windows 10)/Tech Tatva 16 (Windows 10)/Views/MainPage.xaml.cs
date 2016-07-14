@@ -99,6 +99,22 @@ namespace Tech_Tatva_16__Windows_10_
             frame.Navigated += (s, e) => update();
             this.Loaded += (s, e) => update();
             this.DataContext = this;
+
+            this.HamburgerMenu.RegisterPropertyChangedCallback(SplitView.IsPaneOpenProperty, IsPaneOpenPropertyChanged);
+        }
+
+        private void IsPaneOpenPropertyChanged(DependencyObject sender, DependencyProperty dp)
+        {
+            if(this.HamburgerMenu.IsPaneOpen)
+            {
+                Line1.Visibility = Visibility.Visible;
+                Line2.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                Line1.Visibility = Visibility.Collapsed;
+                Line2.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void MainPage_BackRequested(object sender, BackRequestedEventArgs e)
@@ -164,5 +180,7 @@ namespace Tech_Tatva_16__Windows_10_
             if (contentFrame.SourcePageType != typeof(SettingsPage))
                 this.contentFrame.Navigate(typeof(SettingsPage));
         }
+
+
     }
 }

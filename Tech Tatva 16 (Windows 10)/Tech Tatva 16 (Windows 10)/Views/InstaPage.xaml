@@ -57,6 +57,11 @@
 
                 <TextBlock Grid.Row="0" Text="Instagram" Style="{StaticResource HeaderTextBlockStyle}" Margin="10" />
 
+                <StackPanel Name="PRing" Grid.RowSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <ProgressRing  Foreground="{StaticResource AppAccentColorBrush}" Background="Transparent" IsActive="True" VerticalAlignment="Center" HorizontalAlignment="Center"  Height="50" Width="50"/>
+                    <TextBlock  Text="Wait an instant for insta.." Style="{StaticResource BodyTextBlockStyle}" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"/>
+                </StackPanel>
+
                 <TextBlock Grid.Row="1" Foreground="{StaticResource AppAccentColorBrush}" Style="{StaticResource SubheaderTextBlockStyle}" Margin="5,2.5,0,2.5">
                     <TextBlock.Text>
                         #techtatva16
@@ -65,22 +70,22 @@
                 
                 <Viewbox VerticalAlignment="Top" Grid.Row="2">
                     <Grid>
-                            <GridView Name="InstaGridNarrow" ItemsSource="{x:Bind bmi9}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="Insta_Clicked">
-                                <GridView.ItemTemplate>
-                                    <DataTemplate x:DataType="BitmapImage">
-                                        <Image Stretch="Fill" Source="{x:Bind}" Margin="1" />
-                                    </DataTemplate>
-                                </GridView.ItemTemplate>
-                            </GridView>
+                        <GridView Name="InstaGridNarrow" ItemsSource="{x:Bind bmi9}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="Insta_Clicked">
+                            <GridView.ItemTemplate>
+                                <DataTemplate x:DataType="BitmapImage">
+                                    <Image Stretch="Fill" Source="{x:Bind}" Margin="1" />
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
+                        </GridView>
 
-                            <GridView Name="InstaGridWide" ItemsSource="{x:Bind bmi25}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="Insta_Clicked">
-                                <GridView.ItemTemplate>
-                                    <DataTemplate x:DataType="BitmapImage">
-                                        <Image Stretch="Fill" Source="{x:Bind}" Margin="1" />
-                                    </DataTemplate>
-                                </GridView.ItemTemplate>
-                            </GridView>
-                        </Grid>
+                        <GridView Name="InstaGridWide" ItemsSource="{x:Bind bmi25}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="Insta_Clicked">
+                            <GridView.ItemTemplate>
+                                <DataTemplate x:DataType="BitmapImage">
+                                    <Image Stretch="Fill" Source="{x:Bind}" Margin="1" />
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
+                        </GridView>
+                    </Grid>
                 </Viewbox>
             </Grid>
         </PivotItem>

@@ -13,7 +13,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <StackPanel>
-            <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" Text="App Theme" Margin="10"/>
+            <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" Text="Theme" Margin="10"/>
 
             <TextBlock  Name="RestartApp" Text="Changes will take effect next time you open the application" Margin="10" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="Wrap" Visibility="Collapsed"/>
 
@@ -25,8 +25,21 @@
         <ScrollViewer VerticalAlignment="Bottom" Grid.Row="1">
             <StackPanel>
                 <TextBlock Text="App" Style="{StaticResource SubheaderTextBlockStyle}" Margin="10"/>
-                <TextBlock Text="Developers" Style="{StaticResource BodyTextBlockStyle}" Margin="10" Foreground="{StaticResource AppAccentColorBrush}" IsTapEnabled="True" Tapped="Developer_Tapped"/>
-                <TextBlock Text="About" Style="{StaticResource BodyTextBlockStyle}" Margin="10" Foreground="{StaticResource AppAccentColorBrush}" IsTapEnabled="True" Tapped="About_Tapped"/>
+                <HyperlinkButton Content="Developers" Foreground="{StaticResource AppAccentColorBrush}" Margin="20,10,10,10" Click="AppClicked">
+                    <HyperlinkButton.ContentTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" Style="{StaticResource BodyTextBlockStyle}"/>
+                        </DataTemplate>
+                    </HyperlinkButton.ContentTemplate>
+                </HyperlinkButton>
+
+                <HyperlinkButton Content="About" Foreground="{StaticResource AppAccentColorBrush}" Margin="20,10,10,10" Click="AppClicked">
+                    <HyperlinkButton.ContentTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" Style="{StaticResource BodyTextBlockStyle}"/>
+                        </DataTemplate>
+                    </HyperlinkButton.ContentTemplate>
+                </HyperlinkButton>
             </StackPanel>
         </ScrollViewer>
         

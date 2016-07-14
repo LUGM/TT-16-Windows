@@ -60,7 +60,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <StackPanel Name="Theme">
-                <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" Text="App Theme" Margin="20"/>
+                <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" Text="Theme" Margin="20"/>
 
                 <TextBlock  Name="RestartApp" Text="Changes will take effect next time you open the application" Margin="10" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="Wrap" Visibility="Collapsed"/>
 
@@ -72,9 +72,22 @@
                 <Line  Name="Line" Y1="0" Y2="1" Stretch="Fill" Stroke="{StaticResource AppAccentColorBrush}" StrokeThickness="1" Margin="10" Grid.RowSpan="2"/>
 
                 <StackPanel VerticalAlignment="Stretch">
-                    <TextBlock Text="App" Style="{StaticResource SubheaderTextBlockStyle}" Margin="20,10,10,01"/>
-                    <TextBlock Text="Developers" Style="{StaticResource BodyTextBlockStyle}" Margin="20,10,10,10" Foreground="{StaticResource AppAccentColorBrush}" IsTapEnabled="True" Tapped="Developer_Tapped"/>
-                    <TextBlock Text="About" Style="{StaticResource BodyTextBlockStyle}" Margin="20,10,10,10" Foreground="{StaticResource AppAccentColorBrush}" IsTapEnabled="True" Tapped="About_Tapped"/>
+                    <TextBlock Text="App" Style="{StaticResource SubheaderTextBlockStyle}" Margin="20,10,10,1"/>
+                    <HyperlinkButton Content="Developers" Foreground="{StaticResource AppAccentColorBrush}" Margin="20,10,10,10" Click="AppClicked">
+                        <HyperlinkButton.ContentTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}" Style="{StaticResource BodyTextBlockStyle}"/>
+                            </DataTemplate>
+                        </HyperlinkButton.ContentTemplate>
+                    </HyperlinkButton>
+
+                    <HyperlinkButton Content="About" Foreground="{StaticResource AppAccentColorBrush}" Margin="20,10,10,10" Click="AppClicked">
+                        <HyperlinkButton.ContentTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}" Style="{StaticResource BodyTextBlockStyle}"/>
+                            </DataTemplate>
+                        </HyperlinkButton.ContentTemplate>
+                    </HyperlinkButton>
                 </StackPanel>
             </StackPanel>
 

@@ -35,9 +35,17 @@ namespace Tech_Tatva_16__Windows_10_.Views
             this.Loaded += InstaPage_Loaded;
 
             Instance = this;
-        
+
+            bmi9.CollectionChanged += Bmi9_CollectionChanged;
         }
 
+        private void Bmi9_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            if(bmi9.Count == 9)
+            {
+                PRing.Visibility = Visibility.Collapsed;
+            }
+        }
 
         public int PivotPosition()
         {
@@ -51,6 +59,7 @@ namespace Tech_Tatva_16__Windows_10_.Views
 
         private void InstaPage_Loaded(object sender, RoutedEventArgs e)
         {
+            PRing.Visibility = Visibility.Visible;
             GetInstaAsync();
         }
 

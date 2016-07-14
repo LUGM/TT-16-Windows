@@ -22,12 +22,47 @@
                         <Setter Target="ContentRoot.(Grid.Column)" Value="0" />
                         <Setter Target="BannerImage.(Grid.ColumnSpan)" Value="2" />
                         <Setter Target="ContentRoot.(Grid.ColumnSpan)" Value="2" />
+                        <Setter Target="A.Height" Value="50" />
+                        <Setter Target="B.Height" Value="50" />
+                        <Setter Target="C.Height" Value="50" />
+                        <Setter Target="D.Height" Value="50" />
+                        <Setter Target="E.Height" Value="50" />
+                        <Setter Target="A.Width" Value="50" />
+                        <Setter Target="B.Width" Value="50" />
+                        <Setter Target="C.Width" Value="50" />
+                        <Setter Target="D.Width" Value="50" />
+                        <Setter Target="E.Width" Value="50" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState x:Name="DestopMinSize">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="500" />
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="BannerImage.(Grid.Row)" Value="0" />
+                        <Setter Target="ContentRoot.(Grid.Row)" Value="1" />
+                        <Setter Target="BannerImage.(Grid.Column)" Value="0" />
+                        <Setter Target="ContentRoot.(Grid.Column)" Value="0" />
+                        <Setter Target="BannerImage.(Grid.ColumnSpan)" Value="2" />
+                        <Setter Target="ContentRoot.(Grid.ColumnSpan)" Value="2" />
+                        <Setter Target="A.Height" Value="70" />
+                        <Setter Target="B.Height" Value="70" />
+                        <Setter Target="C.Height" Value="70" />
+                        <Setter Target="D.Height" Value="70" />
+                        <Setter Target="E.Height" Value="70" />
+                        <Setter Target="A.Width" Value="70" />
+                        <Setter Target="B.Width" Value="70" />
+                        <Setter Target="C.Width" Value="70" />
+                        <Setter Target="D.Width" Value="70" />
+                        <Setter Target="E.Width" Value="70" />
                     </VisualState.Setters>
                 </VisualState>
 
                 <VisualState x:Name="Wide">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="1000" />
+                        <AdaptiveTrigger MinWindowWidth="1200" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="BannerImage.(Grid.Row)" Value="0" />
@@ -35,7 +70,7 @@
                         <Setter Target="BannerImage.(Grid.Column)" Value="0" />
                         <Setter Target="ContentRoot.(Grid.Column)" Value="1" />
                         <Setter Target="ContentRoot.(Grid.RowSpan)" Value="2" />
-                        <Setter Target="TextDescription.FontSize" Value="30" />
+                        <Setter Target="TextDescription.FontSize" Value="27" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -72,7 +107,7 @@
 
             <Image Name="BannerImage" Source="/Assets/banner.jpg" />
             <!--TODO: Content should be placed within the following grid-->
-            <Grid Name="ContentRoot" Margin="19,9.5,19,5">
+            <Grid Name="ContentRoot" Margin="19,0,5,5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
@@ -87,11 +122,11 @@
                 </TextBlock>
 
                 <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
-                    <Image Source="/Assets/Icons/facebook-icon.png"></Image>
-                    <Image Source="/Assets/Icons/g_plus-icon.png"></Image>
-                    <Image Source="/Assets/Icons/insta-icon.png"></Image>
-                    <Image Source="/Assets/Icons/twitter-icon.png"></Image>
-                    <Image Source="/Assets/Icons/youtube-icon.png"></Image>
+                    <Image Name="A" Source="/Assets/Icons/facebook-icon.png"></Image>
+                    <Image Name="B"  Source="/Assets/Icons/g_plus-icon.png"></Image>
+                    <Image Name="C" Source="/Assets/Icons/insta-icon.png"></Image>
+                    <Image Name="D"  Source="/Assets/Icons/twitter-icon.png"></Image>
+                    <Image Name="E" Source="/Assets/Icons/youtube-icon.png"></Image>
                 </StackPanel>
             </Grid>
         </Grid>

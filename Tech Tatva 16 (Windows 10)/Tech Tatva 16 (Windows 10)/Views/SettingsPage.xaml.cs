@@ -77,11 +77,6 @@ namespace Tech_Tatva_16__Windows_10_.Views
         }
 
 
-        private void Developer_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            
-        }
-
         private void About_Tapped(object sender, TappedRoutedEventArgs e)
         {
             Frame.Navigate(typeof(AboutPage));
@@ -95,6 +90,14 @@ namespace Tech_Tatva_16__Windows_10_.Views
             }
             else
                 RestartApp.Visibility = Visibility.Collapsed;
+        }
+
+        private void AppClicked(object sender, RoutedEventArgs e)
+        {
+            if ((sender as HyperlinkButton).Content.ToString() == "Developers") ;
+            else
+                Frame.Navigate(typeof(AboutPage));
+
         }
     }
 }

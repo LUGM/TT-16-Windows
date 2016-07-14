@@ -10,7 +10,29 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Name="LayoutRoot" >
 
-        <SplitView IsPaneOpen="True" Name="HamburgerMenu" DisplayMode="CompactInline" CompactPaneLength="48" HorizontalAlignment="Stretch">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="700" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="HamburgerMenu.IsPaneOpen" Value="True" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="HamburgerMenu.IsPaneOpen" Value="False" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        
+        <SplitView IsPaneOpen="True" Name="HamburgerMenu" DisplayMode="CompactInline" CompactPaneLength="48" HorizontalAlignment="Stretch" OpenPaneLength="300">
             <SplitView.Pane>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -30,12 +52,12 @@
                     </StackPanel>
 
                     <StackPanel Orientation="Vertical" Grid.Row="1">
-                        <Line X1="0" X2="1" Stretch="Fill" Stroke="{StaticResource AppAccentColorBrush}" StrokeThickness="1" Margin="10,10,10,5"/>
+                        <Line Name="Line1" X1="0" X2="1" Stretch="Fill" Stroke="{StaticResource AppAccentColorBrush}" StrokeThickness="1" Margin="10,10,10,5"/>
                         <RadioButton Name="FavouritesButton" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Content="Faourites" Tag="&#xE1CE;" Foreground="White" HorizontalAlignment="Stretch" Checked="SettingsButton_Checked"/>
                     </StackPanel>
 
                     <StackPanel VerticalAlignment="Bottom" Orientation="Vertical" Grid.Row="2">
-                        <Line X1="0" X2="1" Stretch="Fill" Stroke="{StaticResource AppAccentColorBrush}" StrokeThickness="1" Margin="10,10,10,5"/>
+                        <Line Name="Line2" X1="0" X2="1" Stretch="Fill" Stroke="{StaticResource AppAccentColorBrush}" StrokeThickness="1" Margin="10,10,10,5"/>
                         <RadioButton Name="SettingsButton" Margin="0,0,0,5" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Content="Settings" Tag="&#xE115;" Foreground="White" HorizontalAlignment="Stretch" Checked="SettingsButton_Checked"/>
                     </StackPanel>
                 </Grid>
