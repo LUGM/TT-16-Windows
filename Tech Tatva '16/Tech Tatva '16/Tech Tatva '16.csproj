@@ -88,6 +88,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DevelopersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ErrorOverlay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -122,6 +126,9 @@
     <Compile Include="Views\DetailsPage.xaml.cs">
       <DependentUpon>DetailsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DevelopersPage.xaml.cs">
+      <DependentUpon>DevelopersPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ErrorOverlay.xaml.cs">
       <DependentUpon>ErrorOverlay.xaml</DependentUpon>
     </Compile>
@@ -144,8 +151,8 @@
     <Content Include="Assets\back.jpg" />
     <Content Include="Assets\back_main.png" />
     <Content Include="Assets\banner.jpg" />
-    <Content Include="Assets\Icons\date-icon.png" />
     <Content Include="Assets\error.png" />
+    <Content Include="Assets\Icons\date-icon.png" />
     <Content Include="Assets\Icons\facebook-icon.png" />
     <Content Include="Assets\Icons\fav-icon.png" />
     <Content Include="Assets\Icons\fav-icon_disabled.png" />

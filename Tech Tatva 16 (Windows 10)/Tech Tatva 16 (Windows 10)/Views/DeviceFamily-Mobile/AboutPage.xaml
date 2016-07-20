@@ -39,11 +39,36 @@
             </TextBlock>
 
             <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
-                <Image Source="/Assets/Icons/facebook-icon.png" Width="60" Height="60"></Image>
-                <Image Source="/Assets/Icons/g_plus-icon.png" Width="60" Height="60"></Image>
-                <Image Source="/Assets/Icons/insta-icon.png" Width="60" Height="60"></Image>
-                <Image Source="/Assets/Icons/twitter-icon.png" Width="60" Height="60"></Image>
-                <Image Source="/Assets/Icons/youtube-icon.png" Width="60" Height="60"></Image>
+                <Button Background="Transparent">
+                    <Button.Content>
+                        <Image Height="40" Width="40" Source="/Assets/Icons/facebook-icon.png"></Image>
+                    </Button.Content>
+                </Button>
+
+                <Button Background="Transparent">
+                    <Button.Content>
+                        <Image Height="40" Width="40" Source="/Assets/Icons/g_plus-icon.png"></Image>
+                    </Button.Content>
+                </Button>
+
+                <Button Background="Transparent">
+                    <Button.Content>
+                        <Image Height="40" Width="40" Source="/Assets/Icons/insta-icon.png"></Image>
+                    </Button.Content>
+                </Button>
+
+                <Button Background="Transparent">
+                    <Button.Content>
+                        <Image Height="40" Width="40" Source="/Assets/Icons/twitter-icon.png"></Image>
+                    </Button.Content>
+                </Button>
+
+                <Button Background="Transparent">
+                    <Button.Content>
+                        <Image Height="40" Width="40" Source="/Assets/Icons/youtube-icon.png"></Image>
+                    </Button.Content>
+                </Button>
+
             </StackPanel>
         </Grid>
     </Grid>

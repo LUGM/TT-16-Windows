@@ -45,7 +45,7 @@ namespace Tech_Tatva_16__Windows_10_
             if(roamingSettings.Values["Theme"] == null)
             {
                 if (AnalyticsInfo.VersionInfo.DeviceFamily == "Windows.Mobile")
-                    roamingSettings.Values["Theme"] = "Default";
+                    roamingSettings.Values["Theme"] = "Use System Setting";
 
                 else
                     roamingSettings.Values["Theme"] = "Light";

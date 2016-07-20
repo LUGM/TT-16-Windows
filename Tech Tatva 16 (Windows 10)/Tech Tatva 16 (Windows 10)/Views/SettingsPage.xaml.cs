@@ -73,7 +73,7 @@ namespace Tech_Tatva_16__Windows_10_.Views
         private void DefaultRadioButton_Checked(object sender, RoutedEventArgs e)
         {
             CheckTheme("Default");
-            roamingSettings.Values["ThemeNew"] = "Default";
+            roamingSettings.Values["ThemeNew"] = "Use System Setting";
         }
 
 
@@ -94,7 +94,8 @@ namespace Tech_Tatva_16__Windows_10_.Views
 
         private void AppClicked(object sender, RoutedEventArgs e)
         {
-            if ((sender as HyperlinkButton).Content.ToString() == "Developers") ;
+            if ((sender as HyperlinkButton).Content.ToString() == "Developers")
+                Frame.Navigate(typeof(DevelopersPage));
             else
                 Frame.Navigate(typeof(AboutPage));
 

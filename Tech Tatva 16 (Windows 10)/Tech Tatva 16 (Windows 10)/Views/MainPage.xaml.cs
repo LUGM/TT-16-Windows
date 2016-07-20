@@ -31,6 +31,10 @@ namespace Tech_Tatva_16__Windows_10_
         Windows.Storage.StorageFolder roamingFolder =
             Windows.Storage.ApplicationData.Current.RoamingFolder;
 
+        Popup popup;
+
+        public static MainPage Instance { get; private set; }
+
 
         public MainPage(Frame frame)
         {
@@ -38,6 +42,10 @@ namespace Tech_Tatva_16__Windows_10_
             this.contentFrame = frame;
             this.InitializeComponent();
             this.HamburgerMenu.Content = frame;
+
+            Instance = this;
+
+            popup = new Popup();
 
             var update = new Action(() =>
              {
@@ -93,6 +101,16 @@ namespace Tech_Tatva_16__Windows_10_
                      }
                  }
 
+                 if (type == typeof(DevelopersPage))
+                 {
+                     SettingsButton.IsChecked = true;
+                     if (AnalyticsInfo.VersionInfo.DeviceFamily == "Windows.Mobile")
+                     {
+                         this.Title.Text = "DEVELOPERS";
+                         this.HamburgerMenu.IsPaneOpen = false;
+                     }
+                 }
+
                  SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = contentFrame.CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
 
               });
@@ -123,6 +141,9 @@ namespace Tech_Tatva_16__Windows_10_
             {
                 return;
             }
+
+            if (this.popup.IsOpen == true)
+                this.popup.IsOpen = false;
 
             if (contentFrame.SourcePageType == typeof(InstaPage) && InstaPage.Instance.PivotPosition() == 1)
             {
@@ -181,6 +202,31 @@ namespace Tech_Tatva_16__Windows_10_
                 this.contentFrame.Navigate(typeof(SettingsPage));
         }
 
+        private void TrendingButton_Checked(object sender, RoutedEventArgs e)
+        {
 
+        }
+
+        private void FavouritesButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        public void ShowPopup(UIElement e)
+        {
+            ErrorPopup err = new ErrorPopup();
+            err.Height = contentFrame.ActualHeight;
+            err.Width = contentFrame.ActualWidth;
+            this.popup.Child = err;
+            popup.IsOpen = true;
+            e.Opacity = 0.3;
+            
+        }
+
+        public void HidePopup(UIElement e)
+        {
+            this.popup.IsOpen = false;
+            e.Opacity = 1;
+        }
     }
 }

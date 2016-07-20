@@ -23,10 +23,21 @@
 
                 <VisualState>
                     <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="550" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="HamburgerMenu.IsPaneOpen" Value="False" />
+                        <Setter Target="HamburgerMenu.DisplayMode" Value="CompactOverlay" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState>
+                    <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="HamburgerMenu.IsPaneOpen" Value="False" />
+                        <Setter Target="HamburgerMenu.CompactPaneLength" Value="0" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -53,7 +64,8 @@
 
                     <StackPanel Orientation="Vertical" Grid.Row="1">
                         <Line Name="Line1" X1="0" X2="1" Stretch="Fill" Stroke="{StaticResource AppAccentColorBrush}" StrokeThickness="1" Margin="10,10,10,5"/>
-                        <RadioButton Name="FavouritesButton" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Content="Faourites" Tag="&#xE1CE;" Foreground="White" HorizontalAlignment="Stretch" Checked="SettingsButton_Checked"/>
+                        <RadioButton Name="TrendingButton" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Content="Trending" Tag="&#xEA80;" Foreground="White" HorizontalAlignment="Stretch" Checked="TrendingButton_Checked"/>
+                        <RadioButton Name="FavouritesButton" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Content="Favourites" Tag="&#xE1CE;" Foreground="White" HorizontalAlignment="Stretch" Checked="FavouritesButton_Checked"/>
                     </StackPanel>
 
                     <StackPanel VerticalAlignment="Bottom" Orientation="Vertical" Grid.Row="2">

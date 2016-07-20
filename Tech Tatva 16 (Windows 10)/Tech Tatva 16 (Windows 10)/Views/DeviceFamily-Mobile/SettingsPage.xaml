@@ -19,13 +19,13 @@
 
             <RadioButton Content="Light" Margin="10,0,0,2.5" FontSize="20" Style="{StaticResource CenterAlignedRadioButton}" Checked="LightRadioButton_Checked"/>
             <RadioButton Content="Dark" Margin="10,0,0,2.5" FontSize="20" Style="{StaticResource CenterAlignedRadioButton}" Checked="DarkRadioButton_Checked"/>
-            <RadioButton Content="Default" Margin="10,0,0,5" FontSize="20" Style="{StaticResource CenterAlignedRadioButton}" Checked="DefaultRadioButton_Checked"/>
+            <RadioButton Content="Use System Setting" Margin="10,0,0,5" FontSize="20" Style="{StaticResource CenterAlignedRadioButton}" Checked="DefaultRadioButton_Checked"/>
         </StackPanel>
 
         <ScrollViewer VerticalAlignment="Bottom" Grid.Row="1">
             <StackPanel>
                 <TextBlock Text="App" Style="{StaticResource SubheaderTextBlockStyle}" Margin="10"/>
-                <HyperlinkButton Content="Developers" Foreground="{StaticResource AppAccentColorBrush}" Margin="20,10,10,10" Click="AppClicked">
+                <HyperlinkButton Content="Developers" Foreground="{StaticResource AppAccentColorBrush}" Margin="10,10,10,5" Click="AppClicked">
                     <HyperlinkButton.ContentTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding}" Style="{StaticResource BodyTextBlockStyle}"/>
@@ -33,7 +33,7 @@
                     </HyperlinkButton.ContentTemplate>
                 </HyperlinkButton>
 
-                <HyperlinkButton Content="About" Foreground="{StaticResource AppAccentColorBrush}" Margin="20,10,10,10" Click="AppClicked">
+                <HyperlinkButton Content="About" Foreground="{StaticResource AppAccentColorBrush}" Margin="10,5,10,10" Click="AppClicked">
                     <HyperlinkButton.ContentTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding}" Style="{StaticResource BodyTextBlockStyle}"/>

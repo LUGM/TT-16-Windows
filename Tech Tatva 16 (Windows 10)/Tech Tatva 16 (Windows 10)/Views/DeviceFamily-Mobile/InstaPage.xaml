@@ -53,6 +53,12 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
+
+                <StackPanel Name="PRing" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <ProgressRing  Foreground="{StaticResource AppAccentColorBrush}" Background="Transparent" IsActive="True" VerticalAlignment="Center" HorizontalAlignment="Center"  Height="50" Width="50"/>
+                    <TextBlock  Text="Finding Waldo.." Style="{StaticResource BodyTextBlockStyle}" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"/>
+                </StackPanel>
+
                 <TextBlock Foreground="{StaticResource AppAccentColorBrush}" Style="{StaticResource HeaderTextBlockStyle}" Margin="5,2.5,0,2.5">
                     <TextBlock.Text>
                         #techtatva16

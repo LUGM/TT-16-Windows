@@ -1,0 +1,200 @@
+﻿<Page
+    x:Class="Tech_Tatva__16.Views.DevelopersPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Tech_Tatva__16.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="developers" FontFamily="Segoe WP" FontSize="50" FontWeight="SemiLight" Foreground="{StaticResource AppAccentColorBrush}"/>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="1" >
+            <!--TODO: Content should be placed within the following grid-->
+            <Grid x:Name="ContentRoot" Margin="19,9.5,19,5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <StackPanel>
+                    <TextBlock Margin="10" Text="Windows" FontFamily="Segoe WP" FontSize="40" FontWeight="Light" />
+
+                    <Viewbox>
+                        <GridView>
+
+                        <GridView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapGrid Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </GridView.ItemsPanel>
+
+                        <GridViewItem>
+                            <GridViewItem.ContentTemplate>
+                                <DataTemplate>
+                                    <Grid Width="150" Margin="10">
+                                        <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/Square71x71Logo.scale-240.png"/>
+                                        <Border Background="Black" Opacity="0.3" Height="Auto" VerticalAlignment="Bottom">
+                                            <TextBlock Margin="10" Text="Vinayak Agarwal" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
+                                        </Border>
+                                    </Grid>
+                                </DataTemplate>
+                            </GridViewItem.ContentTemplate>
+                        </GridViewItem>
+
+                        <GridViewItem>
+                            <GridViewItem.ContentTemplate>
+                                <DataTemplate>
+                                    <Grid Width="150">
+                                        <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/Square71x71Logo.scale-240.png"/>
+                                        <Border Background="Black" Opacity="0.3" Height="Auto" VerticalAlignment="Bottom">
+                                            <TextBlock Margin="10" Text="Gautham Vinod" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
+                                        </Border>
+                                    </Grid>
+                                </DataTemplate>
+                            </GridViewItem.ContentTemplate>
+                        </GridViewItem>
+                        </GridView>
+                    </Viewbox>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1">
+                    <TextBlock Margin="10" Text="iOS" FontFamily="Segoe WP" FontSize="40" FontWeight="Light" />
+
+                    <Viewbox>
+                        <GridView>
+
+                            <GridView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapGrid Orientation="Horizontal" MaximumRowsOrColumns="2"/>
+                                </ItemsPanelTemplate>
+                            </GridView.ItemsPanel>
+                            <GridViewItem>
+                                <GridViewItem.ContentTemplate>
+                                    <DataTemplate>
+                                        <Grid Width="150" Margin="10">
+                                            <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/Square71x71Logo.scale-240.png"/>
+                                            <Border Background="Black" Opacity="0.3" Height="Auto" VerticalAlignment="Bottom">
+                                                <TextBlock Margin="10" Text="Yash Kumar Lal" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
+                                            </Border>
+                                        </Grid>
+                                    </DataTemplate>
+                                </GridViewItem.ContentTemplate>
+                            </GridViewItem>
+
+                            <GridViewItem>
+                                <GridViewItem.ContentTemplate>
+                                    <DataTemplate>
+                                        <Grid Width="150">
+                                            <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/Square71x71Logo.scale-240.png"/>
+                                            <Border Background="Black" Opacity="0.3" Height="Auto" VerticalAlignment="Bottom">
+                                                <TextBlock Margin="10" Text="Manas Dresswalla" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
+                                            </Border>
+                                        </Grid>
+                                    </DataTemplate>
+                                </GridViewItem.ContentTemplate>
+                            </GridViewItem>
+
+                            <GridViewItem>
+                                <GridViewItem.ContentTemplate>
+                                    <DataTemplate>
+                                        <Grid Width="150">
+                                            <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/Square71x71Logo.scale-240.png"/>
+                                            <Border Background="Black" Opacity="0.3" Height="Auto" VerticalAlignment="Bottom">
+                                                <TextBlock Margin="10" Text="Abhishek Vora" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
+                                            </Border>
+                                        </Grid>
+                                    </DataTemplate>
+                                </GridViewItem.ContentTemplate>
+                            </GridViewItem>
+                        </GridView>
+                    </Viewbox>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2">
+                    <TextBlock Margin="10" Text="Android" FontFamily="Segoe WP" FontSize="40" FontWeight="Light" />
+
+                    <Viewbox>
+                        <GridView>
+
+                            <GridView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapGrid Orientation="Horizontal" MaximumRowsOrColumns="2"/>
+                                </ItemsPanelTemplate>
+                            </GridView.ItemsPanel>
+                            <GridViewItem>
+                                <GridViewItem.ContentTemplate>
+                                    <DataTemplate>
+                                        <Grid Width="150" Margin="10">
+                                            <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/Square71x71Logo.scale-240.png"/>
+                                            <Border Background="Black" Opacity="0.3" Height="Auto" VerticalAlignment="Bottom">
+                                                <TextBlock Margin="10" Text="Anuraag Baishya" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
+                                            </Border>
+                                        </Grid>
+                                    </DataTemplate>
+                                </GridViewItem.ContentTemplate>
+                            </GridViewItem>
+
+                            <GridViewItem>
+                                <GridViewItem.ContentTemplate>
+                                    <DataTemplate>
+                                        <Grid Width="150">
+                                            <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/Square71x71Logo.scale-240.png"/>
+                                            <Border Background="Black" Opacity="0.3" Height="Auto" VerticalAlignment="Bottom">
+                                                <TextBlock Margin="10" Text="Anurag Choudhary" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
+                                            </Border>
+                                        </Grid>
+                                    </DataTemplate>
+                                </GridViewItem.ContentTemplate>
+                            </GridViewItem>
+
+                            <GridViewItem>
+                                <GridViewItem.ContentTemplate>
+                                    <DataTemplate>
+                                        <Grid Width="150">
+                                            <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/Square71x71Logo.scale-240.png"/>
+                                            <Border Background="Black" Opacity="0.3" Height="Auto" VerticalAlignment="Bottom">
+                                                <TextBlock Margin="10" Text="Ayush Agarwal" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
+                                            </Border>
+                                        </Grid>
+                                    </DataTemplate>
+                                </GridViewItem.ContentTemplate>
+                            </GridViewItem>
+
+                            <GridViewItem>
+                                <GridViewItem.ContentTemplate>
+                                    <DataTemplate>
+                                        <Grid Width="150">
+                                            <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/Square71x71Logo.scale-240.png"/>
+                                            <Border Background="Black" Opacity="0.3" Height="Auto" VerticalAlignment="Bottom">
+                                                <TextBlock Margin="10" Text="Naman Yadav" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
+                                            </Border>
+                                        </Grid>
+                                    </DataTemplate>
+                                </GridViewItem.ContentTemplate>
+                            </GridViewItem>
+
+                        </GridView>
+                    </Viewbox>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>

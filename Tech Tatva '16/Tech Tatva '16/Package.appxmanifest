@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="e06d0ad9-4c2a-44eb-b11c-634178e01c0a" Publisher="CN=Gauth" Version="4.7.95.0" />
+  <Identity Name="e06d0ad9-4c2a-44eb-b11c-634178e01c0a" Publisher="CN=Gauth" Version="4.8.12.5" />
   <mp:PhoneIdentity PhoneProductId="e06d0ad9-4c2a-44eb-b11c-634178e01c0a" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Tech Tatva '16</DisplayName>

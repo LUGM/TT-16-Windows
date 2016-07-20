@@ -289,5 +289,10 @@ namespace Tech_Tatva__16.Views
         {
             Frame.Navigate(typeof(AboutPage));
         }
+
+        private void Dev_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(DevelopersPage));
+        }
     }
 }

@@ -6,10 +6,12 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Tech_Tatva_16__Windows_10_.Classes;
 using Windows.Foundation.Metadata;
+using Windows.Networking.Connectivity;
 using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
@@ -27,6 +29,7 @@ namespace Tech_Tatva_16__Windows_10_.Views
         public FixedSizeObservableCollection<BitmapImage> bmi25 = new FixedSizeObservableCollection<BitmapImage>(25);
         Insta instagram = new Insta();
 
+
         public static InstaPage Instance { get; private set; }
 
         public InstaPage()
@@ -37,7 +40,10 @@ namespace Tech_Tatva_16__Windows_10_.Views
             Instance = this;
 
             bmi9.CollectionChanged += Bmi9_CollectionChanged;
+            
         }
+
+
 
         private void Bmi9_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
@@ -90,6 +96,7 @@ namespace Tech_Tatva_16__Windows_10_.Views
 
         private async void GetInstaAsync()
         {
+            if(IsInternet())
             try
             {
                 using (HttpClient client = new HttpClient())
@@ -116,8 +123,21 @@ namespace Tech_Tatva_16__Windows_10_.Views
             {
                
             }
+
+            else
+            {
+                MainPage.Instance.ShowPopup(MyPivot);
+
+                PRing.Visibility = Visibility.Collapsed;
+            }
         }
 
-     
+        public static bool IsInternet()
+        {
+            ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
+            bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
+            return internet;
+        }
+
     }
 }

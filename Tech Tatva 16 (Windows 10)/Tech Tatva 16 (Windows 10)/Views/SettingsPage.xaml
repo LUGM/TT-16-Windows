@@ -72,8 +72,8 @@
                 <Line  Name="Line" Y1="0" Y2="1" Stretch="Fill" Stroke="{StaticResource AppAccentColorBrush}" StrokeThickness="1" Margin="10" Grid.RowSpan="2"/>
 
                 <StackPanel VerticalAlignment="Stretch">
-                    <TextBlock Text="App" Style="{StaticResource SubheaderTextBlockStyle}" Margin="20,10,10,1"/>
-                    <HyperlinkButton Content="Developers" Foreground="{StaticResource AppAccentColorBrush}" Margin="20,10,10,10" Click="AppClicked">
+                    <TextBlock Text="App" Style="{StaticResource SubheaderTextBlockStyle}" Margin="20,20,10,10"/>
+                    <HyperlinkButton Content="Developers" Foreground="{StaticResource AppAccentColorBrush}" Margin="20,5,10,0" Click="AppClicked">
                         <HyperlinkButton.ContentTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding}" Style="{StaticResource BodyTextBlockStyle}"/>

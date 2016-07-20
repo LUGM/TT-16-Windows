@@ -101,6 +101,12 @@
     <Compile Include="Views\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DevelopersPage.xaml.cs">
+      <DependentUpon>DevelopersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ErrorPopup.xaml.cs">
+      <DependentUpon>ErrorPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EventsPage.xaml.cs">
       <DependentUpon>EventsPage.xaml</DependentUpon>
     </Compile>
@@ -124,6 +130,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\banner.jpg" />
+    <Content Include="Assets\error.png" />
     <Content Include="Assets\Icons\facebook-icon.png" />
     <Content Include="Assets\Icons\g_plus-icon.png" />
     <Content Include="Assets\Icons\insta-icon.png" />
@@ -151,7 +158,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DevelopersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DeviceFamily-Mobile\AboutPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DeviceFamily-Mobile\DevelopersPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -172,6 +187,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\DeviceFamily-Mobile\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ErrorPopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
