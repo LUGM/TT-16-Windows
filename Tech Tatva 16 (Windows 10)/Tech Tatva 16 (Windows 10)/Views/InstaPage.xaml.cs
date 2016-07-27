@@ -31,6 +31,7 @@ namespace Tech_Tatva_16__Windows_10_.Views
 
 
         public static InstaPage Instance { get; private set; }
+        public static Pivot Layout;
 
         public InstaPage()
         {
@@ -38,6 +39,7 @@ namespace Tech_Tatva_16__Windows_10_.Views
             this.Loaded += InstaPage_Loaded;
 
             Instance = this;
+            Layout = this.MyPivot;
 
             bmi9.CollectionChanged += Bmi9_CollectionChanged;
             

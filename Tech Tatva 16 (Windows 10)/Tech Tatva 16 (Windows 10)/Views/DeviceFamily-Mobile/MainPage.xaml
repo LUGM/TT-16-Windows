@@ -7,6 +7,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Label="Refresh" Icon="Refresh" Tapped="Refresh_Tapped"/>
+        </CommandBar>
+    </Page.BottomAppBar>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Name="LayoutRoot" HorizontalAlignment="Stretch">
         <Grid.RowDefinitions>
@@ -36,13 +41,14 @@
                     </StackPanel>
 
                     <StackPanel Orientation="Vertical" Grid.Row="1">
-                        <Line Name="Line1" X1="0" X2="1" Stretch="Fill" Stroke="{StaticResource AppAccentColorBrush}" StrokeThickness="1" Margin="10,10,10,5"/>
+                        <Line Name="Line1" X1="0" X2="1" Stretch="Fill" Stroke="{StaticResource AppAccentColorBrush}" StrokeThickness="1" Margin="10,0,10,0"/>
                         <RadioButton Name="TrendingButton" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Content="Trending" Tag="&#xEA80;" Foreground="White" HorizontalAlignment="Stretch" Checked="TrendingButton_Checked"/>
                         <RadioButton Name="FavouritesButton" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Content="Favourites" Tag="&#xE1CE;" Foreground="White" HorizontalAlignment="Stretch" Checked="FavouritesButton_Checked"/>
+                        <RadioButton Name="CategoriesButton" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Content="Categories" Tag="&#xE74C;" Foreground="White" HorizontalAlignment="Stretch" Checked="CategoriesButton_Checked"/>
                     </StackPanel>
 
                     <StackPanel VerticalAlignment="Bottom" Orientation="Vertical" Grid.Row="2">
-                        <Line Name="Line2" X1="0" X2="1" Stretch="Fill" Stroke="{StaticResource AppAccentColorBrush}" StrokeThickness="1" Margin="10,10,10,5"/>
+                        <Line Name="Line2" X1="0" X2="1" Stretch="Fill" Stroke="{StaticResource AppAccentColorBrush}" StrokeThickness="1" Margin="10,0,10,0"/>
                         <RadioButton Name="SettingsButton" Margin="0,0,0,5" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Content="Settings" Tag="&#xE115;" Foreground="White" HorizontalAlignment="Stretch" Checked="SettingsButton_Checked"/>
                     </StackPanel>
                 </Grid>

@@ -74,6 +74,22 @@
                         </RelativePanel>
                     </DataTemplate>
                 </HubSection>
+
+                <HubSection Header="UI Design">
+
+                    <HubSection.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" Style="{StaticResource SubheaderTextBlockStyle}" Foreground="{StaticResource AppAccentColorBrush}"/>
+                        </DataTemplate>
+                    </HubSection.HeaderTemplate>
+
+                    <DataTemplate>
+                        <RelativePanel>
+                            <Image Name="1" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" Source="/Assets/Square44x44Logo.scale-200.png" Stretch="None"/>
+                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Shubham Singhal" RelativePanel.AlignVerticalCenterWith="1" RelativePanel.RightOf="1" />
+                        </RelativePanel>
+                    </DataTemplate>
+                </HubSection>
             </Hub>
         </ScrollViewer>
     </Grid>

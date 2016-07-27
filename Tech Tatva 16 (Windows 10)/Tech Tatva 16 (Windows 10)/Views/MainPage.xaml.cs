@@ -46,6 +46,7 @@ namespace Tech_Tatva_16__Windows_10_
             Instance = this;
 
             popup = new Popup();
+            
 
             var update = new Action(() =>
              {
@@ -127,11 +128,21 @@ namespace Tech_Tatva_16__Windows_10_
             {
                 Line1.Visibility = Visibility.Visible;
                 Line2.Visibility = Visibility.Visible;
+
+                if(this.popup.IsOpen)
+                {
+                    this.popup.HorizontalOffset = this.HamburgerMenu.OpenPaneLength;
+                }
             }
             else
             {
                 Line1.Visibility = Visibility.Collapsed;
                 Line2.Visibility = Visibility.Collapsed;
+
+                if (this.popup.IsOpen)
+                {
+                    this.popup.HorizontalOffset = this.HamburgerMenu.CompactPaneLength;
+                }
             }
         }
 
@@ -143,7 +154,10 @@ namespace Tech_Tatva_16__Windows_10_
             }
 
             if (this.popup.IsOpen == true)
+            {
+                e.Handled = true;
                 this.popup.IsOpen = false;
+            }
 
             if (contentFrame.SourcePageType == typeof(InstaPage) && InstaPage.Instance.PivotPosition() == 1)
             {
@@ -218,6 +232,12 @@ namespace Tech_Tatva_16__Windows_10_
             err.Height = contentFrame.ActualHeight;
             err.Width = contentFrame.ActualWidth;
             this.popup.Child = err;
+
+            if(this.HamburgerMenu.IsPaneOpen)
+                this.popup.HorizontalOffset = this.HamburgerMenu.OpenPaneLength;
+            else
+                this.popup.HorizontalOffset = this.HamburgerMenu.CompactPaneLength;
+
             popup.IsOpen = true;
             e.Opacity = 0.3;
             
@@ -227,6 +247,20 @@ namespace Tech_Tatva_16__Windows_10_
         {
             this.popup.IsOpen = false;
             e.Opacity = 1;
+        }
+
+
+        private void Refresh_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (contentFrame.SourcePageType == typeof(InstaPage))
+            {
+                HidePopup(InstaPage.Layout);
+            }
+        }
+
+        private void CategoriesButton_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

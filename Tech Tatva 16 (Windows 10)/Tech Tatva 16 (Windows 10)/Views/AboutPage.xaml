@@ -47,6 +47,31 @@
                         <Setter Target="ContentRoot.(Grid.Column)" Value="0" />
                         <Setter Target="BannerImage.(Grid.ColumnSpan)" Value="2" />
                         <Setter Target="ContentRoot.(Grid.ColumnSpan)" Value="2" />
+                        <Setter Target="A.Height" Value="50" />
+                        <Setter Target="B.Height" Value="50" />
+                        <Setter Target="C.Height" Value="50" />
+                        <Setter Target="D.Height" Value="50" />
+                        <Setter Target="E.Height" Value="50" />
+                        <Setter Target="A.Width" Value="50" />
+                        <Setter Target="B.Width" Value="50" />
+                        <Setter Target="C.Width" Value="50" />
+                        <Setter Target="D.Width" Value="50" />
+                        <Setter Target="E.Width" Value="50" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState x:Name="MediumSize">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="900" />
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="BannerImage.(Grid.Row)" Value="0" />
+                        <Setter Target="ContentRoot.(Grid.Row)" Value="1" />
+                        <Setter Target="BannerImage.(Grid.Column)" Value="0" />
+                        <Setter Target="ContentRoot.(Grid.Column)" Value="0" />
+                        <Setter Target="BannerImage.(Grid.ColumnSpan)" Value="2" />
+                        <Setter Target="ContentRoot.(Grid.ColumnSpan)" Value="2" />
                         <Setter Target="A.Height" Value="70" />
                         <Setter Target="B.Height" Value="70" />
                         <Setter Target="C.Height" Value="70" />

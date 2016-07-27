@@ -193,6 +193,32 @@
 
                         </GridView>
                     </Viewbox>
+
+                    <TextBlock Margin="10" Text="UI Design" FontFamily="Segoe WP" FontSize="40" FontWeight="Light" />
+
+                    <Viewbox>
+                        <GridView>
+
+                            <GridView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapGrid Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </GridView.ItemsPanel>
+
+                            <GridViewItem>
+                                <GridViewItem.ContentTemplate>
+                                    <DataTemplate>
+                                        <Grid Width="150" Margin="10">
+                                            <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/Square71x71Logo.scale-240.png"/>
+                                            <Border Background="Black" Opacity="0.3" Height="Auto" VerticalAlignment="Bottom">
+                                                <TextBlock Margin="10" Text="Shubham Singhal" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
+                                            </Border>
+                                        </Grid>
+                                    </DataTemplate>
+                                </GridViewItem.ContentTemplate>
+                            </GridViewItem>
+                        </GridView>
+                    </Viewbox>
                 </StackPanel>
             </Grid>
         </ScrollViewer>
