@@ -128,7 +128,7 @@ namespace Tech_Tatva_16__Windows_10_.Views
 
             else
             {
-                MainPage.Instance.ShowPopup(MyPivot);
+                MainPage.Instance.ShowPopup();
 
                 PRing.Visibility = Visibility.Collapsed;
             }

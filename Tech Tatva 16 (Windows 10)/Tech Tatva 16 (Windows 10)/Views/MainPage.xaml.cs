@@ -34,6 +34,7 @@ namespace Tech_Tatva_16__Windows_10_
         Popup popup;
 
         public static MainPage Instance { get; private set; }
+        bool flag;
 
 
         public MainPage(Frame frame)
@@ -128,21 +129,11 @@ namespace Tech_Tatva_16__Windows_10_
             {
                 Line1.Visibility = Visibility.Visible;
                 Line2.Visibility = Visibility.Visible;
-
-                if(this.popup.IsOpen)
-                {
-                    this.popup.HorizontalOffset = this.HamburgerMenu.OpenPaneLength;
-                }
             }
             else
             {
                 Line1.Visibility = Visibility.Collapsed;
                 Line2.Visibility = Visibility.Collapsed;
-
-                if (this.popup.IsOpen)
-                {
-                    this.popup.HorizontalOffset = this.HamburgerMenu.CompactPaneLength;
-                }
             }
         }
 
@@ -156,7 +147,7 @@ namespace Tech_Tatva_16__Windows_10_
             if (this.popup.IsOpen == true)
             {
                 e.Handled = true;
-                this.popup.IsOpen = false;
+                HidePopup();
             }
 
             if (contentFrame.SourcePageType == typeof(InstaPage) && InstaPage.Instance.PivotPosition() == 1)
@@ -226,27 +217,27 @@ namespace Tech_Tatva_16__Windows_10_
 
         }
 
-        public void ShowPopup(UIElement e)
+        public void ShowPopup()
         {
             ErrorPopup err = new ErrorPopup();
-            err.Height = contentFrame.ActualHeight;
-            err.Width = contentFrame.ActualWidth;
+            err.Height = this.ActualHeight;
+            err.Width = this.ActualWidth;
             this.popup.Child = err;
 
-            if(this.HamburgerMenu.IsPaneOpen)
-                this.popup.HorizontalOffset = this.HamburgerMenu.OpenPaneLength;
-            else
-                this.popup.HorizontalOffset = this.HamburgerMenu.CompactPaneLength;
-
+            flag = HamburgerMenu.IsPaneOpen;
+            this.HamburgerMenu.IsPaneOpen = false;
+            
             popup.IsOpen = true;
-            e.Opacity = 0.3;
+            
+            this.Opacity = 0.2;
             
         }
 
-        public void HidePopup(UIElement e)
+        public void HidePopup()
         {
+            this.HamburgerMenu.IsPaneOpen = flag;
             this.popup.IsOpen = false;
-            e.Opacity = 1;
+            this.Opacity = 1;
         }
 
 
@@ -254,7 +245,8 @@ namespace Tech_Tatva_16__Windows_10_
         {
             if (contentFrame.SourcePageType == typeof(InstaPage))
             {
-                HidePopup(InstaPage.Layout);
+                HidePopup();
+                contentFrame.Navigate(typeof(InstaPage));
             }
         }
 
