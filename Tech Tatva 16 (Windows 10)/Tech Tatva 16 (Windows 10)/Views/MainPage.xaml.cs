@@ -120,6 +120,24 @@ namespace Tech_Tatva_16__Windows_10_
             this.Loaded += (s, e) => update();
             this.DataContext = this;
 
+            if (this.HamburgerMenu.IsPaneOpen)
+            {
+                Line1.Visibility = Visibility.Visible;
+                Line2.Visibility = Visibility.Visible;
+
+                Search_Textbox.Visibility = Visibility.Visible;
+                Search_Button.Visibility = Visibility.Collapsed;
+            }
+
+            else
+            {
+                Line1.Visibility = Visibility.Collapsed;
+                Line2.Visibility = Visibility.Collapsed;
+
+                Search_Textbox.Visibility = Visibility.Collapsed;
+                Search_Button.Visibility = Visibility.Visible;
+            }
+
             this.HamburgerMenu.RegisterPropertyChangedCallback(SplitView.IsPaneOpenProperty, IsPaneOpenPropertyChanged);
         }
 
@@ -129,11 +147,18 @@ namespace Tech_Tatva_16__Windows_10_
             {
                 Line1.Visibility = Visibility.Visible;
                 Line2.Visibility = Visibility.Visible;
+
+                Search_Textbox.Visibility = Visibility.Visible;
+                Search_Button.Visibility = Visibility.Collapsed;
             }
+
             else
             {
                 Line1.Visibility = Visibility.Collapsed;
                 Line2.Visibility = Visibility.Collapsed;
+
+                Search_Textbox.Visibility = Visibility.Collapsed;
+                Search_Button.Visibility = Visibility.Visible;
             }
         }
 
@@ -253,6 +278,13 @@ namespace Tech_Tatva_16__Windows_10_
         private void CategoriesButton_Checked(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Search_Button_Checked(object sender, RoutedEventArgs e)
+        {
+            Search_Button.IsChecked = false;
+            HamburgerMenu.IsPaneOpen = true;
+            Search_Textbox.Focus(FocusState.Keyboard);
         }
     }
 }

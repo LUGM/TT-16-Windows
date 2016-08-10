@@ -61,6 +61,8 @@
                     <StackPanel>
                         <Button Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" FontSize="15" Background="Transparent" Padding="15" Click="HamburgerButton_Click"></Button>
 
+                        <RadioButton Name="Search_Button" GroupName="Group2" Style="{StaticResource NavigationButtonStyle}" Content="Search" Tag="&#xE094;" Foreground="White" HorizontalAlignment="Stretch" Checked="Search_Button_Checked"/>
+                        <AutoSuggestBox Name="Search_Textbox" HorizontalAlignment="Stretch" PlaceholderText="Search" Margin="10" QueryIcon="Find" Style="{StaticResource AutoSuggestAccentColour}"/>
                         <RadioButton Name="Events_Button" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Content="Events" Tag="&#xE11D;" Foreground="White" HorizontalAlignment="Stretch" Checked="Events_Button_Checked"/>
                         <RadioButton Name="Results_Button" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Content="Results" Tag="&#xE129;" Foreground="White" HorizontalAlignment="Stretch" Checked="Results_Button_Checked"/>
                         <RadioButton Name="Insta_Button"  GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Content="Instagram" Tag="&#xEC80;" Foreground="White" HorizontalAlignment="Stretch" Checked="Insta_Button_Checked"/>

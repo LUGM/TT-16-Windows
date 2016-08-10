@@ -27,7 +27,7 @@
 
         <!--TODO: Content should be placed within the following grid-->
         <Grid Name="ContentRoot" Grid.Row="1">
-            <Pivot Name="MyPivot" ItemsSource="{x:Bind Days}" Style="{StaticResource HeaderBackgroundPivotStyle}" >
+            <Pivot Name="MyPivot" ItemsSource="{x:Bind Days}" Style="{StaticResource HeaderBackgroundPivotStyle}" SelectionChanged="MyPivot_SelectionChanged">
                 <Pivot.HeaderTemplate>
                     <DataTemplate x:DataType="Classes:Day">
                         <TextBlock Text="{x:Bind day}" Style="{StaticResource BodyTextBlockStyle}"/>
