@@ -20,6 +20,7 @@
                 <AppBarButton x:Name="Abt" Label="about" Click="Abt_Click"/>
             </CommandBar.SecondaryCommands>
             <AppBarButton Icon="Refresh" Label="refresh"/>
+            <AppBarButton Icon="Find" Label="search" />
         </CommandBar>
     </Page.BottomAppBar>
     

@@ -9,6 +9,7 @@
                 <ResourceDictionary Source="/Themes/Generic.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <SolidColorBrush x:Key="AppAccentColorBrush" Color="#a84042" />
+            <SolidColorBrush x:Key="AppAccentHighColorBrush" Color="#FFD83B25" />
         </ResourceDictionary>
     </Application.Resources>
 
