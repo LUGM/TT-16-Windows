@@ -6,6 +6,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <UserControl.Resources>
+     
+    </UserControl.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
@@ -18,13 +21,15 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <TextBox HorizontalAlignment="Stretch" PlaceholderText="type away.."/>
-            <Button Grid.Column="1">
-                <Button.Content>
-                    <Image Source="/Assets/Icons/fav-icon.png" Height="30"/>
-                </Button.Content>
-            </Button>
+            <Grid HorizontalAlignment="Stretch" Margin="10,10,0,0" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="SearchBox"></TextBox>
+                <Image Grid.Column="1" Margin="0,0,10,0" Source="/Assets/Icons/search-icon.png" Height="40" HorizontalAlignment="Right"></Image>
+            </Grid>
         </Grid>
-        
+
     </Grid>
 </UserControl>

@@ -24,6 +24,8 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Shapes;
 using Windows.UI;
 using Windows.Phone.UI.Input;
+using Tech_Tatva__16.Classes;
+using System.Collections.ObjectModel;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -57,6 +59,22 @@ namespace Tech_Tatva__16.Views
             Loaded += MainPage_Loaded;
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
 
+
+            //EventClass event1 = new EventClass();
+            //event1.id = 1;
+            //event1.Name = "Hello";
+            //event1.Image = "ms-appx:///Assets/Square71x71Logo.scale-240.png";
+            //event1.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_enabled.png";
+
+            //EventClass event2 = new EventClass();
+            //event2.id = 2;
+            //event2.Name = "Hello1";
+            //event2.Image = "ms-appx:///Assets/Square71x71Logo.scale-240.png";
+            //event2.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_disabled.png";
+
+            //DatabaseHelperClass db = new DatabaseHelperClass();
+            //db.Insert(event1);
+            //db.Insert(event2);
 
             
         }
@@ -141,19 +159,10 @@ namespace Tech_Tatva__16.Views
                 bmi.Add(b);
             }
 
-            EventClass event1 = new EventClass();
-            event1.Name = "Hello";
-            event1.Image = "ms-appx:///Assets/Square71x71Logo.scale-240.png";
-            event1.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_enabled.png";
 
-            EventClass event2 = new EventClass();
-            event2.Name = "Hello1";
-            event2.Image = "ms-appx:///Assets/Square71x71Logo.scale-240.png";
-            event2.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_disabled.png";
-
+            DatabaseHelperClass db = new DatabaseHelperClass();
             List<EventClass> l = new List<EventClass>();
-            l.Add(event1);
-            l.Add(event2);
+            l = db.ReadEvents();
 
             List<Day> list = new List<Day>();
             Day day1 = new Day();
@@ -293,6 +302,11 @@ namespace Tech_Tatva__16.Views
         private void Dev_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(DevelopersPage));
+        }
+
+        private void Cat_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(CategoriesPage));
         }
     }
 }

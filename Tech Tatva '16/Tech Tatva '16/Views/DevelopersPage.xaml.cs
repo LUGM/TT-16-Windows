@@ -25,6 +25,7 @@ namespace Tech_Tatva__16.Views
         public DevelopersPage()
         {
             this.InitializeComponent();
+
         }
 
         /// <summary>
