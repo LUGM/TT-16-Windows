@@ -37,11 +37,13 @@
 
         <Image x:Name="Img" Grid.Row="2" ></Image>
 
-        <TextBlock x:Name="Caption" FontSize="30" Grid.Row="3" Text="{Binding caption.text}" FontFamily="Segoe WP" FontWeight="SemiLight"/>
+        <ScrollViewer Grid.Row="3" MaxHeight="50">
+            <TextBlock x:Name="Caption" FontSize="15" Text="{Binding caption.text}" FontFamily="Segoe WP" FontWeight="SemiLight" TextWrapping="Wrap"/>
+        </ScrollViewer>
 
         <StackPanel Grid.Row="4">
             <StackPanel Orientation="Horizontal">
-                <Image Height="40" Width="40" Source="/Assets/insta-like.png"/>
+                <Image Height="40" Width="40" Source="/Assets/Icons/insta-like.png"/>
                 <TextBlock x:Name="Likes" Margin="0,5,0,5" FontSize="20" FontFamily="Segoe WP" FontWeight="Light">
                 <Run Text="{Binding likes.count}" />
                 <Run Text=" likes" />
@@ -50,7 +52,7 @@
 
             <StackPanel Orientation="Horizontal">
 
-                <Image Height="40" Width="40" Source="/Assets/insta-comment.png" />
+                <Image Height="40" Width="40" Source="/Assets/Icons/insta-comment.png" />
 
                 <TextBlock x:Name="Comments"  Margin="0,5,0,5" FontSize="20" FontFamily="Segoe WP" FontWeight="Light">
                 <Run Text="{Binding comments.count}" />

@@ -93,6 +93,13 @@ namespace Tech_Tatva__16.Views
                 e.Handled = true;
                 return;
             }
+
+            if (this.searchpopup.IsOpen == true)
+            {
+                this.searchpopup.IsOpen = false;
+                e.Handled = true;
+                return;
+            }
         }
 
         private async void MainPage_Loaded(object sender, RoutedEventArgs e)
