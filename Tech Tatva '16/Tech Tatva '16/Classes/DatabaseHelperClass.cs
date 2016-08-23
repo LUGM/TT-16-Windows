@@ -45,14 +45,24 @@ namespace Tech_Tatva__16.Classes
         }
 
         // Retrieve the specific contact from the database. 
-        public EventClass ReadEvent(int eventid)
+        public EventClass ReadEvent(String name)
         {
             using (var dbConn = new SQLiteConnection(App.DB_PATH))
             {
-                var existingconact = dbConn.Query<EventClass>("select * from Events where Id =" + eventid).FirstOrDefault();
+                var existingconact = dbConn.Query<EventClass>("select * from Events where Name = '" + name + "'").FirstOrDefault();
                 return existingconact;
             }
         }
+
+        public List<EventClass> SearchEvents(String name)
+        {
+            using (var dbConn = new SQLiteConnection(App.DB_PATH))
+            {
+                var existingconact = dbConn.Query<EventClass>("select * from EventClass where Name like '" + name + "%'");
+                return existingconact;
+            }
+        }
+
         // Retrieve the all contact list from the database. 
         public List<EventClass> ReadEvents()
         {
@@ -68,7 +78,7 @@ namespace Tech_Tatva__16.Classes
         {
             using (var dbConn = new SQLiteConnection(App.DB_PATH))
             {
-                var existingconact = dbConn.Query<EventClass>("select * from Events where Id =" + eve.id).FirstOrDefault();
+                var existingconact = dbConn.Query<EventClass>("select * from Events where id =" + eve.id).FirstOrDefault();
                 if (existingconact != null)
                 {
                     existingconact.Name = eve.Name;
@@ -97,7 +107,7 @@ namespace Tech_Tatva__16.Classes
         {
             using (var dbConn = new SQLiteConnection(App.DB_PATH))
             {
-                var existingconact = dbConn.Query<EventClass>("select * from Events where Id =" + Id).FirstOrDefault();
+                var existingconact = dbConn.Query<EventClass>("select * from Events where id =" + Id).FirstOrDefault();
                 if (existingconact != null)
                 {
                     dbConn.RunInTransaction(() =>

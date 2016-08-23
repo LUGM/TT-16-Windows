@@ -16,20 +16,24 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <Grid HorizontalAlignment="Stretch" Margin="10,10,0,0" VerticalAlignment="Top">
+            <Grid HorizontalAlignment="Stretch" Margin="10,25,0,0" VerticalAlignment="Top">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <TextBox x:Name="SearchBox"></TextBox>
+                <TextBox x:Name="SearchBox" TextChanged="SearchBox_TextChanged" PlaceholderText="type away..."></TextBox>
                 <Image Grid.Column="1" Margin="0,0,10,0" Source="/Assets/Icons/search-icon.png" Height="40" HorizontalAlignment="Right"></Image>
             </Grid>
-        </Grid>
 
+        <ListView x:Name="EventList" Grid.Row="1" Margin="10,0,0,0" ItemClick="EventList_ItemClick" SelectionMode="None" IsItemClickEnabled="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Margin="10,5,1,5">
+                        <Image Source="{Binding Image}" Height="40" Width="40" />
+                        <TextBlock Text="{Binding Name}" FontSize="30" FontFamily="Segoe WP Light" Margin="10,0,0,0" FontWeight="Light" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </UserControl>

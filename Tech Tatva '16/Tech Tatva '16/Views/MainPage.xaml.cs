@@ -40,6 +40,7 @@ namespace Tech_Tatva__16.Views
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
         Popup errorpop;
         Popup instapop;
+        Popup searchpopup;
         StatusBar statusbar = StatusBar.GetForCurrentView();
         Insta insta = new Insta();
         
@@ -55,9 +56,11 @@ namespace Tech_Tatva__16.Views
 
             errorpop = new Popup();
             instapop = new Popup();
+            searchpopup = new Popup();
 
             Loaded += MainPage_Loaded;
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
+
 
 
             //EventClass event1 = new EventClass();
@@ -76,7 +79,7 @@ namespace Tech_Tatva__16.Views
             //db.Insert(event1);
             //db.Insert(event2);
 
-            
+
         }
 
         private async void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
@@ -238,6 +241,10 @@ namespace Tech_Tatva__16.Views
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
+            this.errorpop.IsOpen = false;
+            this.searchpopup.IsOpen = false;
+            this.instapop.IsOpen = false;
+
             this.navigationHelper.OnNavigatedFrom(e);
         }
 
@@ -307,6 +314,16 @@ namespace Tech_Tatva__16.Views
         private void Cat_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(CategoriesPage));
+        }
+
+        private void Search_Clicked(object sender, RoutedEventArgs e)
+        {
+            SearchPopup s = new SearchPopup();
+            s.Width = this.ActualWidth;
+            s.Height = this.ActualHeight;
+            searchpopup.Child = s;
+
+            searchpopup.IsOpen = true;
         }
     }
 }
