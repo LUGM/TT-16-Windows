@@ -10,10 +10,10 @@
     <Page.BottomAppBar>
         <CommandBar>
             <CommandBar.SecondaryCommands>
-                <AppBarButton x:Name="Favourites" Label="favorites"/>
-                <AppBarButton x:Name="Dev" Label="developers"/>
-                <AppBarButton x:Name="Abt" Label="about"/>
-            </CommandBar.SecondaryCommands>
+                <AppBarButton x:Name="Favourites" Label="favorites" Click="Favourites_Click"/>
+                <AppBarButton x:Name="Dev" Label="developers" Click="Dev_Click"/>
+                <AppBarButton x:Name="Abt" Label="about" Click="Abt_Click"/>
+            </CommandBar.SecondaryCommands> 
             <AppBarButton Icon="Refresh" Label="refresh"/>
         </CommandBar>
     </Page.BottomAppBar>

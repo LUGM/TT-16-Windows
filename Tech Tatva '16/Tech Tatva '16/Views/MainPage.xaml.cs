@@ -157,17 +157,17 @@ namespace Tech_Tatva__16.Views
         private async void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
 
-            //insta = await GetInstaAsync();
-            //List<BitmapImage> bmi = new List<BitmapImage>();
+            insta = await GetInstaAsync();
+            List<BitmapImage> bmi = new List<BitmapImage>();
 
-            //foreach (Datum d in insta.data)
-            //{
-            //    BitmapImage b = new BitmapImage();
-            //    b.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
-            //    b.UriSource = new Uri(d.images.thumbnail.url);
+            foreach (Datum d in insta.data)
+            {
+                BitmapImage b = new BitmapImage();
+                b.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                b.UriSource = new Uri(d.images.thumbnail.url);
 
-            //    bmi.Add(b);
-            //}
+                bmi.Add(b);
+            }
 
 
             DatabaseHelperClass db = new DatabaseHelperClass();
@@ -209,7 +209,7 @@ namespace Tech_Tatva__16.Views
 
 
             this.defaultViewModel["Days"] = list;
-            //this.defaultViewModel["Insta"] = bmi;
+            this.defaultViewModel["Insta"] = bmi;
             this.defaultViewModel["Results"] = res;
 
         }

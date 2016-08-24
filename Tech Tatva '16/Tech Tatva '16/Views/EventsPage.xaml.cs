@@ -125,5 +125,19 @@ namespace Tech_Tatva__16.Views
             Frame.Navigate(typeof(DetailsPage), e.ClickedItem as EventClass);
         }
 
+        private void Favourites_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Dev_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(DevelopersPage));
+        }
+
+        private void Abt_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(AboutPage));
+        }
     }
 }
