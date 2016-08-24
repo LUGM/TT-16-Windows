@@ -49,13 +49,14 @@
                         <GridViewItem>
                             <GridViewItem.ContentTemplate>
                                 <DataTemplate>
-                                    <Grid Width="150" Margin="10">
-                                        <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/Square71x71Logo.scale-240.png"/>
-                                        <Border Background="Black" Opacity="0.3" Height="Auto" VerticalAlignment="Bottom">
-                                            <TextBlock Margin="10" Text="Vinayak Agarwal" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
-                                        </Border>
-                                    </Grid>
-                                </DataTemplate>
+                                        <Grid Width="150" Margin="10">
+                                            <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/back.jpg"/>
+                                            <Grid VerticalAlignment="Bottom">
+                                                <Rectangle Fill="Black" Opacity="0.3"/>
+                                                <TextBlock Margin="5,1.5,5,3" Text="Vinayak Agarwal" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light" />
+                                            </Grid>
+                                        </Grid>
+                                    </DataTemplate>
                             </GridViewItem.ContentTemplate>
                         </GridViewItem>
 
@@ -63,10 +64,11 @@
                             <GridViewItem.ContentTemplate>
                                 <DataTemplate>
                                     <Grid Width="150">
-                                        <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/Square71x71Logo.scale-240.png"/>
-                                        <Border Background="Black" Opacity="0.3" Height="Auto" VerticalAlignment="Bottom">
-                                            <TextBlock Margin="10" Text="Gautham Vinod" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
-                                        </Border>
+                                        <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/back.jpg"/>
+                                            <Grid VerticalAlignment="Bottom">
+                                                <Rectangle Fill="Black" Opacity="0.3"/>
+                                                <TextBlock Margin="5,1.5,5,3" Text="Gautham Vinod" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
+                                        </Grid>
                                     </Grid>
                                 </DataTemplate>
                             </GridViewItem.ContentTemplate>
@@ -90,10 +92,11 @@
                                 <GridViewItem.ContentTemplate>
                                     <DataTemplate>
                                         <Grid Width="150" Margin="10">
-                                            <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/Square71x71Logo.scale-240.png"/>
-                                            <Border Background="Black" Opacity="0.3" Height="Auto" VerticalAlignment="Bottom">
-                                                <TextBlock Margin="10" Text="Yash Kumar Lal" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
-                                            </Border>
+                                            <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/back.jpg"/>
+                                            <Grid VerticalAlignment="Bottom">
+                                                <Rectangle Fill="Black" Opacity="0.3"/>
+                                                <TextBlock Margin="5,1.5,5,3" Text="Yash Kumar Lal" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
+                                            </Grid>
                                         </Grid>
                                     </DataTemplate>
                                 </GridViewItem.ContentTemplate>
@@ -103,10 +106,11 @@
                                 <GridViewItem.ContentTemplate>
                                     <DataTemplate>
                                         <Grid Width="150">
-                                            <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/Square71x71Logo.scale-240.png"/>
-                                            <Border Background="Black" Opacity="0.3" Height="Auto" VerticalAlignment="Bottom">
-                                                <TextBlock Margin="10" Text="Manas Dresswalla" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
-                                            </Border>
+                                            <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/back.jpg"/>
+                                            <Grid VerticalAlignment="Bottom">
+                                                <Rectangle Fill="Black" Opacity="0.3"/>
+                                                <TextBlock Margin="5,1.5,5,3" Text="Manas Dresswalla" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
+                                            </Grid>
                                         </Grid>
                                     </DataTemplate>
                                 </GridViewItem.ContentTemplate>
@@ -116,10 +120,11 @@
                                 <GridViewItem.ContentTemplate>
                                     <DataTemplate>
                                         <Grid Width="150">
-                                            <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/Square71x71Logo.scale-240.png"/>
-                                            <Border Background="Black" Opacity="0.3" Height="Auto" VerticalAlignment="Bottom">
-                                                <TextBlock Margin="10" Text="Abhishek Vora" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
-                                            </Border>
+                                            <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/back.jpg"/>
+                                            <Grid VerticalAlignment="Bottom">
+                                                <Rectangle Fill="Black" Opacity="0.3"/>
+                                                <TextBlock Margin="5,1.5,5,3" Text="Abhishek Vora" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
+                                            </Grid>
                                         </Grid>
                                     </DataTemplate>
                                 </GridViewItem.ContentTemplate>
@@ -143,10 +148,11 @@
                                 <GridViewItem.ContentTemplate>
                                     <DataTemplate>
                                         <Grid Width="150" Margin="10">
-                                            <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/Square71x71Logo.scale-240.png"/>
-                                            <Border Background="Black" Opacity="0.3" Height="Auto" VerticalAlignment="Bottom">
-                                                <TextBlock Margin="10" Text="Anuraag Baishya" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
-                                            </Border>
+                                            <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/back.jpg"/>
+                                            <Grid VerticalAlignment="Bottom">
+                                                <Rectangle Fill="Black" Opacity="0.3"/>
+                                                <TextBlock Margin="5,1.5,5,3" Text="Anuraag Baishya" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
+                                            </Grid>
                                         </Grid>
                                     </DataTemplate>
                                 </GridViewItem.ContentTemplate>
@@ -156,10 +162,11 @@
                                 <GridViewItem.ContentTemplate>
                                     <DataTemplate>
                                         <Grid Width="150">
-                                            <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/Square71x71Logo.scale-240.png"/>
-                                            <Border Background="Black" Opacity="0.3" Height="Auto" VerticalAlignment="Bottom">
-                                                <TextBlock Margin="10" Text="Anurag Choudhary" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
-                                            </Border>
+                                            <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/back.jpg"/>
+                                            <Grid VerticalAlignment="Bottom">
+                                                <Rectangle Fill="Black" Opacity="0.3"/>
+                                                <TextBlock Margin="5,1.5,5,3" Text="Anurag Choudhary" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
+                                            </Grid>
                                         </Grid>
                                     </DataTemplate>
                                 </GridViewItem.ContentTemplate>
@@ -169,10 +176,11 @@
                                 <GridViewItem.ContentTemplate>
                                     <DataTemplate>
                                         <Grid Width="150">
-                                            <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/Square71x71Logo.scale-240.png"/>
-                                            <Border Background="Black" Opacity="0.3" Height="Auto" VerticalAlignment="Bottom">
-                                                <TextBlock Margin="10" Text="Ayush Agarwal" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
-                                            </Border>
+                                            <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/back.jpg"/>
+                                            <Grid VerticalAlignment="Bottom">
+                                                <Rectangle Fill="Black" Opacity="0.3"/>
+                                                <TextBlock Margin="5,1.5,5,3" Text="Ayush Agarwal" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
+                                            </Grid>
                                         </Grid>
                                     </DataTemplate>
                                 </GridViewItem.ContentTemplate>
@@ -182,10 +190,11 @@
                                 <GridViewItem.ContentTemplate>
                                     <DataTemplate>
                                         <Grid Width="150">
-                                            <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/Square71x71Logo.scale-240.png"/>
-                                            <Border Background="Black" Opacity="0.3" Height="Auto" VerticalAlignment="Bottom">
-                                                <TextBlock Margin="10" Text="Naman Yadav" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
-                                            </Border>
+                                            <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/back.jpg"/>
+                                            <Grid VerticalAlignment="Bottom">
+                                                <Rectangle Fill="Black" Opacity="0.3"/>
+                                                <TextBlock Margin="5,1.5,5,3" Text="Naman Yadav" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
+                                            </Grid>
                                         </Grid>
                                     </DataTemplate>
                                 </GridViewItem.ContentTemplate>
@@ -201,7 +210,7 @@
 
                             <GridView.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <WrapGrid Orientation="Horizontal"/>
+                                    <WrapGrid Orientation="Horizontal" MaximumRowsOrColumns="2"/>
                                 </ItemsPanelTemplate>
                             </GridView.ItemsPanel>
 
@@ -209,10 +218,20 @@
                                 <GridViewItem.ContentTemplate>
                                     <DataTemplate>
                                         <Grid Width="150" Margin="10">
-                                            <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/Square71x71Logo.scale-240.png"/>
-                                            <Border Background="Black" Opacity="0.3" Height="Auto" VerticalAlignment="Bottom">
-                                                <TextBlock Margin="10" Text="Shubham Singhal" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
-                                            </Border>
+                                            <Image Stretch="Fill" Height="150" Width="150" Source="/Assets/back.jpg"/>
+                                            <Grid VerticalAlignment="Bottom">
+                                                <Rectangle Fill="Black" Opacity="0.3"/>
+                                                <TextBlock Margin="5,1.5,5,3" Text="Shubham Singhal" TextWrapping="Wrap" FontFamily="Segoe WP" FontSize="20" FontWeight="Light"/>
+                                            </Grid>
+                                        </Grid>
+                                    </DataTemplate>
+                                </GridViewItem.ContentTemplate>
+                            </GridViewItem>
+
+                            <GridViewItem>
+                                <GridViewItem.ContentTemplate>
+                                    <DataTemplate>
+                                        <Grid Width="150" Margin="10">
                                         </Grid>
                                     </DataTemplate>
                                 </GridViewItem.ContentTemplate>

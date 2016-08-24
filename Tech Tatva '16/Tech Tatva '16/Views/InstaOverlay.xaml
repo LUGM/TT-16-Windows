@@ -20,7 +20,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <TextBlock FontSize="50" Foreground="Orange" FontFamily="Segoe WP" FontWeight="SemiLight">
+        <TextBlock FontSize="50" Foreground="{StaticResource AppAccentColorBrush}" FontFamily="Segoe WP" FontWeight="SemiLight">
             <TextBlock.Text>
                 #techtatva16
             </TextBlock.Text>

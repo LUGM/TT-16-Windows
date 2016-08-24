@@ -42,6 +42,7 @@ namespace Tech_Tatva__16.Views
 
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
+            
         }
 
         /// <summary>
