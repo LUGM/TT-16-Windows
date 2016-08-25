@@ -16,6 +16,9 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Tech_Tatva__16.Views;
+using System.Xml.Serialization;
+using Windows.Storage;
+using Tech_Tatva__16.Classes;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -29,6 +32,7 @@ namespace Tech_Tatva__16.Views
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
         public Day day = new Day();
+        private List<int> Favs = new List<int>();
 
         public EventsPage()
         {
@@ -71,12 +75,74 @@ namespace Tech_Tatva__16.Views
         {
 
             day = e.NavigationParameter as Day;
-            this.defaultViewModel["Day"] = day;
+            
 
             foreach(PivotItem p in MyPivot.Items)
             {
                 if (p.Header.ToString().Equals(day.day))
                     MyPivot.SelectedItem = p;
+            }
+
+            
+
+            var roamingSettings = ApplicationData.Current.RoamingSettings;
+            if (roamingSettings.Values["Favs"] != null)
+            {
+                Favs = Deserialize<List<int>>(roamingSettings.Values["Favs"].ToString());
+                if (Favs.Count != 0)
+                {
+
+                    foreach (int id in Favs)
+                    {
+                        foreach (EventClass eve in day.Events)
+                        {
+                            if (id == eve.id)
+                            {
+                                eve.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_enabled.png";
+                            }
+                            else
+                            {
+                                eve.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_disabled.png";
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (EventClass eve in day.Events)
+                    {
+                        eve.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_disabled.png";
+                    }
+                }
+            }
+            else
+            {
+                foreach(EventClass eve in day.Events)
+                {
+                    eve.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_disabled.png";
+                }
+            }
+
+            this.defaultViewModel["Day"] = day;
+
+        }
+
+        public static string Serialize(object obj)
+        {
+            using (var sw = new StringWriter())
+            {
+                var serializer = new XmlSerializer(obj.GetType());
+                serializer.Serialize(sw, obj);
+                return sw.ToString();
+            }
+        }
+
+        public static T Deserialize<T>(string xml)
+        {
+            using (var sw = new StringReader(xml))
+            {
+                var serializer = new XmlSerializer(typeof(T));
+                return (T)serializer.Deserialize(sw);
             }
         }
 

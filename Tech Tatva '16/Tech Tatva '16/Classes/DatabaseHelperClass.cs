@@ -45,11 +45,21 @@ namespace Tech_Tatva__16.Classes
         }
 
         // Retrieve the specific contact from the database. 
-        public EventClass ReadEvent(String name)
+        public EventClass ReadEventByName(String name)
         {
             using (var dbConn = new SQLiteConnection(App.DB_PATH))
             {
-                var existingconact = dbConn.Query<EventClass>("select * from Events where Name = '" + name + "'").FirstOrDefault();
+                var existingconact = dbConn.Query<EventClass>("select * from EventClass where Name = '" + name + "'").FirstOrDefault();
+                return existingconact;
+            }
+        }
+
+        // Retrieve the specific Event from the database. 
+        public EventClass ReadEventById(int id)
+        {
+            using (var dbConn = new SQLiteConnection(App.DB_PATH))
+            {
+                var existingconact = dbConn.Query<EventClass>("select * from EventClass where id = " + id).FirstOrDefault();
                 return existingconact;
             }
         }
