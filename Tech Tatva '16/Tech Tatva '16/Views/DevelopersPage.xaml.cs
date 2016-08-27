@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Tech_Tatva__16.Classes;
 using Tech_Tatva__16.Common;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -33,6 +35,9 @@ namespace Tech_Tatva__16.Views
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
 
+            ShakeDetector.Instance.Start();
+            ShakeDetector.Instance.Shaken += Instance_Shaken;
+
         }
 
         public NavigationHelper NavigationHelper
@@ -43,6 +48,17 @@ namespace Tech_Tatva__16.Views
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
             
+        }
+
+        private async void Instance_Shaken(object sender, EventArgs e)
+        {
+            ShakeDetector.Instance.Stop();
+            ShakeDetector.Instance.Shaken -= Instance_Shaken;
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                Frame.Navigate(typeof(EasterEggPage));
+            });
+
         }
 
         /// <summary>

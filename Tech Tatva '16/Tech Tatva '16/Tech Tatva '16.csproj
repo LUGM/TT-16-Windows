@@ -96,6 +96,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\EasterEggPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ErrorOverlay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -127,6 +131,7 @@
     </Compile>
     <Compile Include="Classes\DatabaseHelperClass.cs" />
     <Compile Include="Classes\Insta.cs" />
+    <Compile Include="Classes\ShakeDetector.cs" />
     <Compile Include="Common\NavigationHelper.cs" />
     <Compile Include="Common\ObservableDictionary.cs" />
     <Compile Include="Common\RelayCommand.cs" />
@@ -146,6 +151,9 @@
     </Compile>
     <Compile Include="Views\DevelopersPage.xaml.cs">
       <DependentUpon>DevelopersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EasterEggPage.xaml.cs">
+      <DependentUpon>EasterEggPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ErrorOverlay.xaml.cs">
       <DependentUpon>ErrorOverlay.xaml</DependentUpon>
