@@ -14,7 +14,7 @@
     <Page.BottomAppBar>
         <CommandBar x:Name="CmdBar">
             <CommandBar.SecondaryCommands>
-                <AppBarButton x:Name="Fav" Label="favourites"/>
+                <AppBarButton x:Name="Fav" Label="favourites" Click="Fav_Click"/>
                 <AppBarButton x:Name="Cat" Label="categories" Click="Cat_Click"/>
                 <AppBarButton x:Name="Dev" Label="developers" Click="Dev_Click"/>
                 <AppBarButton x:Name="Abt" Label="about" Click="Abt_Click"/>

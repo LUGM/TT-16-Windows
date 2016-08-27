@@ -332,5 +332,10 @@ namespace Tech_Tatva__16.Views
 
             searchpopup.IsOpen = true;
         }
+
+        private void Fav_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(FavouritesPage));
+        }
     }
 }

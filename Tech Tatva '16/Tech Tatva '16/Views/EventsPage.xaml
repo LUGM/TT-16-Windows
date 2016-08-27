@@ -10,7 +10,7 @@
     <Page.BottomAppBar>
         <CommandBar>
             <CommandBar.SecondaryCommands>
-                <AppBarButton x:Name="Favourites" Label="favorites" Click="Favourites_Click"/>
+                <AppBarButton x:Name="Favourites" Label="favourites" Click="Favourites_Click"/>
                 <AppBarButton x:Name="Dev" Label="developers" Click="Dev_Click"/>
                 <AppBarButton x:Name="Abt" Label="about" Click="Abt_Click"/>
             </CommandBar.SecondaryCommands> 

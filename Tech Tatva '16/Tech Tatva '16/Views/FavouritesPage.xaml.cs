@@ -15,9 +15,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Tech_Tatva__16.Views;
-using System.Xml.Serialization;
 using Windows.Storage;
+using System.Xml.Serialization;
 using Tech_Tatva__16.Classes;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
@@ -27,14 +26,14 @@ namespace Tech_Tatva__16.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class EventsPage : Page
+    public sealed partial class FavouritesPage : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
-        public Day day = new Day();
         private List<int> Favs = new List<int>();
+        private List<EventClass> FavEvents = new List<EventClass>();
 
-        public EventsPage()
+        public FavouritesPage()
         {
             this.InitializeComponent();
 
@@ -60,6 +59,15 @@ namespace Tech_Tatva__16.Views
             get { return this.defaultViewModel; }
         }
 
+        public static T Deserialize<T>(string xml)
+        {
+            using (var sw = new StringReader(xml))
+            {
+                var serializer = new XmlSerializer(typeof(T));
+                return (T)serializer.Deserialize(sw);
+            }
+        }
+
         /// <summary>
         /// Populates the page with content passed during navigation.  Any saved state is also
         /// provided when recreating a page from a prior session.
@@ -73,76 +81,32 @@ namespace Tech_Tatva__16.Views
         /// session.  The state will be null the first time a page is visited.</param>
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-
-            day = e.NavigationParameter as Day;
-            
-
-            foreach(PivotItem p in MyPivot.Items)
-            {
-                if (p.Header.ToString().Equals(day.day))
-                    MyPivot.SelectedItem = p;
-            }
-
-            
-
             var roamingSettings = ApplicationData.Current.RoamingSettings;
             if (roamingSettings.Values["Favs"] != null)
             {
                 Favs = Deserialize<List<int>>(roamingSettings.Values["Favs"].ToString());
-                if (Favs.Count != 0)
-                {
 
-                    foreach (int id in Favs)
-                    {
-                        foreach (EventClass eve in day.Events)
-                        {
-                            if (id == eve.id)
-                            {
-                                eve.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_enabled.png";
-                            }
-                            else
-                            {
-                                eve.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_disabled.png";
-                            }
-                        }
-                    }
-                }
+                if (Favs.Count == 0)
+                    NoFavsText.Visibility = Visibility.Visible;
                 else
                 {
-                    foreach (EventClass eve in day.Events)
+                    NoFavsText.Visibility = Visibility.Collapsed;
+                    DatabaseHelperClass db = new DatabaseHelperClass();
+
+                    foreach(int id  in Favs)
                     {
-                        eve.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_disabled.png";
+                        if(db.ReadEventById(id) != null)
+                        {
+                            FavEvents.Add(db.ReadEventById(id));
+                        }
                     }
+
+                    FavList.ItemsSource = FavEvents;
                 }
             }
             else
             {
-                foreach(EventClass eve in day.Events)
-                {
-                    eve.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_disabled.png";
-                }
-            }
-
-            this.defaultViewModel["Day"] = day;
-
-        }
-
-        public static string Serialize(object obj)
-        {
-            using (var sw = new StringWriter())
-            {
-                var serializer = new XmlSerializer(obj.GetType());
-                serializer.Serialize(sw, obj);
-                return sw.ToString();
-            }
-        }
-
-        public static T Deserialize<T>(string xml)
-        {
-            using (var sw = new StringReader(xml))
-            {
-                var serializer = new XmlSerializer(typeof(T));
-                return (T)serializer.Deserialize(sw);
+                NoFavsText.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -185,25 +149,9 @@ namespace Tech_Tatva__16.Views
 
         #endregion
 
-        private void Event_Clicked(object sender, ItemClickEventArgs e)
+        private void FavList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            
             Frame.Navigate(typeof(DetailsPage), e.ClickedItem as EventClass);
-        }
-
-        private void Favourites_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(FavouritesPage));
-        }
-
-        private void Dev_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(DevelopersPage));
-        }
-
-        private void Abt_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(AboutPage));
         }
     }
 }
