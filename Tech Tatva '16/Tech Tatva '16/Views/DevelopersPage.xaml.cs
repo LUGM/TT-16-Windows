@@ -35,8 +35,6 @@ namespace Tech_Tatva__16.Views
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
 
-            ShakeDetector.Instance.Start();
-            ShakeDetector.Instance.Shaken += Instance_Shaken;
 
         }
 
@@ -48,17 +46,6 @@ namespace Tech_Tatva__16.Views
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
             
-        }
-
-        private async void Instance_Shaken(object sender, EventArgs e)
-        {
-            ShakeDetector.Instance.Stop();
-            ShakeDetector.Instance.Shaken -= Instance_Shaken;
-            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-            {
-                Frame.Navigate(typeof(EasterEggPage));
-            });
-
         }
 
         /// <summary>

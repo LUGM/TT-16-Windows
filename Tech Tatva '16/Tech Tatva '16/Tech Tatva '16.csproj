@@ -131,7 +131,6 @@
     </Compile>
     <Compile Include="Classes\DatabaseHelperClass.cs" />
     <Compile Include="Classes\Insta.cs" />
-    <Compile Include="Classes\ShakeDetector.cs" />
     <Compile Include="Common\NavigationHelper.cs" />
     <Compile Include="Common\ObservableDictionary.cs" />
     <Compile Include="Common\RelayCommand.cs" />
