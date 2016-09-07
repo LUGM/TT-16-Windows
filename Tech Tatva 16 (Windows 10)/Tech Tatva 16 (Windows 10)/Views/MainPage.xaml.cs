@@ -113,6 +113,16 @@ namespace Tech_Tatva_16__Windows_10_
                      }
                  }
 
+                 if (type == typeof(CategoriesPage))
+                 {
+                     CategoriesButton.IsChecked = true;
+                     if (AnalyticsInfo.VersionInfo.DeviceFamily == "Windows.Mobile")
+                     {
+                         this.Title.Text = "CATEGORIES";
+                         this.HamburgerMenu.IsPaneOpen = false;
+                     }
+                 }
+
                  SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = contentFrame.CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
 
               });
@@ -277,7 +287,8 @@ namespace Tech_Tatva_16__Windows_10_
 
         private void CategoriesButton_Checked(object sender, RoutedEventArgs e)
         {
-
+            if (contentFrame.SourcePageType != typeof(CategoriesPage))
+                this.contentFrame.Navigate(typeof(CategoriesPage));
         }
 
         private void Search_Button_Checked(object sender, RoutedEventArgs e)
