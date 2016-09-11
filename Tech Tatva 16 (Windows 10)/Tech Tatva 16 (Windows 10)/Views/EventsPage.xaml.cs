@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Tech_Tatva__16.Classes;
 using Tech_Tatva_16__Windows_10_.Classes;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -34,19 +35,24 @@ namespace Tech_Tatva_16__Windows_10_.Views
         public EventsPage()
         {
             this.InitializeComponent();
-            EventClass event1 = new EventClass();
-            event1.Name = "Hello";
-            event1.Image = "ms-appx:///Assets/Square44x44Logo.scale-200.png";
-            event1.Fav_Image = "";
+            //EventClass event1 = new EventClass();
+            //event1.Name = "Hello";
+            //event1.Image = "ms-appx:///Assets/Square44x44Logo.scale-200.png";
+            //event1.Fav_Image = "";
 
-            EventClass event2 = new EventClass();
-            event2.Name = "Hello1";
-            event2.Image = "ms-appx:///Assets/Square44x44Logo.scale-200.png";
-            event2.Fav_Image = "";
+            //EventClass event2 = new EventClass();
+            //event2.Name = "Hello1";
+            //event2.Image = "ms-appx:///Assets/Square44x44Logo.scale-200.png";
+            //event2.Fav_Image = "";
 
-            ObservableCollection<EventClass> l = new ObservableCollection<EventClass>();
-            l.Add(event1);
-            l.Add(event2);
+            DatabaseHelperClass db = new DatabaseHelperClass();
+            //db.Insert(event1);
+            //db.Insert(event2);
+
+            List<EventClass> l1 = new List<EventClass>();
+            l1 = db.ReadEvents();
+
+            ObservableCollection<EventClass> l = new ObservableCollection<EventClass>(l1);
 
             Day day1 = new Day();
             day1.Events = l;

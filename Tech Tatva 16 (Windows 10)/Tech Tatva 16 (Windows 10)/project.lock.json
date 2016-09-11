@@ -306,6 +306,68 @@
           "lib/netstandard1.0/_._": {}
         }
       },
+      "sqlite-net-pcl/1.1.2": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCL.bundle_green": "0.9.2"
+        },
+        "compile": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLite-net.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLite-net.dll": {}
+        }
+      },
+      "SQLitePCL.bundle_green/0.9.2": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCL.native.sqlite3.v140": "0.9.2",
+          "SQLitePCL.plugin.sqlite3.uap10.0": "0.9.2",
+          "SQLitePCL.raw": "0.9.2"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCL.batteries.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCL.batteries.dll": {}
+        }
+      },
+      "SQLitePCL.native.sqlite3.v140/0.9.2": {
+        "type": "package"
+      },
+      "SQLitePCL.plugin.sqlite3.uap10.0/0.9.2": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10",
+          "System.Collections.Concurrent": "4.0.10",
+          "System.Runtime": "4.0.20",
+          "System.Runtime.InteropServices": "4.0.20",
+          "System.Text.Encoding": "4.0.10"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLPlugin_esqlite3.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLPlugin_esqlite3.dll": {}
+        }
+      },
+      "SQLitePCL.raw/0.9.2": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10",
+          "System.Collections.Concurrent": "4.0.10",
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.20",
+          "System.Runtime.InteropServices": "4.0.20",
+          "System.Text.Encoding": "4.0.10"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCL.raw.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCL.raw.dll": {}
+        }
+      },
       "System.AppContext/4.1.0": {
         "type": "package",
         "dependencies": {
@@ -2680,6 +2742,68 @@
           "runtimes/win8-arm/native/sos.dll": {}
         }
       },
+      "sqlite-net-pcl/1.1.2": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCL.bundle_green": "0.9.2"
+        },
+        "compile": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLite-net.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLite-net.dll": {}
+        }
+      },
+      "SQLitePCL.bundle_green/0.9.2": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCL.native.sqlite3.v140": "0.9.2",
+          "SQLitePCL.plugin.sqlite3.uap10.0": "0.9.2",
+          "SQLitePCL.raw": "0.9.2"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCL.batteries.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCL.batteries.dll": {}
+        }
+      },
+      "SQLitePCL.native.sqlite3.v140/0.9.2": {
+        "type": "package"
+      },
+      "SQLitePCL.plugin.sqlite3.uap10.0/0.9.2": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10",
+          "System.Collections.Concurrent": "4.0.10",
+          "System.Runtime": "4.0.20",
+          "System.Runtime.InteropServices": "4.0.20",
+          "System.Text.Encoding": "4.0.10"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLPlugin_esqlite3.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLPlugin_esqlite3.dll": {}
+        }
+      },
+      "SQLitePCL.raw/0.9.2": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10",
+          "System.Collections.Concurrent": "4.0.10",
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.20",
+          "System.Runtime.InteropServices": "4.0.20",
+          "System.Text.Encoding": "4.0.10"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCL.raw.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCL.raw.dll": {}
+        }
+      },
       "System.AppContext/4.1.0": {
         "type": "package",
         "dependencies": {
@@ -4944,6 +5068,68 @@
           "runtimes/win8-arm-aot/native/_._": {}
         }
       },
+      "sqlite-net-pcl/1.1.2": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCL.bundle_green": "0.9.2"
+        },
+        "compile": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLite-net.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLite-net.dll": {}
+        }
+      },
+      "SQLitePCL.bundle_green/0.9.2": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCL.native.sqlite3.v140": "0.9.2",
+          "SQLitePCL.plugin.sqlite3.uap10.0": "0.9.2",
+          "SQLitePCL.raw": "0.9.2"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCL.batteries.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCL.batteries.dll": {}
+        }
+      },
+      "SQLitePCL.native.sqlite3.v140/0.9.2": {
+        "type": "package"
+      },
+      "SQLitePCL.plugin.sqlite3.uap10.0/0.9.2": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10",
+          "System.Collections.Concurrent": "4.0.10",
+          "System.Runtime": "4.0.20",
+          "System.Runtime.InteropServices": "4.0.20",
+          "System.Text.Encoding": "4.0.10"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLPlugin_esqlite3.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLPlugin_esqlite3.dll": {}
+        }
+      },
+      "SQLitePCL.raw/0.9.2": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10",
+          "System.Collections.Concurrent": "4.0.10",
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.20",
+          "System.Runtime.InteropServices": "4.0.20",
+          "System.Text.Encoding": "4.0.10"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCL.raw.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCL.raw.dll": {}
+        }
+      },
       "System.AppContext/4.1.0": {
         "type": "package",
         "dependencies": {
@@ -7179,6 +7365,68 @@
         },
         "runtime": {
           "runtimes/win/lib/netstandard1.0/System.Private.Uri.dll": {}
+        }
+      },
+      "sqlite-net-pcl/1.1.2": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCL.bundle_green": "0.9.2"
+        },
+        "compile": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLite-net.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLite-net.dll": {}
+        }
+      },
+      "SQLitePCL.bundle_green/0.9.2": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCL.native.sqlite3.v140": "0.9.2",
+          "SQLitePCL.plugin.sqlite3.uap10.0": "0.9.2",
+          "SQLitePCL.raw": "0.9.2"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCL.batteries.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCL.batteries.dll": {}
+        }
+      },
+      "SQLitePCL.native.sqlite3.v140/0.9.2": {
+        "type": "package"
+      },
+      "SQLitePCL.plugin.sqlite3.uap10.0/0.9.2": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10",
+          "System.Collections.Concurrent": "4.0.10",
+          "System.Runtime": "4.0.20",
+          "System.Runtime.InteropServices": "4.0.20",
+          "System.Text.Encoding": "4.0.10"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLPlugin_esqlite3.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLPlugin_esqlite3.dll": {}
+        }
+      },
+      "SQLitePCL.raw/0.9.2": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10",
+          "System.Collections.Concurrent": "4.0.10",
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.20",
+          "System.Runtime.InteropServices": "4.0.20",
+          "System.Text.Encoding": "4.0.10"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCL.raw.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCL.raw.dll": {}
         }
       },
       "System.AppContext/4.1.0": {
@@ -9454,6 +9702,68 @@
           "runtimes/aot/lib/netcore50/System.Private.Uri.dll": {}
         }
       },
+      "sqlite-net-pcl/1.1.2": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCL.bundle_green": "0.9.2"
+        },
+        "compile": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLite-net.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLite-net.dll": {}
+        }
+      },
+      "SQLitePCL.bundle_green/0.9.2": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCL.native.sqlite3.v140": "0.9.2",
+          "SQLitePCL.plugin.sqlite3.uap10.0": "0.9.2",
+          "SQLitePCL.raw": "0.9.2"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCL.batteries.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCL.batteries.dll": {}
+        }
+      },
+      "SQLitePCL.native.sqlite3.v140/0.9.2": {
+        "type": "package"
+      },
+      "SQLitePCL.plugin.sqlite3.uap10.0/0.9.2": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10",
+          "System.Collections.Concurrent": "4.0.10",
+          "System.Runtime": "4.0.20",
+          "System.Runtime.InteropServices": "4.0.20",
+          "System.Text.Encoding": "4.0.10"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLPlugin_esqlite3.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLPlugin_esqlite3.dll": {}
+        }
+      },
+      "SQLitePCL.raw/0.9.2": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10",
+          "System.Collections.Concurrent": "4.0.10",
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.20",
+          "System.Runtime.InteropServices": "4.0.20",
+          "System.Text.Encoding": "4.0.10"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCL.raw.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCL.raw.dll": {}
+        }
+      },
       "System.AppContext/4.1.0": {
         "type": "package",
         "dependencies": {
@@ -11689,6 +11999,68 @@
         },
         "runtime": {
           "runtimes/win/lib/netstandard1.0/System.Private.Uri.dll": {}
+        }
+      },
+      "sqlite-net-pcl/1.1.2": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCL.bundle_green": "0.9.2"
+        },
+        "compile": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLite-net.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLite-net.dll": {}
+        }
+      },
+      "SQLitePCL.bundle_green/0.9.2": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCL.native.sqlite3.v140": "0.9.2",
+          "SQLitePCL.plugin.sqlite3.uap10.0": "0.9.2",
+          "SQLitePCL.raw": "0.9.2"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCL.batteries.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCL.batteries.dll": {}
+        }
+      },
+      "SQLitePCL.native.sqlite3.v140/0.9.2": {
+        "type": "package"
+      },
+      "SQLitePCL.plugin.sqlite3.uap10.0/0.9.2": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10",
+          "System.Collections.Concurrent": "4.0.10",
+          "System.Runtime": "4.0.20",
+          "System.Runtime.InteropServices": "4.0.20",
+          "System.Text.Encoding": "4.0.10"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLPlugin_esqlite3.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLPlugin_esqlite3.dll": {}
+        }
+      },
+      "SQLitePCL.raw/0.9.2": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10",
+          "System.Collections.Concurrent": "4.0.10",
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.20",
+          "System.Runtime.InteropServices": "4.0.20",
+          "System.Text.Encoding": "4.0.10"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCL.raw.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCL.raw.dll": {}
         }
       },
       "System.AppContext/4.1.0": {
@@ -13962,6 +14334,68 @@
         },
         "runtime": {
           "runtimes/aot/lib/netcore50/System.Private.Uri.dll": {}
+        }
+      },
+      "sqlite-net-pcl/1.1.2": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCL.bundle_green": "0.9.2"
+        },
+        "compile": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLite-net.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLite-net.dll": {}
+        }
+      },
+      "SQLitePCL.bundle_green/0.9.2": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCL.native.sqlite3.v140": "0.9.2",
+          "SQLitePCL.plugin.sqlite3.uap10.0": "0.9.2",
+          "SQLitePCL.raw": "0.9.2"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCL.batteries.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCL.batteries.dll": {}
+        }
+      },
+      "SQLitePCL.native.sqlite3.v140/0.9.2": {
+        "type": "package"
+      },
+      "SQLitePCL.plugin.sqlite3.uap10.0/0.9.2": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10",
+          "System.Collections.Concurrent": "4.0.10",
+          "System.Runtime": "4.0.20",
+          "System.Runtime.InteropServices": "4.0.20",
+          "System.Text.Encoding": "4.0.10"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLPlugin_esqlite3.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLPlugin_esqlite3.dll": {}
+        }
+      },
+      "SQLitePCL.raw/0.9.2": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10",
+          "System.Collections.Concurrent": "4.0.10",
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.20",
+          "System.Runtime.InteropServices": "4.0.20",
+          "System.Text.Encoding": "4.0.10"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCL.raw.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCL.raw.dll": {}
         }
       },
       "System.AppContext/4.1.0": {
@@ -16785,6 +17219,79 @@
         "runtimes/win8-arm/native/sos.dll",
         "tools/crossgen.exe",
         "tools/sos.dll"
+      ]
+    },
+    "sqlite-net-pcl/1.1.2": {
+      "sha512": "pN7deFk+OGQBsFK3xRuEV7mMhX1UjOuGMGhpJg9cSkC0DGZwlbdGXYdB9kov6sAZO41Td92lJxSN36IjhTWMTQ==",
+      "type": "package",
+      "files": [
+        "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLite-net.dll",
+        "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLite-net.dll.mdb",
+        "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLite-net.xml",
+        "sqlite-net-pcl.1.1.2.nupkg.sha512",
+        "sqlite-net-pcl.nuspec"
+      ]
+    },
+    "SQLitePCL.bundle_green/0.9.2": {
+      "sha512": "1JW/bzoRuZRaF/IvOAgOf7UT9H3jHwireRhjUAlKsftGYeF7uV4WFNwFwevciHmC6q1yz5uvw3GWTA2ec35C7A==",
+      "type": "package",
+      "files": [
+        "SQLitePCL.bundle_green.0.9.2.nupkg.sha512",
+        "SQLitePCL.bundle_green.nuspec",
+        "lib/MonoAndroid/SQLitePCL.batteries.dll",
+        "lib/net45/SQLitePCL.batteries.dll",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLitePCL.batteries.dll",
+        "lib/uap10.0/SQLitePCL.batteries.dll",
+        "lib/win81/SQLitePCL.batteries.dll",
+        "lib/wpa81/SQLitePCL.batteries.dll"
+      ]
+    },
+    "SQLitePCL.native.sqlite3.v140/0.9.2": {
+      "sha512": "QqPO5GDWiQ5NpZwP5szwx1w4sm5u5bc6bpzPUBLoam9+Up4qQhLTZa+YAS5w3Dhq1vIdbHC/fG2GBbF2iIxV2g==",
+      "type": "package",
+      "files": [
+        "SQLitePCL.native.sqlite3.v140.0.9.2.nupkg.sha512",
+        "SQLitePCL.native.sqlite3.v140.nuspec",
+        "build/SQLitePCL.native.sqlite3.v140.targets",
+        "build/native/sqlite3/v140/arm/esqlite3.dll",
+        "build/native/sqlite3/v140/x64/esqlite3.dll",
+        "build/native/sqlite3/v140/x86/esqlite3.dll"
+      ]
+    },
+    "SQLitePCL.plugin.sqlite3.uap10.0/0.9.2": {
+      "sha512": "u2L2a6LF9mqn7q8hBTh263JoMM6K1YXtjnRf9K/eFfPMTr/UX6ye4boOG3KL2BYY8N8Nn6zznShs56T0MJfRCA==",
+      "type": "package",
+      "files": [
+        "SQLitePCL.plugin.sqlite3.uap10.0.0.9.2.nupkg.sha512",
+        "SQLitePCL.plugin.sqlite3.uap10.0.nuspec",
+        "lib/uap10.0/SQLitePCLPlugin_esqlite3.dll"
+      ]
+    },
+    "SQLitePCL.raw/0.9.2": {
+      "sha512": "C6rPoSZcBGuBiiGXvxECliEhtSWt9PT6gEwWaJhiz26WJcSqqWGmJaIzbjyEjQj09W80/sBzZZ9YqYbNmybuLw==",
+      "type": "package",
+      "files": [
+        "SQLitePCL.raw.0.9.2.nupkg.sha512",
+        "SQLitePCL.raw.nuspec",
+        "lib/MonoAndroid/SQLitePCL.raw.dll",
+        "lib/MonoTouch/SQLitePCL.raw.dll",
+        "lib/Xamarin.iOS10/SQLitePCL.raw.dll",
+        "lib/net35/SQLitePCL.raw.dll",
+        "lib/net40/SQLitePCL.raw.dll",
+        "lib/net45/SQLitePCL.raw.dll",
+        "lib/portable-net40+sl5+netcore45+wp8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLitePCL.raw.dll",
+        "lib/portable-net45+netcore45+wp8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLitePCL.raw.dll",
+        "lib/portable-net45+netcore45+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLitePCL.raw.dll",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLitePCL.raw.dll",
+        "lib/portable-net45+sl5+netcore45+wp8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLitePCL.raw.dll",
+        "lib/uap10.0/SQLitePCL.raw.dll",
+        "lib/uap10.0/SQLitePCL.raw.pri",
+        "lib/win8/SQLitePCL.raw.dll",
+        "lib/win8/SQLitePCL.raw.pri",
+        "lib/win81/SQLitePCL.raw.dll",
+        "lib/win81/SQLitePCL.raw.pri",
+        "lib/wpa81/SQLitePCL.raw.dll",
+        "lib/wpa81/SQLitePCL.raw.pri"
       ]
     },
     "System.AppContext/4.1.0": {
@@ -21591,7 +22098,8 @@
   "projectFileDependencyGroups": {
     "": [
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.2.0",
-      "Newtonsoft.Json >= 9.0.1"
+      "Newtonsoft.Json >= 9.0.1",
+      "sqlite-net-pcl >= 1.1.2"
     ],
     "UAP,Version=v10.0": []
   }
