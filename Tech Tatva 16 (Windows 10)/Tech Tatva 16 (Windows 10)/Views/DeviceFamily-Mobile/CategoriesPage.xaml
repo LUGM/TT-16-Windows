@@ -20,19 +20,18 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Categories" Style="{StaticResource HeaderTextBlockStyle}" Margin="10"/>
-
         <!--TODO: Content should be placed within the following grid-->
         <Grid Name="ContentRoot" Margin="0,9.5,5,0" Grid.Row="1">
-            <ScrollViewer>
-                <Viewbox VerticalAlignment="Stretch">
+            <Viewbox HorizontalAlignment="Stretch">
                 <Grid>
-                    <GridView Name="Categories">
-
+                    <GridView Name="Categories" 				
+                            ScrollViewer.HorizontalScrollBarVisibility="Auto"
+				            ScrollViewer.HorizontalScrollMode="Enabled"
+				            ScrollViewer.VerticalScrollMode="Disabled">
                         <GridView.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <WrapGrid MaximumRowsOrColumns="3" Orientation="Vertical" VerticalChildrenAlignment="Stretch">
-                                </WrapGrid>
+                                <VariableSizedWrapGrid MaximumRowsOrColumns="2" Orientation="Horizontal" HorizontalChildrenAlignment="Stretch">
+                                </VariableSizedWrapGrid>
                             </ItemsPanelTemplate>
                         </GridView.ItemsPanel>
 
@@ -249,7 +248,7 @@
                     </GridView>
                 </Grid>
             </Viewbox>
-            </ScrollViewer>
         </Grid>
     </Grid>
 </Page>
+

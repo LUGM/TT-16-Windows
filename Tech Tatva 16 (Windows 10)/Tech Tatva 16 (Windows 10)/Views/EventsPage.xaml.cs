@@ -99,7 +99,7 @@ namespace Tech_Tatva_16__Windows_10_.Views
                     AppViewBackButtonVisibility.Collapsed;
             }
 
-            if((string)e.Parameter != "")
+            if((string)e.Parameter != "" && e.Parameter != null)
             {
                 ObservableCollection<EventClass> l = new ObservableCollection<EventClass>();
                 DatabaseHelperClass db = new DatabaseHelperClass();
