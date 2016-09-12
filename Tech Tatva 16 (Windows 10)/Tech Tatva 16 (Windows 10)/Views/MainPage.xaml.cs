@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Tech_Tatva__16.Classes;
+using Tech_Tatva_16__Windows_10_.Classes;
 using Tech_Tatva_16__Windows_10_.Views;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -36,6 +38,7 @@ namespace Tech_Tatva_16__Windows_10_
         public static MainPage Instance { get; private set; }
         bool flag;
 
+        public List<string> eventnames = new List<string>();
 
         public MainPage(Frame frame)
         {
@@ -47,7 +50,13 @@ namespace Tech_Tatva_16__Windows_10_
             Instance = this;
 
             popup = new Popup();
-            
+            DatabaseHelperClass db = new DatabaseHelperClass();
+            List<EventClass> list = db.ReadEvents();
+
+            foreach(EventClass eve in list)
+            {
+                eventnames.Add(eve.Name);
+            }
 
             var update = new Action(() =>
              {
@@ -135,8 +144,12 @@ namespace Tech_Tatva_16__Windows_10_
                 Line1.Visibility = Visibility.Visible;
                 Line2.Visibility = Visibility.Visible;
 
-                Search_Textbox.Visibility = Visibility.Visible;
-                Search_Button.Visibility = Visibility.Collapsed;
+                if (AnalyticsInfo.VersionInfo.DeviceFamily != "Windows.Mobile")
+                {
+                    Search_Textbox.Visibility = Visibility.Visible;
+                    Search_Button.Visibility = Visibility.Collapsed;
+                }
+
             }
 
             else
@@ -144,8 +157,11 @@ namespace Tech_Tatva_16__Windows_10_
                 Line1.Visibility = Visibility.Collapsed;
                 Line2.Visibility = Visibility.Collapsed;
 
-                Search_Textbox.Visibility = Visibility.Collapsed;
-                Search_Button.Visibility = Visibility.Visible;
+                if (AnalyticsInfo.VersionInfo.DeviceFamily != "Windows.Mobile")
+                {
+                    Search_Textbox.Visibility = Visibility.Collapsed;
+                    Search_Button.Visibility = Visibility.Visible;
+                }
             }
 
             this.HamburgerMenu.RegisterPropertyChangedCallback(SplitView.IsPaneOpenProperty, IsPaneOpenPropertyChanged);
@@ -158,8 +174,11 @@ namespace Tech_Tatva_16__Windows_10_
                 Line1.Visibility = Visibility.Visible;
                 Line2.Visibility = Visibility.Visible;
 
-                Search_Textbox.Visibility = Visibility.Visible;
-                Search_Button.Visibility = Visibility.Collapsed;
+                if (AnalyticsInfo.VersionInfo.DeviceFamily != "Windows.Mobile")
+                {
+                    Search_Textbox.Visibility = Visibility.Visible;
+                    Search_Button.Visibility = Visibility.Collapsed;
+                }
             }
 
             else
@@ -167,8 +186,11 @@ namespace Tech_Tatva_16__Windows_10_
                 Line1.Visibility = Visibility.Collapsed;
                 Line2.Visibility = Visibility.Collapsed;
 
-                Search_Textbox.Visibility = Visibility.Collapsed;
-                Search_Button.Visibility = Visibility.Visible;
+                if (AnalyticsInfo.VersionInfo.DeviceFamily != "Windows.Mobile")
+                {
+                    Search_Textbox.Visibility = Visibility.Collapsed;
+                    Search_Button.Visibility = Visibility.Visible;
+                }
             }
         }
 
@@ -197,9 +219,7 @@ namespace Tech_Tatva_16__Windows_10_
                 contentFrame.GoBack();
             }
         }
-
-       
-       
+ 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
             HamburgerMenu.IsPaneOpen = !HamburgerMenu.IsPaneOpen;
@@ -207,7 +227,6 @@ namespace Tech_Tatva_16__Windows_10_
 
         private void Events_Button_Checked(object sender, RoutedEventArgs e)
         {
-          
             if(contentFrame.SourcePageType != typeof(EventsPage))
                 this.contentFrame.Navigate(typeof(EventsPage));
         }
@@ -275,7 +294,6 @@ namespace Tech_Tatva_16__Windows_10_
             this.Opacity = 1;
         }
 
-
         private void Refresh_Tapped(object sender, TappedRoutedEventArgs e)
         {
             if (contentFrame.SourcePageType == typeof(InstaPage))
@@ -296,6 +314,38 @@ namespace Tech_Tatva_16__Windows_10_
             Search_Button.IsChecked = false;
             HamburgerMenu.IsPaneOpen = true;
             Search_Textbox.Focus(FocusState.Keyboard);
+        }
+
+        private void Search_Textbox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            var autoSuggestBox = sender as AutoSuggestBox;
+            var filtered = eventnames.Where(p => p.StartsWith(autoSuggestBox.Text, StringComparison.OrdinalIgnoreCase)).ToArray();
+            autoSuggestBox.ItemsSource = filtered;
+        }
+
+        private void FontIcon_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Search_Icon.Visibility = Visibility.Collapsed;
+            Title.Visibility = Visibility.Collapsed;
+            Search_Textbox.Visibility = Visibility.Visible;
+            Search_Textbox.Focus(FocusState.Keyboard);
+        }
+
+        private void Search_Textbox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            Search_Icon.Visibility = Visibility.Visible;
+            Title.Visibility = Visibility.Visible;
+            (sender as AutoSuggestBox).Visibility = Visibility.Collapsed;
+        }
+
+        private void Search_Textbox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        {
+            this.contentFrame.Navigate(typeof(EventsPage), (args.SelectedItem as string));
+        }
+
+        private void Search_Textbox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        {
+            this.contentFrame.Navigate(typeof(EventsPage), (args.QueryText as string));
         }
     }
 }

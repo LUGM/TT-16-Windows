@@ -22,8 +22,10 @@
         <RelativePanel Background="{StaticResource SystemControlBackgroundBaseLowBrush}">
             <Button Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" FontSize="15" Background="Transparent" Padding="15" Click="HamburgerButton_Click"></Button>
             <TextBlock Name="Title" RelativePanel.AlignTopWith="HamburgerButton" RelativePanel.RightOf="HamburgerButton" RelativePanel.AlignBottomWith="HamburgerButton" Text="Home" FontSize="15" FontFamily="Segoe UI" FontWeight="Bold" CharacterSpacing="75" VerticalAlignment="Center" Margin="10,0,0,0"></TextBlock>
+            <FontIcon Name="Search_Icon" Glyph="&#xE094;" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" FontSize="15" Margin="20,15,10,15" Tapped="FontIcon_Tapped" RenderTransformOrigin="0.4,0.6"/>
+            <AutoSuggestBox Name="Search_Textbox" HorizontalAlignment="Stretch" PlaceholderText="Search" Margin="0,10,10,10" QueryIcon="Find" Style="{StaticResource AutoSuggestAccentColour}" TextChanged="Search_Textbox_TextChanged" RelativePanel.RightOf="HamburgerButton" RelativePanel.AlignRightWithPanel="True" LostFocus="Search_Textbox_LostFocus" Visibility="Collapsed"  QuerySubmitted="Search_Textbox_QuerySubmitted"/>
         </RelativePanel>
-        <SplitView IsPaneOpen="False" Grid.Row="1" Name="HamburgerMenu" DisplayMode="CompactOverlay" CompactPaneLength="0" HorizontalAlignment="Stretch">
+        <SplitView IsPaneOpen="False" Name="HamburgerMenu" Margin="0,0,0,0" DisplayMode="CompactOverlay" CompactPaneLength="0" HorizontalAlignment="Stretch" Grid.Row="1" OpenPaneLength="200" >
             <SplitView.Pane>
                 <Grid>
                     <Grid.RowDefinitions>

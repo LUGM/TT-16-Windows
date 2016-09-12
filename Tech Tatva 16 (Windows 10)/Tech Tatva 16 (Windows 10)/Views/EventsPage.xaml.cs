@@ -98,6 +98,31 @@ namespace Tech_Tatva_16__Windows_10_.Views
                 SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
                     AppViewBackButtonVisibility.Collapsed;
             }
+
+            if((string)e.Parameter != "")
+            {
+                ObservableCollection<EventClass> l = new ObservableCollection<EventClass>();
+                DatabaseHelperClass db = new DatabaseHelperClass();
+                EventClass eve = db.ReadEventByName((string)e.Parameter);
+                if(eve == null)
+                {
+                    l.Add(eve);
+                    Days.Clear();
+                    Day day1 = new Day();
+                    day1.Events = l;
+                    day1.day = "Event Not Found";
+                    Days.Add(day1);
+                }
+                else
+                {
+                    l.Add(eve);
+                    Days.Clear();
+                    Day day1 = new Day();
+                    day1.Events = l;
+                    day1.day = "Event Found";
+                    Days.Add(day1);
+                }
+            }
         }
 
 
