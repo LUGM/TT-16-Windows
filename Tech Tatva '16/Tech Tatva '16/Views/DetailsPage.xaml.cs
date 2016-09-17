@@ -15,6 +15,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.Storage;
+using System.Xml.Serialization;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -27,6 +29,7 @@ namespace Tech_Tatva__16.Views
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
+        private List<int> Favs = new List<int>();
 
         public DetailsPage()
         {
@@ -70,6 +73,17 @@ namespace Tech_Tatva__16.Views
 
             EventClass events = e.NavigationParameter as EventClass;
             this.defaultViewModel["Name"] = events.Name;
+            this.DataContext = events;
+
+            if(events.Fav_Image == "ms-appx:///Assets/Icons/fav-icon_disabled.png")
+            {
+                BookmarkText.Text = "bookmark event";
+            }
+
+            else
+            {
+                BookmarkText.Text = "remove bookmark";
+            }
 
         }
 
@@ -111,5 +125,51 @@ namespace Tech_Tatva__16.Views
         }
 
         #endregion
+
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            var roamingSettings = ApplicationData.Current.RoamingSettings;
+            if (roamingSettings.Values["Favs"] != null)
+            {
+                Favs = Deserialize<List<int>>(roamingSettings.Values["Favs"].ToString());
+            }
+
+            if ((this.DataContext as EventClass).Fav_Image == "ms-appx:///Assets/Icons/fav-icon_disabled.png")
+            {
+                BookmarkText.Text = "remove bookmark";
+                Favs.Add((this.DataContext as EventClass).id);
+
+            }
+
+            else
+            {
+                BookmarkText.Text = "bookmark event";
+                Favs.Remove((this.DataContext as EventClass).id);
+            }
+
+            
+            roamingSettings.Values["Favs"] = Serialize(Favs);
+        }
+
+        public static string Serialize(object obj)
+        {
+            using (var sw = new StringWriter())
+            {
+                var serializer = new XmlSerializer(obj.GetType());
+                serializer.Serialize(sw, obj);
+                return sw.ToString();
+            }
+        }
+
+        public static T Deserialize<T>(string xml)
+        {
+            using (var sw = new StringReader(xml))
+            {
+                var serializer = new XmlSerializer(typeof(T));
+                return (T)serializer.Deserialize(sw);
+            }
+        }
     }
 }

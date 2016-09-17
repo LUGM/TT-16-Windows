@@ -15,6 +15,17 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Threading.Tasks;
+using Tech_Tatva__16.Classes.Test_App;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Net.NetworkInformation;
+using Windows.UI.Xaml.Media.Imaging;
+using Windows.UI.Xaml.Shapes;
+using Windows.UI;
+using Windows.Phone.UI.Input;
+using Tech_Tatva__16.Classes;
+using System.Collections.ObjectModel;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -27,6 +38,13 @@ namespace Tech_Tatva__16.Views
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
+        Popup errorpop;
+        Popup instapop;
+        Popup searchpopup;
+        StatusBar statusbar = StatusBar.GetForCurrentView();
+        Insta insta = new Insta();
+        
+
 
         public MainPage()
         {
@@ -35,6 +53,77 @@ namespace Tech_Tatva__16.Views
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
+
+            errorpop = new Popup();
+            instapop = new Popup();
+            searchpopup = new Popup();
+
+            Loaded += MainPage_Loaded;
+            HardwareButtons.BackPressed += HardwareButtons_BackPressed;
+
+
+
+            //EventClass event1 = new EventClass();
+            //event1.id = 1;
+            //event1.Name = "Hello";
+            //event1.Image = "ms-appx:///Assets/Square71x71Logo.scale-240.png";
+            //event1.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_enabled.png";
+
+            //EventClass event2 = new EventClass();
+            //event2.id = 2;
+            //event2.Name = "Hello1";
+            //event2.Image = "ms-appx:///Assets/Square71x71Logo.scale-240.png";
+            //event2.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_disabled.png";
+
+            //DatabaseHelperClass db = new DatabaseHelperClass();
+            //db.Insert(event1);
+            //db.Insert(event2);
+
+
+        }
+
+        private async void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
+        {
+            this.LayoutRoot.Opacity = 1;
+
+            if (this.instapop.IsOpen == true)
+            {
+                this.instapop.IsOpen = false;
+                await statusbar.ShowAsync();
+                e.Handled = true;
+                return;
+            }
+
+            if (this.searchpopup.IsOpen == true)
+            {
+                this.searchpopup.IsOpen = false;
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private async void MainPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (NetworkInterface.GetIsNetworkAvailable())
+            {
+                this.LayoutRoot.Opacity = 1;
+                CmdBar.Visibility = Visibility.Visible;
+                await statusbar.ShowAsync();
+            }
+            else
+            {
+
+                await statusbar.HideAsync();
+                CmdBar.Visibility = Visibility.Collapsed;
+                this.LayoutRoot.Opacity = 0.2;
+                ErrorOverlay ovr = new ErrorOverlay();
+                ovr.Width = this.ActualWidth;
+                ovr.Height = this.ActualHeight;
+                this.errorpop.Child = ovr;
+                this.errorpop.IsOpen = true;
+
+            }
+
         }
 
         /// <summary>
@@ -65,21 +154,25 @@ namespace Tech_Tatva__16.Views
         /// <see cref="Frame.Navigate(Type, Object)"/> when this page was initially requested and
         /// a dictionary of state preserved by this page during an earlier
         /// session.  The state will be null the first time a page is visited.</param>
-        private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
+        private async void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            EventClass event1 = new EventClass();
-            event1.Name = "Hello";
-            event1.Image = "ms-appx:///Assets/Square71x71Logo.scale-240.png";
-            event1.Fav_Image = "ms-appx:///Assets/fav-icon_enabled.png";
 
-            EventClass event2 = new EventClass();
-            event2.Name = "Hello1";
-            event2.Image = "ms-appx:///Assets/Square71x71Logo.scale-240.png";
-            event2.Fav_Image = "ms-appx:///Assets/fav-icon_disabled.png";
+            insta = await GetInstaAsync();
+            List<BitmapImage> bmi = new List<BitmapImage>();
 
+            foreach (Datum d in insta.data)
+            {
+                BitmapImage b = new BitmapImage();
+                b.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                b.UriSource = new Uri(d.images.thumbnail.url);
+
+                bmi.Add(b);
+            }
+
+
+            DatabaseHelperClass db = new DatabaseHelperClass();
             List<EventClass> l = new List<EventClass>();
-            l.Add(event1);
-            l.Add(event2);
+            l = db.ReadEvents();
 
             List<Day> list = new List<Day>();
             Day day1 = new Day();
@@ -113,8 +206,10 @@ namespace Tech_Tatva__16.Views
             res.Add(results);
             res.Add(results);
 
+
+
             this.defaultViewModel["Days"] = list;
-            this.defaultViewModel["Insta"] = "ms-appx:///Assets/back.jpg";
+            this.defaultViewModel["Insta"] = bmi;
             this.defaultViewModel["Results"] = res;
 
         }
@@ -153,6 +248,10 @@ namespace Tech_Tatva__16.Views
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
+            this.errorpop.IsOpen = false;
+            this.searchpopup.IsOpen = false;
+            this.instapop.IsOpen = false;
+
             this.navigationHelper.OnNavigatedFrom(e);
         }
 
@@ -162,6 +261,81 @@ namespace Tech_Tatva__16.Views
         private void Day_Clicked(object sender, ItemClickEventArgs e)
         {
             Frame.Navigate(typeof(EventsPage), e.ClickedItem as Day);
+        }
+
+        private async Task<Insta> GetInstaAsync()
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    Insta insta = new Insta();
+                    var response = await client.GetStringAsync("https://api.instagram.com/v1/tags/techtatva16/media/recent?access_token=630237785.f53975e.8dcfa635acf14fcbb99681c60519d04c&count=9");
+                    insta = JsonConvert.DeserializeObject<Insta>(response);
+                    return insta;
+                }
+            } catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        private async void Insta_Clicked(object sender, ItemClickEventArgs e)
+        {
+            Datum d = new Datum();
+
+            foreach (Datum datum in insta.data)
+            {
+                if (datum.images.thumbnail.url.Equals((e.ClickedItem as BitmapImage).UriSource.ToString()))
+                {
+                    d = datum;
+                    break;
+                }
+            }
+
+            await statusbar.HideAsync();
+
+
+            this.LayoutRoot.Opacity = 0.2;
+            CmdBar.Visibility = Visibility.Collapsed;
+
+            InstaOverlay ovr = new InstaOverlay();
+            ovr.Height = this.ActualHeight;
+            ovr.Width = this.ActualWidth;
+            this.instapop.Child = ovr;
+            ovr.DataContext = d;
+            this.instapop.IsOpen = true;
+        }
+
+
+        private void Abt_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(AboutPage));
+        }
+
+        private void Dev_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(DevelopersPage));
+        }
+
+        private void Cat_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(CategoriesPage));
+        }
+
+        private void Search_Clicked(object sender, RoutedEventArgs e)
+        {
+            SearchPopup s = new SearchPopup();
+            s.Width = this.ActualWidth;
+            s.Height = this.ActualHeight;
+            searchpopup.Child = s;
+
+            searchpopup.IsOpen = true;
+        }
+
+        private void Fav_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(FavouritesPage));
         }
     }
 }

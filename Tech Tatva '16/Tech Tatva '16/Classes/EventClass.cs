@@ -9,6 +9,8 @@ namespace Tech_Tatva__16
 
     public class EventClass
     {
+        [SQLite.PrimaryKey]
+        public int id { get; set; }
         public string Name { get; set; }
         public string Image { get; set; }
         public string Fav_Image { get; set; }
@@ -25,4 +27,5 @@ namespace Tech_Tatva__16
         public string EventName { get; set; }
         public string Image { get; set; }
     }
+
 }
