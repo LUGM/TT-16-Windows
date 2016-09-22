@@ -9,6 +9,7 @@ using Tech_Tatva_16__Windows_10_.Classes;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
+using Windows.System.Profile;
 using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
@@ -31,13 +32,19 @@ namespace Tech_Tatva_16__Windows_10_.Views
 
 
         public ObservableCollection<Day> Days = new ObservableCollection<Day>();
-        public ObservableCollection<Day> Favourites = new ObservableCollection<Day>(); 
+        public ObservableCollection<Day> Favourites = new ObservableCollection<Day>();
+
+        public static EventsPage Instance;
 
         public EventsPage()
         {
+
             this.InitializeComponent();
 
-            Filter_Fav.SelectedIndex = 0;
+            Instance = this;
+
+            if (AnalyticsInfo.VersionInfo.DeviceFamily != "Windows.Mobile")
+                Filter_Fav.SelectedIndex = 0;
             EventClass event1 = new EventClass();
             event1.id = 1;
             event1.Name = "Hello";
@@ -229,7 +236,7 @@ namespace Tech_Tatva_16__Windows_10_.Views
             return _List;
         }
 
-        private void Filter_Fav_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        public void Filter_Fav_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if((sender as ComboBox).SelectedIndex == 1)
             {
@@ -278,6 +285,11 @@ namespace Tech_Tatva_16__Windows_10_.Views
             {
                 (sender as RadioButton).Content = "Remove Bookmark";
             }
+        }
+
+        private void Filter_Button_Clicked(object sender, RoutedEventArgs e)
+        {
+            FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);
         }
     }
 

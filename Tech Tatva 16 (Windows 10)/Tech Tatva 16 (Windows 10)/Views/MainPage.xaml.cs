@@ -63,7 +63,8 @@ namespace Tech_Tatva_16__Windows_10_
                  SystemNavigationManager.GetForCurrentView().BackRequested += MainPage_BackRequested;
                  // update radiobuttons after frame navigates 
                  var type = frame.CurrentSourcePageType;
- 
+                 FilterFavButton.Visibility = Visibility.Collapsed;
+
                  if (type == typeof(EventsPage))
                  {
                      Events_Button.IsChecked = true;
@@ -71,6 +72,9 @@ namespace Tech_Tatva_16__Windows_10_
                      {
                          this.Title.Text = "EVENTS";
                          this.HamburgerMenu.IsPaneOpen = false;
+
+                         FilterFavButton.Visibility = Visibility.Visible;
+                         Filter_Fav.SelectedIndex = 0;
                      }
                  }
                  if (type == typeof(ResultsPage))
@@ -266,10 +270,6 @@ namespace Tech_Tatva_16__Windows_10_
 
         }
 
-        private void FavouritesButton_Checked(object sender, RoutedEventArgs e)
-        {
-        }
-
         public void ShowPopup()
         {
             ErrorPopup err = new ErrorPopup();
@@ -340,6 +340,16 @@ namespace Tech_Tatva_16__Windows_10_
         private void Search_Textbox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
             this.contentFrame.Navigate(typeof(EventsPage), (args.QueryText as string));
+        }
+
+        private void Filter_Button_Clicked(object sender, RoutedEventArgs e)
+        {
+            FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);
+        }
+
+        private void Filter_Fav_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            EventsPage.Instance.Filter_Fav_SelectionChanged(sender, e);
         }
     }
 }
