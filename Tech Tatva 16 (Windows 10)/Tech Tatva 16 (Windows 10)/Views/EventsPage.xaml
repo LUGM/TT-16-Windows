@@ -85,7 +85,7 @@
 
                                                 <StackPanel>
                                                     <Line X1="0" X2="1" Stretch="Fill" Stroke="{StaticResource SystemControlBackgroundBaseHighBrush}" StrokeThickness="1" Margin="-10,10,10,10"/>
-                                                    <RadioButton Name="Fav_Button" Style="{StaticResource FavButtonStyle}" Content="Bookmark Event" Tag="&#xE1CE;" HorizontalAlignment="Left" Click="Fav_Button_Click"/>
+                                                    <RadioButton Name="Fav_Button" Style="{StaticResource FavButtonStyle}" Content="Bookmark Event" Tag="{x:Bind Fav_Image}" HorizontalAlignment="Left" Click="Fav_Button_Click" Loaded="Fav_Button_Loaded"/>
                                                     <Line X1="0" X2="1" Stretch="Fill" Stroke="{StaticResource SystemControlBackgroundBaseHighBrush}" StrokeThickness="1" Margin="-10,10,10,10"/>
                                                 </StackPanel>
                                             </StackPanel>

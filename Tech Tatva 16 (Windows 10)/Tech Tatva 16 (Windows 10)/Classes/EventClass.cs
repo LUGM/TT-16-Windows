@@ -11,7 +11,8 @@ namespace Tech_Tatva_16__Windows_10_.Classes
 {
     public class EventClass
     {
-        public int id;
+        [SQLite.PrimaryKey]
+        public int id { get; set; }
         public string Name { get; set; }
         public string Image { get; set; }
         public string Fav_Image { get; set; }

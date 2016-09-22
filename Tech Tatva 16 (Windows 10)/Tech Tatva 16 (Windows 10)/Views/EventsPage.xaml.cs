@@ -38,19 +38,22 @@ namespace Tech_Tatva_16__Windows_10_.Views
             this.InitializeComponent();
 
             Filter_Fav.SelectedIndex = 0;
-            //EventClass event1 = new EventClass();
-            //event1.Name = "Hello";
-            //event1.Image = "ms-appx:///Assets/Square44x44Logo.scale-200.png";
-            //event1.Fav_Image = "";
+            EventClass event1 = new EventClass();
+            event1.id = 1;
+            event1.Name = "Hello";
+            event1.Image = "ms-appx:///Assets/Square44x44Logo.scale-200.png";
+            event1.Fav_Image = "";
 
-            //EventClass event2 = new EventClass();
-            //event2.Name = "Hello1";
-            //event2.Image = "ms-appx:///Assets/Square44x44Logo.scale-200.png";
-            //event2.Fav_Image = "";
+            EventClass event2 = new EventClass();
+            event2.id = 2;
+            event2.Name = "Hello1";
+            event2.Image = "ms-appx:///Assets/Square44x44Logo.scale-200.png";
+            event2.Fav_Image = "";
 
             DatabaseHelperClass db = new DatabaseHelperClass();
-            //db.Insert(event1);
-            //db.Insert(event2);
+            db.DeleteAllEvents();
+            db.Insert(event1);
+            db.Insert(event2);
 
             List<EventClass> l1 = new List<EventClass>();
             l1 = db.ReadEvents();
@@ -61,22 +64,7 @@ namespace Tech_Tatva_16__Windows_10_.Views
             day1.Events = l;
             day1.day = "Day 1";
 
-            Day day2 = new Day();
-            day2.Events = l;
-            day2.day = "Day 2";
-
-            Day day3 = new Day();
-            day3.Events = l;
-            day3.day = "Day 3";
-
-            Day day4 = new Day();
-            day4.Events = l;
-            day4.day = "Day 4";
-
             this.Days.Add(day1);
-            this.Days.Add(day2);
-            this.Days.Add(day3);
-            this.Days.Add(day4);
 
             Day dayfav = new Day();
             dayfav.day = "";
@@ -87,12 +75,15 @@ namespace Tech_Tatva_16__Windows_10_.Views
             {
                 foreach(EventClass events in d.Events)
                 {
-                    if (events.Fav_Image.Equals(""))
+                    if (events.Fav_Image.Equals(""))
                     {
                         lis.Add(events);
                     }
                 }
             }
+
+            if (lis.Count == 0)
+                dayfav.day = "No Favourites Added Yet..";
 
             dayfav.Events = lis;
             Favourites.Add(dayfav);
@@ -194,6 +185,8 @@ namespace Tech_Tatva_16__Windows_10_.Views
             EventClass events = new EventClass();
             events = (sender as RadioButton).DataContext as EventClass;
 
+            DatabaseHelperClass db = new DatabaseHelperClass();
+
             if ((sender as RadioButton).Tag.Equals(""))
             {
                 (sender as RadioButton).Tag = ("");
@@ -210,10 +203,10 @@ namespace Tech_Tatva_16__Windows_10_.Views
             {
                 foreach (EventClass ev in day.Events)
                 {
-
                     if (ev.Name.Equals(events.Name))
                     {
                         ev.Fav_Image = (sender as RadioButton).Tag.ToString();
+                        db.UpdateEvent(ev);
                         break;
                     }
                 }
@@ -240,12 +233,50 @@ namespace Tech_Tatva_16__Windows_10_.Views
         {
             if((sender as ComboBox).SelectedIndex == 1)
             {
+                Day dayfav = new Day();
+                dayfav.day = "";
+
+                ObservableCollection<EventClass> lis = new ObservableCollection<EventClass>();
+
+                foreach (Day d in Days)
+                {
+                    foreach (EventClass events in d.Events)
+                    {
+                        if (events.Fav_Image.Equals(""))
+                        {
+                            lis.Add(events);
+                        }
+                    }
+                }
+
+                dayfav.Events = lis;
+
+                if (lis.Count == 0)
+                    dayfav.day = "No Favourites Added Yet..";
+
+                Favourites.Clear();
+                Favourites.Add(dayfav);
+
                 MyPivot.ItemsSource = Favourites;
             }
 
             if ((sender as ComboBox).SelectedIndex == 0)
             {
                 MyPivot.ItemsSource = Days;
+            }
+        }
+
+        private void Fav_Button_Loaded(object sender, RoutedEventArgs e)
+        {
+            EventClass eve = (sender as RadioButton).DataContext as EventClass;
+            if ((sender as RadioButton).Tag.Equals(""))
+            {
+                (sender as RadioButton).Content = "Bookmark Event";
+            }
+
+            else if ((sender as RadioButton).Tag.Equals(""))
+            {
+                (sender as RadioButton).Content = "Remove Bookmark";
             }
         }
     }

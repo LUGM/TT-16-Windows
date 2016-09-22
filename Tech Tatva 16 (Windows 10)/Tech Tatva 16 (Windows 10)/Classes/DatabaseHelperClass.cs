@@ -90,7 +90,7 @@ namespace Tech_Tatva__16.Classes
         {
             using (var dbConn = new SQLiteConnection(App.DB_PATH))
             {
-                var existingconact = dbConn.Query<EventClass>("select * from Events where id =" + eve.id).FirstOrDefault();
+                var existingconact = dbConn.Query<EventClass>("select * from EventClass where id =" + eve.id).FirstOrDefault();
                 if (existingconact != null)
                 {
                     existingconact.Name = eve.Name;
