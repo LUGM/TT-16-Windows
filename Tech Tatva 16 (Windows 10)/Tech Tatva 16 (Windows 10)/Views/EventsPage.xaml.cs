@@ -31,10 +31,13 @@ namespace Tech_Tatva_16__Windows_10_.Views
 
 
         public ObservableCollection<Day> Days = new ObservableCollection<Day>();
+        public ObservableCollection<Day> Favourites = new ObservableCollection<Day>(); 
 
         public EventsPage()
         {
             this.InitializeComponent();
+
+            Filter_Fav.SelectedIndex = 0;
             //EventClass event1 = new EventClass();
             //event1.Name = "Hello";
             //event1.Image = "ms-appx:///Assets/Square44x44Logo.scale-200.png";
@@ -75,6 +78,25 @@ namespace Tech_Tatva_16__Windows_10_.Views
             this.Days.Add(day3);
             this.Days.Add(day4);
 
+            Day dayfav = new Day();
+            dayfav.day = "";
+
+            ObservableCollection<EventClass> lis = new ObservableCollection<EventClass>();
+
+            foreach (Day d in Days)
+            {
+                foreach(EventClass events in d.Events)
+                {
+                    if (events.Fav_Image.Equals(""))
+                    {
+                        lis.Add(events);
+                    }
+                }
+            }
+
+            dayfav.Events = lis;
+            Favourites.Add(dayfav);
+
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -99,7 +121,7 @@ namespace Tech_Tatva_16__Windows_10_.Views
                     AppViewBackButtonVisibility.Collapsed;
             }
 
-            if((string)e.Parameter != "" && e.Parameter != null)
+            if((string)e.Parameter != "" && e.Parameter != null && e.Parameter.GetType() == typeof(string))
             {
                 ObservableCollection<EventClass> l = new ObservableCollection<EventClass>();
                 DatabaseHelperClass db = new DatabaseHelperClass();
@@ -212,6 +234,19 @@ namespace Tech_Tatva_16__Windows_10_.Views
             }
 
             return _List;
+        }
+
+        private void Filter_Fav_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if((sender as ComboBox).SelectedIndex == 1)
+            {
+                MyPivot.ItemsSource = Favourites;
+            }
+
+            if ((sender as ComboBox).SelectedIndex == 0)
+            {
+                MyPivot.ItemsSource = Days;
+            }
         }
     }
 

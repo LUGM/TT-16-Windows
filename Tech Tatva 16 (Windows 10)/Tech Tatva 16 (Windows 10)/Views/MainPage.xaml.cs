@@ -268,7 +268,6 @@ namespace Tech_Tatva_16__Windows_10_
 
         private void FavouritesButton_Checked(object sender, RoutedEventArgs e)
         {
-
         }
 
         public void ShowPopup()
@@ -336,11 +335,6 @@ namespace Tech_Tatva_16__Windows_10_
             Search_Icon.Visibility = Visibility.Visible;
             Title.Visibility = Visibility.Visible;
             (sender as AutoSuggestBox).Visibility = Visibility.Collapsed;
-        }
-
-        private void Search_Textbox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
-        {
-            this.contentFrame.Navigate(typeof(EventsPage), (args.SelectedItem as string));
         }
 
         private void Search_Textbox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)

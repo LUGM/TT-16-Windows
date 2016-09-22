@@ -22,8 +22,19 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource SystemControlBackgroundBaseLowBrush}" />
-        <TextBlock Text="Events" Style="{StaticResource HeaderTextBlockStyle}" Margin="10"/>
+        <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource SystemControlBackgroundBaseLowBrush}" />
+        <RelativePanel HorizontalAlignment="Stretch">
+            <TextBlock Name="Title" Text="Events" Style="{StaticResource HeaderTextBlockStyle}" Margin="10"/>
+            <ComboBox Background="Transparent" Name="Filter_Fav" HorizontalAlignment="Right" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignVerticalCenterWith="Title" Margin="10" Style="{StaticResource ThemedComboBox}" SelectionChanged="Filter_Fav_SelectionChanged">
+                <ComboBoxItem>
+                    <TextBlock Text="All" />
+                </ComboBoxItem>
+
+                <ComboBoxItem>
+                    <TextBlock Text="Favourites" />
+                </ComboBoxItem>
+            </ComboBox>
+        </RelativePanel>
 
         <!--TODO: Content should be placed within the following grid-->
         <Grid Name="ContentRoot" Grid.Row="1">
