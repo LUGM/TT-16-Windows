@@ -63,7 +63,9 @@ namespace Tech_Tatva_16__Windows_10_
                  SystemNavigationManager.GetForCurrentView().BackRequested += MainPage_BackRequested;
                  // update radiobuttons after frame navigates 
                  var type = frame.CurrentSourcePageType;
-                 FilterFavButton.Visibility = Visibility.Collapsed;
+
+                 if(AnalyticsInfo.VersionInfo.DeviceFamily == "Windows.Mobile")
+                    FilterFavButton.Visibility = Visibility.Collapsed;
 
                  if (type == typeof(EventsPage))
                  {
