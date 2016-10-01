@@ -75,9 +75,7 @@ namespace Tech_Tatva__16.Views
             //event2.Image = "ms-appx:///Assets/Square71x71Logo.scale-240.png";
             //event2.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_disabled.png";
 
-            //DatabaseHelperClass db = new DatabaseHelperClass();
-            //db.Insert(event1);
-            //db.Insert(event2);
+
 
 
         }
@@ -169,8 +167,14 @@ namespace Tech_Tatva__16.Views
                 bmi.Add(b);
             }
 
-
             DatabaseHelperClass db = new DatabaseHelperClass();
+            db.DeleteAllEvents();
+            List<EventClass> listevents = new List<EventClass>();
+            listevents = await GetEventsAPIAsync();
+            foreach (EventClass eventclass in listevents)
+            {
+                db.Insert(eventclass);
+            }
             List<EventClass> l = new List<EventClass>();
             l = db.ReadEvents();
 
@@ -307,7 +311,6 @@ namespace Tech_Tatva__16.Views
             this.instapop.IsOpen = true;
         }
 
-
         private void Abt_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(AboutPage));
@@ -336,6 +339,41 @@ namespace Tech_Tatva__16.Views
         private void Fav_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(FavouritesPage));
+        }
+
+        private async Task<List<EventClass>> GetEventsAPIAsync()
+        {
+            List<EventClass> eve = new List<EventClass>();
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    ListEventAPI E1 = new ListEventAPI();
+                    ListSchedule E2 = new ListSchedule();
+                    var response = await client.GetStringAsync("http://api.mitportals.in/events");
+                    E1 = JsonConvert.DeserializeObject<ListEventAPI>(response);
+
+                    var response1 = await client.GetStringAsync("http://api.mitportals.in/schedule");
+                    E2 = JsonConvert.DeserializeObject<ListSchedule>(response1);
+
+                    foreach(EventAPI E in E1.data)
+                    {
+                        foreach(Schedule S in E2.data)
+                        {
+                            if(E.eid == S.eid)
+                            {
+                                eve.Add(App.Merge(S, E));
+                            }
+                        }
+                    }
+                }
+                catch
+                {
+                    //Do nothing
+                }
+
+                return eve;
+            }
         }
     }
 }

@@ -72,7 +72,6 @@ namespace Tech_Tatva__16.Views
         {
 
             EventClass events = e.NavigationParameter as EventClass;
-            this.defaultViewModel["Name"] = events.Name;
             this.DataContext = events;
 
             if(events.Fav_Image == "ms-appx:///Assets/Icons/fav-icon_disabled.png")
