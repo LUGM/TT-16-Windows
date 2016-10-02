@@ -48,13 +48,12 @@
             </TransitionCollection>
         </Grid.ChildrenTransitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-       
-        <Hub x:Name="MyHub" Grid.Row="1"  Header="techtatva" DataContext="{Binding}">
+        <StackPanel x:Name="PPanel" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <ProgressRing IsActive="True" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource AppAccentColorBrush}" />
+            <TextBlock Text="fixing the airwaves.." FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10"/>
+        </StackPanel>
+        
+        <Hub x:Name="MyHub"  Header="techtatva" DataContext="{Binding}">
             <Hub.HeaderTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding}" CharacterSpacing="{StaticResource HubSectionHeaderCharacterSpacing}" FontSize="60" FontFamily="Segoe WP" FontWeight="SemiLight" Margin="0, 9, 0,0" Foreground="{StaticResource AppAccentColorBrush}"/>

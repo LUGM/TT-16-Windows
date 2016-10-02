@@ -61,23 +61,6 @@ namespace Tech_Tatva__16.Views
             Loaded += MainPage_Loaded;
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
 
-
-
-            //EventClass event1 = new EventClass();
-            //event1.id = 1;
-            //event1.Name = "Hello";
-            //event1.Image = "ms-appx:///Assets/Square71x71Logo.scale-240.png";
-            //event1.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_enabled.png";
-
-            //EventClass event2 = new EventClass();
-            //event2.id = 2;
-            //event2.Name = "Hello1";
-            //event2.Image = "ms-appx:///Assets/Square71x71Logo.scale-240.png";
-            //event2.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_disabled.png";
-
-
-
-
         }
 
         private async void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
@@ -154,6 +137,8 @@ namespace Tech_Tatva__16.Views
         /// session.  The state will be null the first time a page is visited.</param>
         private async void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
+            PPanel.Visibility = Visibility.Visible;
+
             //Start Of Insta API Call
             insta = await GetInstaAsync();
             List<BitmapImage> bmi = new List<BitmapImage>();
@@ -230,6 +215,8 @@ namespace Tech_Tatva__16.Views
             this.defaultViewModel["Days"] = list;
             this.defaultViewModel["Insta"] = bmi;
             this.defaultViewModel["Results"] = res;
+
+            PPanel.Visibility = Visibility.Collapsed;
 
         }
 
