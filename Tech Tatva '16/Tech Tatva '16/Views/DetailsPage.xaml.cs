@@ -72,7 +72,6 @@ namespace Tech_Tatva__16.Views
         {
 
             EventClass events = e.NavigationParameter as EventClass;
-            this.defaultViewModel["Name"] = events.Name;
             this.DataContext = events;
 
             if(events.Fav_Image == "ms-appx:///Assets/Icons/fav-icon_disabled.png")
@@ -139,7 +138,12 @@ namespace Tech_Tatva__16.Views
             if ((this.DataContext as EventClass).Fav_Image == "ms-appx:///Assets/Icons/fav-icon_disabled.png")
             {
                 BookmarkText.Text = "remove bookmark";
-                Favs.Add((this.DataContext as EventClass).id);
+                if (Favs.Contains((this.DataContext as EventClass).id))
+                {
+                    //Do Nothing
+                }
+                else
+                    Favs.Add((this.DataContext as EventClass).id);
 
             }
 

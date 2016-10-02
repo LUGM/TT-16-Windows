@@ -101,6 +101,11 @@ namespace Tech_Tatva__16.Views
                         }
                     }
 
+                    foreach(EventClass eve in FavEvents)
+                    {
+                        eve.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_enabled.png";
+                    }
+
                     FavList.ItemsSource = FavEvents;
                 }
             }

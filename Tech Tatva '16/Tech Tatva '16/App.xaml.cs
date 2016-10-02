@@ -159,5 +159,28 @@ namespace Tech_Tatva__16
             // TODO: Save application state and stop any background activity
             deferral.Complete();
         }
+
+        public static EventClass Merge(Schedule Sched, EventAPI eve)
+        {
+            EventClass Evnt = new EventClass();
+
+            if(Sched.eid == eve.eid)
+            {
+                Evnt.id = int.Parse(eve.eid);
+                Evnt.Name = eve.ename;
+                Evnt.Description = eve.edesc;
+                Evnt.Venue = Sched.venue;
+                Evnt.Stime = Sched.stime;
+                Evnt.Etime = Sched.etime;
+                Evnt.Date = Sched.date;
+                Evnt.TeamSize = eve.emaxteamsize;
+                Evnt.Contact = eve.cntctno;
+                Evnt.Day = Sched.day;
+                Evnt.Image = "ms-appx:///Assets/Square71x71Logo.scale-240.png";
+                Evnt.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_disabled.png";
+            }
+
+            return Evnt;
+        }
     }
 }
