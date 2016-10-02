@@ -15,7 +15,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Image Source="/Assets/error.png"></Image>
+        <Image Source="/Assets/error.png" Height="300"></Image>
 
         <TextBlock Grid.Row="1" HorizontalAlignment="Center" TextAlignment="Center" FontSize="60" FontFamily="Segoe WP" FontWeight="Light" >
             <TextBlock.Text>
