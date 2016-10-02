@@ -37,8 +37,8 @@
 
         <!--TODO: Content should be placed within the following grid-->
         <StackPanel Grid.Row="1">
-            <ScrollViewer MaxHeight="100">
-                <TextBlock Text="{Binding Description}" FontSize="20" TextWrapping="Wrap" TextAlignment="Center" Margin="0,20,0,20" />
+            <ScrollViewer MaxHeight="100" Margin="0,10,0,10">
+                <TextBlock Text="{Binding Description}" FontSize="20" TextWrapping="Wrap" TextAlignment="Center" />
             </ScrollViewer>
             <Line X1="0" X2="1" Stretch="Fill" Stroke="{StaticResource AppAccentColorBrush}" StrokeThickness="1" Margin="-10,0,0,0"/>
         </StackPanel>

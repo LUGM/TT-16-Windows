@@ -17,6 +17,7 @@ namespace Tech_Tatva__16
         public string Stime { get; set; }
         public string Etime { get; set; }
         public string Date { get; set; }
+        public string Day { get; set; }
         public string TeamSize { get; set; }
         public string Contact { get; set; }
         public string Image { get; set; }

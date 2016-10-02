@@ -31,7 +31,6 @@ namespace Tech_Tatva__16.Views
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
-        public Day day = new Day();
         private List<int> Favs = new List<int>();
 
         public EventsPage()
@@ -73,8 +72,8 @@ namespace Tech_Tatva__16.Views
         /// session.  The state will be null the first time a page is visited.</param>
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-
-            day = e.NavigationParameter as Day;
+             Day day = new Day();
+             day = e.NavigationParameter as Day;
             
 
             foreach(PivotItem p in MyPivot.Items)
@@ -83,7 +82,42 @@ namespace Tech_Tatva__16.Views
                     MyPivot.SelectedItem = p;
             }
 
-            
+            DatabaseHelperClass db = new DatabaseHelperClass();
+            List<EventClass> l = new List<EventClass>();
+            l = db.ReadEvents();
+
+            List<EventClass> Day1_Events = new List<EventClass>();
+            List<EventClass> Day2_Events = new List<EventClass>();
+            List<EventClass> Day3_Events = new List<EventClass>();
+            List<EventClass> Day4_Events = new List<EventClass>();
+
+            Day1_Events = l.Where(p => p.Day == "1").ToList();
+            Day2_Events = l.Where(p => p.Day == "2").ToList();
+            Day3_Events = l.Where(p => p.Day == "3").ToList();
+            Day4_Events = l.Where(p => p.Day == "4").ToList();
+
+            List<Day> list = new List<Day>();
+            Day day1 = new Day();
+            day1.Events = Day1_Events;
+            day1.day = "day 1";
+
+            Day day2 = new Day();
+            day2.Events = Day2_Events;
+            day2.day = "day 2";
+
+            Day day3 = new Day();
+            day3.Events = Day3_Events;
+            day3.day = "day 3";
+
+            Day day4 = new Day();
+            day4.Events = Day4_Events;
+            day4.day = "day 4";
+
+
+            list.Add(day1);
+            list.Add(day2);
+            list.Add(day3);
+            list.Add(day4);
 
             var roamingSettings = ApplicationData.Current.RoamingSettings;
             if (roamingSettings.Values["Favs"] != null)
@@ -94,15 +128,18 @@ namespace Tech_Tatva__16.Views
 
                     foreach (int id in Favs)
                     {
-                        foreach (EventClass eve in day.Events)
+                        foreach (Day days in list)
                         {
-                            if (id == eve.id)
+                            foreach (EventClass eve in days.Events)
                             {
-                                eve.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_enabled.png";
-                            }
-                            else
-                            {
-                                eve.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_disabled.png";
+                                if (id == eve.id)
+                                {
+                                    eve.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_enabled.png";
+                                }
+                                else
+                                {
+                                    eve.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_disabled.png";
+                                }
                             }
                         }
                     }
@@ -123,7 +160,10 @@ namespace Tech_Tatva__16.Views
                 }
             }
 
-            this.defaultViewModel["Day"] = day;
+            Day1.DataContext = Day1_Events;
+            Day2.DataContext = Day2_Events;
+            Day3.DataContext = Day3_Events;
+            Day4.DataContext = Day4_Events;
 
         }
 

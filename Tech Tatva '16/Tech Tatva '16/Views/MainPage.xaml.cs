@@ -154,7 +154,7 @@ namespace Tech_Tatva__16.Views
         /// session.  The state will be null the first time a page is visited.</param>
         private async void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-
+            //Start Of Insta API Call
             insta = await GetInstaAsync();
             List<BitmapImage> bmi = new List<BitmapImage>();
 
@@ -167,6 +167,9 @@ namespace Tech_Tatva__16.Views
                 bmi.Add(b);
             }
 
+            //End Of Insta API call and formatting
+
+            //Start Of EventsAPI call
             DatabaseHelperClass db = new DatabaseHelperClass();
             db.DeleteAllEvents();
             List<EventClass> listevents = new List<EventClass>();
@@ -175,24 +178,36 @@ namespace Tech_Tatva__16.Views
             {
                 db.Insert(eventclass);
             }
+            //End of Events API Call
+
             List<EventClass> l = new List<EventClass>();
             l = db.ReadEvents();
 
+            List<EventClass> Day1_Events = new List<EventClass>();
+            List<EventClass> Day2_Events = new List<EventClass>();
+            List<EventClass> Day3_Events = new List<EventClass>();
+            List<EventClass> Day4_Events = new List<EventClass>();
+
+            Day1_Events = l.Where(p => p.Day == "1").ToList() ;
+            Day2_Events = l.Where(p => p.Day == "2").ToList();
+            Day3_Events = l.Where(p => p.Day == "3").ToList();
+            Day4_Events = l.Where(p => p.Day == "4").ToList();
+
             List<Day> list = new List<Day>();
             Day day1 = new Day();
-            day1.Events = l;
+            day1.Events = Day1_Events;
             day1.day = "day 1";
 
             Day day2 = new Day();
-            day2.Events = l;
+            day2.Events = Day2_Events;
             day2.day = "day 2";
 
             Day day3 = new Day();
-            day3.Events = l;
+            day3.Events = Day3_Events;
             day3.day = "day 3";
 
             Day day4 = new Day();
-            day4.Events = l;
+            day4.Events = Day4_Events;
             day4.day = "day 4";
 
 

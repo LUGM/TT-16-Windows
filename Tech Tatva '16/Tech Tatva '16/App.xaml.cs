@@ -172,9 +172,10 @@ namespace Tech_Tatva__16
                 Evnt.Venue = Sched.venue;
                 Evnt.Stime = Sched.stime;
                 Evnt.Etime = Sched.etime;
-                Evnt.Date = Sched.day;
+                Evnt.Date = Sched.date;
                 Evnt.TeamSize = eve.emaxteamsize;
                 Evnt.Contact = eve.cntctno;
+                Evnt.Day = Sched.day;
                 Evnt.Image = "ms-appx:///Assets/Square71x71Logo.scale-240.png";
                 Evnt.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_disabled.png";
             }
