@@ -26,6 +26,7 @@ using Windows.UI;
 using Windows.Phone.UI.Input;
 using Tech_Tatva__16.Classes;
 using System.Collections.ObjectModel;
+using Windows.Networking.Connectivity;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -85,25 +86,6 @@ namespace Tech_Tatva__16.Views
 
         private async void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            if (NetworkInterface.GetIsNetworkAvailable())
-            {
-                this.LayoutRoot.Opacity = 1;
-                CmdBar.Visibility = Visibility.Visible;
-                await statusbar.ShowAsync();
-            }
-            else
-            {
-
-                await statusbar.HideAsync();
-                CmdBar.Visibility = Visibility.Collapsed;
-                this.LayoutRoot.Opacity = 0.2;
-                ErrorOverlay ovr = new ErrorOverlay();
-                ovr.Width = this.ActualWidth;
-                ovr.Height = this.ActualHeight;
-                this.errorpop.Child = ovr;
-                this.errorpop.IsOpen = true;
-
-            }
 
         }
 
@@ -138,32 +120,66 @@ namespace Tech_Tatva__16.Views
         private async void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
             PPanel.Visibility = Visibility.Visible;
-
-            //Start Of Insta API Call
-            insta = await GetInstaAsync();
+            DatabaseHelperClass db = new DatabaseHelperClass();
             List<BitmapImage> bmi = new List<BitmapImage>();
 
-            foreach (Datum d in insta.data)
+            BitmapImage bit = new BitmapImage();
+            bit.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+            bit.UriSource = new Uri("ms-appx:///Assets/back.jpg");
+
+            for (int i = 0; i < 9; i++)
+                bmi.Add(bit);
+
+            //Checking Network
+            bool isConnected = NetworkInterface.GetIsNetworkAvailable();
+            if (!isConnected)
             {
-                BitmapImage b = new BitmapImage();
-                b.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
-                b.UriSource = new Uri(d.images.thumbnail.url);
-
-                bmi.Add(b);
+                // Do Nothing    
             }
-
-            //End Of Insta API call and formatting
-
-            //Start Of EventsAPI call
-            DatabaseHelperClass db = new DatabaseHelperClass();
-            db.DeleteAllEvents();
-            List<EventClass> listevents = new List<EventClass>();
-            listevents = await GetEventsAPIAsync();
-            foreach (EventClass eventclass in listevents)
+            else
             {
-                db.Insert(eventclass);
+                ConnectionProfile InternetConnectionProfile = NetworkInformation.GetInternetConnectionProfile();
+                NetworkConnectivityLevel connection = InternetConnectionProfile.GetNetworkConnectivityLevel();
+                if (connection == NetworkConnectivityLevel.None || connection == NetworkConnectivityLevel.LocalAccess)
+                {
+                    isConnected = false;
+                }
             }
-            //End of Events API Call
+            //Nettwork availability checked
+
+            if (!isConnected)
+            {
+                if ((db.ReadEvents() as List<EventClass>).Count == 0)
+                    ShowPopupAsync();
+                else
+                    HidePopupAsync();
+            }
+            else
+            {
+                //Start Of Insta API Call
+                //insta = await GetInstaAsync();
+                //bmi.Clear();
+                //foreach (Datum d in insta.data)
+                //{
+                //    BitmapImage b = new BitmapImage();
+                //    b.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                //    b.UriSource = new Uri(d.images.thumbnail.url);
+
+                //    bmi.Add(b);
+                //}
+
+                //End Of Insta API call and formatting
+
+                //Start Of EventsAPI call
+                db.DeleteAllEvents();
+                List<EventClass> listevents = new List<EventClass>();
+                listevents = await GetEventsAPIAsync();
+                foreach (EventClass eventclass in listevents)
+                {
+                    db.Insert(eventclass);
+                }
+                //End of Events API Call
+            }
 
             List<EventClass> l = new List<EventClass>();
             l = db.ReadEvents();
@@ -288,29 +304,37 @@ namespace Tech_Tatva__16.Views
 
         private async void Insta_Clicked(object sender, ItemClickEventArgs e)
         {
-            Datum d = new Datum();
-
-            foreach (Datum datum in insta.data)
+            if ((e.ClickedItem as BitmapImage).UriSource.ToString() == "ms-appx:/Assets/back.jpg")
             {
-                if (datum.images.thumbnail.url.Equals((e.ClickedItem as BitmapImage).UriSource.ToString()))
-                {
-                    d = datum;
-                    break;
-                }
+                ShowPopupAsync();
             }
+            else
+            {
+                HidePopupAsync();
+                Datum d = new Datum();
 
-            await statusbar.HideAsync();
+                foreach (Datum datum in insta.data)
+                {
+                    if (datum.images.thumbnail.url.Equals((e.ClickedItem as BitmapImage).UriSource.ToString()))
+                    {
+                        d = datum;
+                        break;
+                    }
+                }
+
+                await statusbar.HideAsync();
 
 
-            this.LayoutRoot.Opacity = 0.2;
-            CmdBar.Visibility = Visibility.Collapsed;
+                this.LayoutRoot.Opacity = 0.2;
+                CmdBar.Visibility = Visibility.Collapsed;
 
-            InstaOverlay ovr = new InstaOverlay();
-            ovr.Height = this.ActualHeight;
-            ovr.Width = this.ActualWidth;
-            this.instapop.Child = ovr;
-            ovr.DataContext = d;
-            this.instapop.IsOpen = true;
+                InstaOverlay ovr = new InstaOverlay();
+                ovr.Height = this.ActualHeight;
+                ovr.Width = this.ActualWidth;
+                this.instapop.Child = ovr;
+                ovr.DataContext = d;
+                this.instapop.IsOpen = true;
+            }
         }
 
         private void Abt_Click(object sender, RoutedEventArgs e)
@@ -376,6 +400,25 @@ namespace Tech_Tatva__16.Views
 
                 return eve;
             }
+        }
+
+        private async void ShowPopupAsync()
+        {
+            await statusbar.HideAsync();
+            CmdBar.Visibility = Visibility.Collapsed;
+            this.LayoutRoot.Opacity = 0.2;
+            ErrorOverlay ovr = new ErrorOverlay();
+            ovr.Width = this.ActualWidth;
+            ovr.Height = this.ActualHeight;
+            this.errorpop.Child = ovr;
+            this.errorpop.IsOpen = true;
+        }
+
+        private async void HidePopupAsync()
+        {
+            this.LayoutRoot.Opacity = 1;
+            CmdBar.Visibility = Visibility.Visible;
+            await statusbar.ShowAsync();
         }
     }
 }
