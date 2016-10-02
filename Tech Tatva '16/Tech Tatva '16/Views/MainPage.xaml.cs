@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using System.Threading.Tasks;
-using Tech_Tatva__16.Classes.Test_App;
+using Tech_Tatva__16.Classes;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Net.NetworkInformation;
@@ -24,7 +24,6 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Shapes;
 using Windows.UI;
 using Windows.Phone.UI.Input;
-using Tech_Tatva__16.Classes;
 using System.Collections.ObjectModel;
 using Windows.Networking.Connectivity;
 
@@ -157,16 +156,16 @@ namespace Tech_Tatva__16.Views
             else
             {
                 //Start Of Insta API Call
-                //insta = await GetInstaAsync();
-                //bmi.Clear();
-                //foreach (Datum d in insta.data)
-                //{
-                //    BitmapImage b = new BitmapImage();
-                //    b.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
-                //    b.UriSource = new Uri(d.images.thumbnail.url);
+                insta = await GetInstaAsync();
+                bmi.Clear();
+                foreach (Datum d in insta.data)
+                {
+                    BitmapImage b = new BitmapImage();
+                    b.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                    b.UriSource = new Uri(d.images.thumbnail.url);
 
-                //    bmi.Add(b);
-                //}
+                    bmi.Add(b);
+                }
 
                 //End Of Insta API call and formatting
 

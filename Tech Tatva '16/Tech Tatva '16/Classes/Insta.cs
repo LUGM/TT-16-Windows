@@ -13,8 +13,6 @@ namespace Tech_Tatva__16.Classes
     using System.Threading.Tasks;
     using Windows.UI.Xaml.Media.Imaging;
 
-    namespace Test_App
-    {
         public class Pagination
         {
             public string next_min_id { get; set; }
@@ -135,5 +133,3 @@ namespace Tech_Tatva__16.Classes
             public List<Datum> data { get; set; }
         }
     }
-
-}
