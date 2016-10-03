@@ -14,7 +14,6 @@
                 <AppBarButton x:Name="Dev" Label="developers" Click="Dev_Click"/>
                 <AppBarButton x:Name="Abt" Label="about" Click="Abt_Click"/>
             </CommandBar.SecondaryCommands> 
-            <AppBarButton Icon="Refresh" Label="refresh"/>
         </CommandBar>
     </Page.BottomAppBar>
 

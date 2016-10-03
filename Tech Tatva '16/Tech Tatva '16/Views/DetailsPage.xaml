@@ -33,12 +33,13 @@
             <TextBlock Text="techtatva" FontSize="47" Margin="0,12,0,0" Foreground="{StaticResource AppAccentColorBrush}" FontFamily="Segoe WP SemiLight"/>
             <StackPanel Orientation="Horizontal">
                 <Image Height="45" Source="{Binding Image}" Margin="0,6.5,10,15"/>
-                <TextBlock Margin="0,6.5,0,15" FontSize="25" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Foreground="{StaticResource AppAccentColorBrush}" VerticalAlignment="Center" >
-                    <Run Text="{Binding Name}" />
-                    <Run Text="(Round " />
+                <StackPanel>
+                    <TextBlock Text="{Binding Name}" Margin="0,6.5,0,0" FontSize="25" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Foreground="{StaticResource AppAccentColorBrush}" VerticalAlignment="Center" />
+                    <TextBlock Margin="0,0,0,15" FontSize="25" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Foreground="{StaticResource AppAccentColorBrush}" VerticalAlignment="Center" >
+                    <Run Text="Round" />
                     <Run Text="{Binding Round}" />
-                    <Run Text=")" />
-                </TextBlock>
+                    </TextBlock>
+                </StackPanel>
             </StackPanel>
             <Line X1="0" X2="1" Stretch="Fill" Stroke="{StaticResource AppAccentColorBrush}" StrokeThickness="1" Margin="-10,3,0,0"/>
         </StackPanel>
@@ -60,7 +61,7 @@
             <Image Source="/Assets/Icons/time-icon.png" Height="45" Width="45"></Image>
             <TextBlock FontSize="25" Margin="10,0,0,0" VerticalAlignment="Center">
                 <Run Text="{Binding Stime}" />
-                <Run Text=" to " />
+                <Run Text="to" />
                 <Run Text="{Binding Etime}" />
             </TextBlock>
         </StackPanel>
@@ -74,7 +75,7 @@
             <Image Source="/Assets/Icons/group-icon.png" Height="45" Width="45"></Image>
             <TextBlock FontSize="25" Margin="10,0,0,0" VerticalAlignment="Center">
                 <Run Text="{Binding TeamSize}" />
-                <Run Text=" per team" />
+                <Run Text="per team" />
             </TextBlock>
         </StackPanel>
 
