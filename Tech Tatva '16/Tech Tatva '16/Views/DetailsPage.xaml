@@ -31,7 +31,15 @@
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="10,0,0,0">
             <TextBlock Text="techtatva" FontSize="47" Margin="0,12,0,0" Foreground="{StaticResource AppAccentColorBrush}" FontFamily="Segoe WP SemiLight"/>
-            <TextBlock Text="{Binding Name}" Margin="0,6.5,0,15" FontSize="25" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Foreground="{StaticResource AppAccentColorBrush}"/>
+            <StackPanel Orientation="Horizontal">
+                <Image Height="45" Source="{Binding Image}" Margin="0,6.5,10,15"/>
+                <TextBlock Margin="0,6.5,0,15" FontSize="25" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Foreground="{StaticResource AppAccentColorBrush}" VerticalAlignment="Center" >
+                    <Run Text="{Binding Name}" />
+                    <Run Text="(Round " />
+                    <Run Text="{Binding Round}" />
+                    <Run Text=")" />
+                </TextBlock>
+            </StackPanel>
             <Line X1="0" X2="1" Stretch="Fill" Stroke="{StaticResource AppAccentColorBrush}" StrokeThickness="1" Margin="-10,3,0,0"/>
         </StackPanel>
 

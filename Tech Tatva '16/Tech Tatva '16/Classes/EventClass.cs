@@ -19,6 +19,7 @@ namespace Tech_Tatva__16
         public string Date { get; set; }
         public string Day { get; set; }
         public string TeamSize { get; set; }
+        public string Round { get; set; }
         public string Contact { get; set; }
         public string Image { get; set; }
         public string Fav_Image { get; set; }

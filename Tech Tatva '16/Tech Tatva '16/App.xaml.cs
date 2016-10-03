@@ -176,6 +176,7 @@ namespace Tech_Tatva__16
                 Evnt.TeamSize = eve.emaxteamsize;
                 Evnt.Contact = eve.cntctno;
                 Evnt.Day = Sched.day;
+                Evnt.Round = Sched.round.Trim();
                 Evnt.Image = "ms-appx:///Assets/Category Icons/TT-" + eve.cname + ".png";
                 Evnt.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_disabled.png";
             }
@@ -213,6 +214,7 @@ namespace Tech_Tatva__16
                     }                    
                 }
                 result.eve = names[i];
+                result.Image = "ms-appx:///Assets/Category Icons/TT-" + result.eve + ".png";
                 result.Teams = teams;
 
                 results.Add(result);
