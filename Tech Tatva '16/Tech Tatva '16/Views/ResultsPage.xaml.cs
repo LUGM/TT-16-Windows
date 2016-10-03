@@ -67,6 +67,7 @@ namespace Tech_Tatva__16.Views
         /// session.  The state will be null the first time a page is visited.</param>
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
+           this.DataContext =  e.NavigationParameter as Results;
         }
 
         /// <summary>

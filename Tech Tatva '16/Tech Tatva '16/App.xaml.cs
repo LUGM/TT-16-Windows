@@ -205,9 +205,9 @@ namespace Tech_Tatva__16
                 teams.Clear();
                 foreach (ResultAPI resultapi in res.data)
                 {
-                    team = new Team();
                     if (names[i] == resultapi.eve)
                     {
+                        team = new Team();
                         team.Teamid = resultapi.tid;
                         team.Round = resultapi.round;
                         team.Position = resultapi.pos;

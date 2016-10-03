@@ -82,7 +82,7 @@
 
             <HubSection x:Name="Results" Header="results" DataContext="{Binding Results}">
                 <DataTemplate>
-                    <ListView x:Name="List2" SelectionMode="None" IsItemClickEnabled="True" ItemsSource="{Binding}">
+                    <ListView x:Name="List2" SelectionMode="None" IsItemClickEnabled="True" ItemsSource="{Binding}" ItemClick="Result_Clicked">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" Margin="0,10,0,10">

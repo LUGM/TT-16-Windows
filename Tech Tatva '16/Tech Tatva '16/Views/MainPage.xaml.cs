@@ -430,5 +430,10 @@ namespace Tech_Tatva__16.Views
             CmdBar.Visibility = Visibility.Visible;
             await statusbar.ShowAsync();
         }
+
+        private void Result_Clicked(object sender, ItemClickEventArgs e)
+        {
+            Frame.Navigate(typeof(ResultsPage), (e.ClickedItem as Results));
+        }
     }
 }
