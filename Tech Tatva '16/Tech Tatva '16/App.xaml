@@ -5,7 +5,7 @@
     xmlns:local="using:Tech_Tatva__16">
 
     <Application.Resources>
-        <SolidColorBrush x:Key="AppAccentColorBrush" Color="#942a2a" />
+        <SolidColorBrush x:Key="AppAccentColorBrush" Color="#FFA42328" />
         <SolidColorBrush x:Key="BackgroundBrush" Color="Black" />
     </Application.Resources>
 </Application>

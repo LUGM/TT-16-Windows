@@ -32,126 +32,119 @@
                 <ListView>
                     <ListViewItem>
                         <StackPanel Orientation="Horizontal" Margin="0,5,1,5">
-                            <Image Source="/Assets/Square71x71Logo.scale-240.png" Height="50"/>
+                            <Image Source="/Assets/Category Icons/TT-cryptoss.png" Height="50"/>
                             <TextBlock Text="Cryptoss" FontFamily="Segoe WP" FontWeight="Light" FontSize="30" Margin="10,0,0,0"/>
                         </StackPanel>
                     </ListViewItem>
 
                     <ListViewItem>
                         <StackPanel Orientation="Horizontal" Margin="0,5,1,5">
-                            <Image Source="/Assets/Square71x71Logo.scale-240.png" Height="50"/>
+                            <Image Source="/Assets/Category Icons/TT-robotrek.png" Height="50"/>
                             <TextBlock Text="Robotrek" FontFamily="Segoe WP" FontWeight="Light" FontSize="30" Margin="10,0,0,0"/>
                         </StackPanel>
                     </ListViewItem>
 
                     <ListViewItem>
                         <StackPanel Orientation="Horizontal" Margin="0,5,1,5">
-                            <Image Source="/Assets/Square71x71Logo.scale-240.png" Height="50"/>
+                            <Image Source="/Assets/Category Icons/TT-alacrity.png" Height="50"/>
                             <TextBlock Text="Alacrity" FontFamily="Segoe WP" FontWeight="Light" FontSize="30" Margin="10,0,0,0"/>
                         </StackPanel>
                     </ListViewItem>
 
                     <ListViewItem>
                         <StackPanel Orientation="Horizontal" Margin="0,5,1,5">
-                            <Image Source="/Assets/Square71x71Logo.scale-240.png" Height="50"/>
+                            <Image Source="/Assets/Category Icons/TT-constructure.png" Height="50"/>
                             <TextBlock Text="Constructure" FontFamily="Segoe WP" FontWeight="Light" FontSize="30" Margin="10,0,0,0"/>
                         </StackPanel>
                     </ListViewItem>
 
                     <ListViewItem>
                         <StackPanel Orientation="Horizontal" Margin="0,5,1,5">
-                            <Image Source="/Assets/Square71x71Logo.scale-240.png" Height="50"/>
+                            <Image Source="/Assets/Category Icons/TT-bizzmaestro.png" Height="50"/>
                             <TextBlock Text="Bizzmaestro" FontFamily="Segoe WP" FontWeight="Light" FontSize="30" Margin="10,0,0,0"/>
                         </StackPanel>
                     </ListViewItem>
 
                     <ListViewItem>
                         <StackPanel Orientation="Horizontal" Margin="0,5,1,5">
-                            <Image Source="/Assets/Square71x71Logo.scale-240.png" Height="50"/>
-                            <TextBlock Text="Energia" FontFamily="Segoe WP" FontWeight="Light" FontSize="30" Margin="10,0,0,0"/>
-                        </StackPanel>
-                    </ListViewItem>
-
-                    <ListViewItem>
-                        <StackPanel Orientation="Horizontal" Margin="0,5,1,5">
-                            <Image Source="/Assets/Square71x71Logo.scale-240.png" Height="50"/>
+                            <Image Source="/Assets/Category Icons/TT-epsilon.png" Height="50"/>
                             <TextBlock Text="Epsilon" FontFamily="Segoe WP" FontWeight="Light" FontSize="30" Margin="10,0,0,0"/>
                         </StackPanel>
                     </ListViewItem>
 
                     <ListViewItem>
                         <StackPanel Orientation="Horizontal" Margin="0,5,1,5">
-                            <Image Source="/Assets/Square71x71Logo.scale-240.png" Height="50"/>
+                            <Image Source="/Assets/Category Icons/TT-airborne.png" Height="50"/>
                             <TextBlock Text="Airborne" FontFamily="Segoe WP" FontWeight="Light" FontSize="30" Margin="10,0,0,0"/>
                         </StackPanel>
                     </ListViewItem>
 
                     <ListViewItem>
                         <StackPanel Orientation="Horizontal" Margin="0,5,1,5">
-                            <Image Source="/Assets/Square71x71Logo.scale-240.png" Height="50"/>
+                            <Image Source="/Assets/Category Icons/TT-mechanize.png" Height="50"/>
                             <TextBlock Text="Mechanize" FontFamily="Segoe WP" FontWeight="Light" FontSize="30" Margin="10,0,0,0"/>
                         </StackPanel>
                     </ListViewItem>
 
                     <ListViewItem>
                         <StackPanel Orientation="Horizontal" Margin="0,5,1,5">
-                            <Image Source="/Assets/Square71x71Logo.scale-240.png" Height="50"/>
+                            <Image Source="/Assets/Category Icons/TT-cheminova.png" Height="50"/>
                             <TextBlock Text="Cheminova" FontFamily="Segoe WP" FontWeight="Light" FontSize="30" Margin="10,0,0,0"/>
                         </StackPanel>
                     </ListViewItem>
 
                     <ListViewItem>
                         <StackPanel Orientation="Horizontal" Margin="0,5,1,5">
-                            <Image Source="/Assets/Square71x71Logo.scale-240.png" Height="50"/>
+                            <Image Source="/Assets/Category Icons/TT-kraftwagen.png" Height="50"/>
                             <TextBlock Text="Kraftwagen" FontFamily="Segoe WP" FontWeight="Light" FontSize="30" Margin="10,0,0,0"/>
                         </StackPanel>
                     </ListViewItem>
 
                     <ListViewItem>
                         <StackPanel Orientation="Horizontal" Margin="0,5,1,5">
-                            <Image Source="/Assets/Square71x71Logo.scale-240.png" Height="50"/>
+                            <Image Source="/Assets/Category Icons/TT-electrific.png" Height="50"/>
                             <TextBlock Text="Electrific" FontFamily="Segoe WP" FontWeight="Light" FontSize="30" Margin="10,0,0,0"/>
                         </StackPanel>
                     </ListViewItem>
 
                     <ListViewItem>
                         <StackPanel Orientation="Horizontal" Margin="0,5,1,5">
-                            <Image Source="/Assets/Square71x71Logo.scale-240.png" Height="50"/>
+                            <Image Source="/Assets/Category Icons/TT-mechatron.png" Height="50"/>
                             <TextBlock Text="Mechatron" FontFamily="Segoe WP" FontWeight="Light" FontSize="30" Margin="10,0,0,0"/>
                         </StackPanel>
                     </ListViewItem>
 
                     <ListViewItem>
                         <StackPanel Orientation="Horizontal" Margin="0,5,1,5">
-                            <Image Source="/Assets/Square71x71Logo.scale-240.png" Height="50"/>
+                            <Image Source="/Assets/Category Icons/TT-gaming.png" Height="50"/>
                             <TextBlock Text="Gaming" FontFamily="Segoe WP" FontWeight="Light" FontSize="30" Margin="10,0,0,0"/>
                         </StackPanel>
                     </ListViewItem>
 
                     <ListViewItem>
                         <StackPanel Orientation="Horizontal" Margin="0,5,1,5">
-                            <Image Source="/Assets/Square71x71Logo.scale-240.png" Height="50"/>
-                            <TextBlock Text="Featured Events" FontFamily="Segoe WP" FontWeight="Light" FontSize="30" Margin="10,0,0,0"/>
+                            <Image Source="/Assets/Category Icons/TT-cosmicon.png" Height="50"/>
+                            <TextBlock Text="Cosmicon" FontFamily="Segoe WP" FontWeight="Light" FontSize="30" Margin="10,0,0,0"/>
                         </StackPanel>
                     </ListViewItem>
 
                     <ListViewItem>
                         <StackPanel Orientation="Horizontal" Margin="0,5,1,5">
-                            <Image Source="/Assets/Square71x71Logo.scale-240.png" Height="50"/>
+                            <Image Source="/Assets/Category Icons/TT-open events.png" Height="50"/>
                             <TextBlock Text="Open Events" FontFamily="Segoe WP" FontWeight="Light" FontSize="30" Margin="10,0,0,0"/>
                         </StackPanel>
                     </ListViewItem>
 
                     <ListViewItem>
                         <StackPanel Orientation="Horizontal" Margin="0,5,1,5">
-                            <Image Source="/Assets/Square71x71Logo.scale-240.png" Height="50"/>
+                            <Image Source="/Assets/Category Icons/TT-acumen.png" Height="50"/>
                             <TextBlock Text="Acumen" FontFamily="Segoe WP" FontWeight="Light" FontSize="30" Margin="10,0,0,0"/>
                         </StackPanel>
                     </ListViewItem>
 
                     <ListViewItem>
                         <StackPanel Orientation="Horizontal" Margin="0,5,1,5">
-                            <Image Source="/Assets/Square71x71Logo.scale-240.png" Height="50"/>
+                            <Image Source="/Assets/Category Icons/TT-turing.png" Height="50"/>
                             <TextBlock Text="Turing" FontFamily="Segoe WP" FontWeight="Light" FontSize="30" Margin="10,0,0,0"/>
                         </StackPanel>
                     </ListViewItem>

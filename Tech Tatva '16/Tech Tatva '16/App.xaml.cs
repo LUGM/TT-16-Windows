@@ -176,7 +176,7 @@ namespace Tech_Tatva__16
                 Evnt.TeamSize = eve.emaxteamsize;
                 Evnt.Contact = eve.cntctno;
                 Evnt.Day = Sched.day;
-                Evnt.Image = "ms-appx:///Assets/Square71x71Logo.scale-240.png";
+                Evnt.Image = "ms-appx:///Assets/Category Icons/TT-" + eve.cname + ".png";
                 Evnt.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_disabled.png";
             }
 
