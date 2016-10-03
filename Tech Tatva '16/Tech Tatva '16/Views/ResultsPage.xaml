@@ -18,6 +18,7 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -27,34 +28,36 @@
             <TextBlock Text="{Binding eve}" Margin="0,6.5,0,15" FontSize="25" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Foreground="{StaticResource AppAccentColorBrush}"/>
         </StackPanel>
 
+        <Grid Grid.Row="1" x:Name="Table">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Team ID" FontWeight="SemiLight" FontSize="25" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Column="1" Text="Round" FontWeight="SemiLight" FontSize="25" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Column="2"  Text="Position" FontWeight="SemiLight" FontSize="25" HorizontalAlignment="Center"/>
+        </Grid>
+        
         <!--TODO: Content should be placed within the following grid-->
-
-        <GridView Grid.Row="1" DataContext="{Binding Teams}" ItemsSource="{Binding}">
-
-            <GridView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <VariableSizedWrapGrid Orientation="Vertical" HorizontalAlignment="Stretch" HorizontalChildrenAlignment="Stretch" />
-                </ItemsPanelTemplate>
-            </GridView.ItemsPanel>
-            
-            <GridView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Margin="10" FontSize="20">
-                            <Run Text="Team ID : " />
-                            <Run Text="{Binding Teamid}" />
-                        </TextBlock>
-                        <TextBlock Margin="10" FontSize="20">
-                            <Run Text="Round : " />
-                            <Run Text="{Binding Round}" />
-                        </TextBlock>
-                        <TextBlock Margin="10" FontSize="20">
-                            <Run Text="Position : " />
-                            <Run Text="{Binding Position}" />
-                        </TextBlock>
-                    </StackPanel>
-                </DataTemplate>
-            </GridView.ItemTemplate>
-        </GridView>
+        <ScrollViewer Grid.Row="2" VerticalAlignment="Top">
+            <ListView DataContext="{Binding Teams}" ItemsSource="{Binding}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="{Binding ElementName=Table, Path=ActualWidth}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Teamid}" FontSize="20" HorizontalAlignment="Center"/>
+                            <TextBlock Grid.Column="1" FontSize="20" Text="{Binding Round}" HorizontalAlignment="Center"/>
+                            <TextBlock Grid.Column="2" FontSize="20" Text="{Binding Position}" HorizontalAlignment="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
     </Grid>
 </Page>

@@ -185,11 +185,8 @@ namespace Tech_Tatva__16
 
         public static List<Results> MergeResults(ListResultAPI res)
         {
-            Results result;
             List<Results> results = new List<Results>();
 
-            List<Team> teams = new List<Team>();
-            Team team;
 
             List<string> dummynames = new List<string>();
             List<string> names = new List<string>();
@@ -201,13 +198,14 @@ namespace Tech_Tatva__16
 
             for (int i = 0; i < names.Count; i++)
             {
-                result = new Results();
-                teams.Clear();
+                List<Team> teams = new List<Team>();
+                Results result = new Results();
+
                 foreach (ResultAPI resultapi in res.data)
                 {
                     if (names[i] == resultapi.eve)
                     {
-                        team = new Team();
+                        Team team = new Team();
                         team.Teamid = resultapi.tid;
                         team.Round = resultapi.round;
                         team.Position = resultapi.pos;
