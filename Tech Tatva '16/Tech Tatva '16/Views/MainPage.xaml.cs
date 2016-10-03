@@ -58,7 +58,6 @@ namespace Tech_Tatva__16.Views
             instapop = new Popup();
             searchpopup = new Popup();
 
-            Loaded += MainPage_Loaded;
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
 
         }
@@ -81,11 +80,6 @@ namespace Tech_Tatva__16.Views
                 e.Handled = true;
                 return;
             }
-        }
-
-        private async void MainPage_Loaded(object sender, RoutedEventArgs e)
-        {
-
         }
 
         /// <summary>
@@ -121,6 +115,7 @@ namespace Tech_Tatva__16.Views
             PPanel.Visibility = Visibility.Visible;
             DatabaseHelperClass db = new DatabaseHelperClass();
             List<BitmapImage> bmi = new List<BitmapImage>();
+            List<Results> results = new List<Results>();
 
             BitmapImage bit = new BitmapImage();
             bit.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
@@ -178,6 +173,8 @@ namespace Tech_Tatva__16.Views
                     db.Insert(eventclass);
                 }
                 //End of Events API Call
+
+                results = await GetResultsAsync(); //Results API Call
             }
 
             List<EventClass> l = new List<EventClass>();
@@ -216,20 +213,11 @@ namespace Tech_Tatva__16.Views
             list.Add(day3);
             list.Add(day4);
 
-            List<Results> res = new List<Results>();
-
-            Results results = new Results();
-            results.EventName = "Magnet Gun(Round 1)";
-            results.Image = "ms-appx:///Assets/Square71x71Logo.scale-240.png";
-
-            res.Add(results);
-            res.Add(results);
-
 
 
             this.defaultViewModel["Days"] = list;
             this.defaultViewModel["Insta"] = bmi;
-            this.defaultViewModel["Results"] = res;
+            this.defaultViewModel["Results"] = results;
 
             PPanel.Visibility = Visibility.Collapsed;
 
@@ -282,23 +270,6 @@ namespace Tech_Tatva__16.Views
         private void Day_Clicked(object sender, ItemClickEventArgs e)
         {
             Frame.Navigate(typeof(EventsPage), e.ClickedItem as Day);
-        }
-
-        private async Task<Insta> GetInstaAsync()
-        {
-            try
-            {
-                using (HttpClient client = new HttpClient())
-                {
-                    Insta insta = new Insta();
-                    var response = await client.GetStringAsync("https://api.instagram.com/v1/tags/techtatva16/media/recent?access_token=630237785.f53975e.8dcfa635acf14fcbb99681c60519d04c&count=9");
-                    insta = JsonConvert.DeserializeObject<Insta>(response);
-                    return insta;
-                }
-            } catch (Exception ex)
-            {
-                return null;
-            }
         }
 
         private async void Insta_Clicked(object sender, ItemClickEventArgs e)
@@ -387,7 +358,7 @@ namespace Tech_Tatva__16.Views
                         {
                             if(E.eid == S.eid)
                             {
-                                eve.Add(App.Merge(S, E));
+                                eve.Add(App.MergeEvents(S, E));
                             }
                         }
                     }
@@ -398,6 +369,46 @@ namespace Tech_Tatva__16.Views
                 }
 
                 return eve;
+            }
+        }
+
+        private async Task<Insta> GetInstaAsync()
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    Insta insta = new Insta();
+                    var response = await client.GetStringAsync("https://api.instagram.com/v1/tags/techtatva16/media/recent?access_token=630237785.f53975e.8dcfa635acf14fcbb99681c60519d04c&count=9");
+                    insta = JsonConvert.DeserializeObject<Insta>(response);
+                    return insta;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        private async Task<List<Results>> GetResultsAsync()
+        {
+            List<Results> res = new List<Results>();
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    ListResultAPI listres = new ListResultAPI();
+                    var response = await client.GetStringAsync("http://api.mitportals.in/results");
+                    listres = JsonConvert.DeserializeObject<ListResultAPI>(response);
+
+                    res = App.MergeResults(listres);
+                }
+                catch
+                {
+                    //Do Nothing
+                }
+
+                return res;
             }
         }
 

@@ -87,7 +87,7 @@
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
                                     <Image Source="{Binding Image}" Stretch="Fill" Height="51" Width="51"></Image>
-                                    <TextBlock Text="{Binding EventName}" TextAlignment="Center" VerticalAlignment="Center" Margin="20,0,0,0" FontFamily="Segoe WP Light" FontSize="22" ></TextBlock>
+                                    <TextBlock Text="{Binding eve}" TextAlignment="Center" VerticalAlignment="Center" Margin="20,0,0,0" FontFamily="Segoe WP Light" FontSize="22" ></TextBlock>
                                 </StackPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>

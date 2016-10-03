@@ -120,6 +120,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ResultsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SearchPopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -168,6 +172,9 @@
     </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ResultsPage.xaml.cs">
+      <DependentUpon>ResultsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SearchPopup.xaml.cs">
       <DependentUpon>SearchPopup.xaml</DependentUpon>

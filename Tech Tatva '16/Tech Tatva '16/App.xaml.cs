@@ -160,7 +160,7 @@ namespace Tech_Tatva__16
             deferral.Complete();
         }
 
-        public static EventClass Merge(Schedule Sched, EventAPI eve)
+        public static EventClass MergeEvents(Schedule Sched, EventAPI eve)
         {
             EventClass Evnt = new EventClass();
 
@@ -181,6 +181,46 @@ namespace Tech_Tatva__16
             }
 
             return Evnt;
+        }
+
+        public static List<Results> MergeResults(ListResultAPI res)
+        {
+            Results result;
+            List<Results> results = new List<Results>();
+
+            List<Team> teams = new List<Team>();
+            Team team;
+
+            List<string> dummynames = new List<string>();
+            List<string> names = new List<string>();
+
+            dummynames = res.data.Select(p => p.eve).ToList();
+            names = dummynames.Distinct().ToList();
+
+            res.data.GroupBy(n => n.eve);
+
+            for (int i = 0; i < names.Count; i++)
+            {
+                result = new Results();
+                teams.Clear();
+                foreach (ResultAPI resultapi in res.data)
+                {
+                    team = new Team();
+                    if (names[i] == resultapi.eve)
+                    {
+                        team.Teamid = resultapi.tid;
+                        team.Round = resultapi.round;
+                        team.Position = resultapi.pos;
+                        teams.Add(team);
+                    }                    
+                }
+                result.eve = names[i];
+                result.Teams = teams;
+
+                results.Add(result);
+            }
+
+            return results;
         }
     }
 }

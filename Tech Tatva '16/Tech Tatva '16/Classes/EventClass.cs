@@ -30,10 +30,24 @@ namespace Tech_Tatva__16
         public List<EventClass> Events {get; set;}
     }
 
+    public class Team
+    {
+        public string Teamid { get; set; }
+        public string Round { get; set; }
+        public string Position { get; set; }
+    }
+
     public class Results
     {
-        public string EventName { get; set; }
+        public string eve { get; set; }
         public string Image { get; set; }
+        public List<Team> Teams { get; set; }
+
+        public Results()
+        {
+            Image = "ms-appx:///Assets/Square71x71Logo.scale-240.png";
+        }
+
     }
 
     public class Schedule
@@ -76,4 +90,18 @@ namespace Tech_Tatva__16
         public List<EventAPI> data { get; set; }
     }
 
+    public class ResultAPI
+    {
+        public string eve { get; set; }
+        public string Image { get; set; }
+        public string tid { get; set; }
+        public string cat { get; set; }
+        public string round { get; set; }
+        public string pos { get; set; }
+    }
+
+    public class ListResultAPI
+    {
+        public List<ResultAPI> data { get; set; }
+    }
 }
