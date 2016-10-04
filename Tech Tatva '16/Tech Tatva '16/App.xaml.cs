@@ -166,7 +166,11 @@ namespace Tech_Tatva__16
 
             if(Sched.eid == eve.eid)
             {
-                Evnt.id = int.Parse(eve.eid);
+                if(Sched.round != "f" || Sched.round != "F")
+                    Evnt.id = (int.Parse(eve.eid) * 1000000) + (int.Parse(GetNumbers(Sched.day))*10000) + int.Parse(GetNumbers(Sched.stime));
+                else
+                    Evnt.id = (int.Parse(eve.eid) * 1000000) + (int.Parse(GetNumbers(Sched.day)) * 10000) + (int.Parse(GetNumbers(Sched.round)) * 1000) + int.Parse(GetNumbers(Sched.stime));
+
                 Evnt.Name = eve.ename;
                 Evnt.Description = eve.edesc;
                 Evnt.Venue = Sched.venue;
@@ -221,6 +225,11 @@ namespace Tech_Tatva__16
             }
 
             return results;
+        }
+
+        private static string GetNumbers(string input)
+        {
+            return new string(input.Where(c => char.IsDigit(c)).ToArray());
         }
     }
 }

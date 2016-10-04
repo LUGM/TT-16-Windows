@@ -31,11 +31,21 @@ namespace Tech_Tatva__16.Views
         {
             List<EventClass> list =  db.SearchEvents(SearchBox.Text);
             EventList.ItemsSource = list;
+                
         }
 
         private void EventList_ItemClick(object sender, ItemClickEventArgs e)
         {
             (Window.Current.Content as Frame).Navigate(typeof(DetailsPage), e.ClickedItem as EventClass);
+        }
+
+        private void Image_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            List<EventClass> list = db.SearchEvents(SearchBox.Text);
+            EventList.ItemsSource = list;
+
+            if (SearchBox.Text == "Harambe" || SearchBox.Text == "harambe")
+                (Window.Current.Content as Frame).Navigate(typeof(EasterEggPage));
         }
     }
 }

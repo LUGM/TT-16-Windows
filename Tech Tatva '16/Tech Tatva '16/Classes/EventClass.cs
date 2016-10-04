@@ -49,7 +49,7 @@ namespace Tech_Tatva__16
             Image = "ms-appx:///Assets/Square71x71Logo.scale-240.png";
         }
 
-    }
+    }       
 
     public class Schedule
     {

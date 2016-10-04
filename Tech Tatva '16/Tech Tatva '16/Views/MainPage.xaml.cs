@@ -339,6 +339,7 @@ namespace Tech_Tatva__16.Views
 
         private async Task<List<EventClass>> GetEventsAPIAsync()
         {
+            int i = 0;
             List<EventClass> eve = new List<EventClass>();
             using (HttpClient client = new HttpClient())
             {
@@ -354,6 +355,7 @@ namespace Tech_Tatva__16.Views
 
                     foreach(EventAPI E in E1.data)
                     {
+                        i++;
                         foreach(Schedule S in E2.data)
                         {
                             if(E.eid == S.eid)
@@ -363,7 +365,7 @@ namespace Tech_Tatva__16.Views
                         }
                     }
                 }
-                catch
+                catch (Exception e)
                 {
                     //Do nothing
                 }

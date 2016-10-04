@@ -22,7 +22,7 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <TextBox x:Name="SearchBox" TextChanged="SearchBox_TextChanged" PlaceholderText="type away..."></TextBox>
-                <Image Grid.Column="1" Margin="0,0,10,0" Source="/Assets/Icons/search-icon.png" Height="40" HorizontalAlignment="Right"></Image>
+                <Image Grid.Column="1" Margin="0,0,10,0" Source="/Assets/Icons/search-icon.png" Height="40" HorizontalAlignment="Right" Tapped="Image_Tapped"></Image>
             </Grid>
 
         <ListView x:Name="EventList" Grid.Row="1" Margin="10,0,0,0" ItemClick="EventList_ItemClick" SelectionMode="None" IsItemClickEnabled="True">

@@ -1,14 +1,18 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Tech_Tatva__16.Classes;
 using Tech_Tatva_16__Windows_10_.Classes;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
+using Windows.Networking.Connectivity;
 using Windows.System.Profile;
 using Windows.UI;
 using Windows.UI.Core;
@@ -43,35 +47,35 @@ namespace Tech_Tatva_16__Windows_10_.Views
 
             Instance = this;
 
-            if (AnalyticsInfo.VersionInfo.DeviceFamily != "Windows.Mobile")
+            if (AnalyticsInfo.VersionInfo.DeviceFamily != "WindowsMobile")
                 Filter_Fav.SelectedIndex = 0;
-            EventClass event1 = new EventClass();
-            event1.id = 1;
-            event1.Name = "Hello";
-            event1.Image = "ms-appx:///Assets/Square44x44Logo.scale-200.png";
-            event1.Fav_Image = "";
+            //EventClass event1 = new EventClass();
+            //event1.id = 1;
+            //event1.Name = "Hello";
+            //event1.Image = "ms-appx:///Assets/Square44x44Logo.scale-200.png";
+            //event1.Fav_Image = "";
 
-            EventClass event2 = new EventClass();
-            event2.id = 2;
-            event2.Name = "Hello1";
-            event2.Image = "ms-appx:///Assets/Square44x44Logo.scale-200.png";
-            event2.Fav_Image = "";
+            //EventClass event2 = new EventClass();
+            //event2.id = 2;
+            //event2.Name = "Hello1";
+            //event2.Image = "ms-appx:///Assets/Square44x44Logo.scale-200.png";
+            //event2.Fav_Image = "";
 
-            DatabaseHelperClass db = new DatabaseHelperClass();
-            db.DeleteAllEvents();
-            db.Insert(event1);
-            db.Insert(event2);
+            //DatabaseHelperClass db = new DatabaseHelperClass();
+            //db.DeleteAllEvents();
+            //db.Insert(event1);
+            //db.Insert(event2);
 
-            List<EventClass> l1 = new List<EventClass>();
-            l1 = db.ReadEvents();
+            //List<EventClass> l1 = new List<EventClass>();
+            //l1 = db.ReadEvents();
 
-            ObservableCollection<EventClass> l = new ObservableCollection<EventClass>(l1);
+            //ObservableCollection<EventClass> l = new ObservableCollection<EventClass>(l1);
 
-            Day day1 = new Day();
-            day1.Events = l;
-            day1.day = "Day 1";
+            //Day day1 = new Day();
+            //day1.Events = l;
+            //day1.day = "Day 1";
 
-            this.Days.Add(day1);
+            //this.Days.Add(day1);
 
             Day dayfav = new Day();
             dayfav.day = "";
@@ -97,9 +101,9 @@ namespace Tech_Tatva_16__Windows_10_.Views
 
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-
+            DatabaseHelperClass db = new DatabaseHelperClass();
             string myPages = "";
             foreach (PageStackEntry page in Frame.BackStack)
             {
@@ -108,6 +112,7 @@ namespace Tech_Tatva_16__Windows_10_.Views
 
             if (Frame.CanGoBack && Frame.BackStackDepth > 1)
             {
+                
                 // Show UI in title bar if opted-in and in-app backstack is not empty.
                 SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
                     AppViewBackButtonVisibility.Visible;
@@ -122,27 +127,86 @@ namespace Tech_Tatva_16__Windows_10_.Views
             if((string)e.Parameter != "" && e.Parameter != null && e.Parameter.GetType() == typeof(string))
             {
                 ObservableCollection<EventClass> l = new ObservableCollection<EventClass>();
-                DatabaseHelperClass db = new DatabaseHelperClass();
                 EventClass eve = db.ReadEventByName((string)e.Parameter);
                 if(eve == null)
                 {
                     l.Add(eve);
                     Days.Clear();
-                    Day day1 = new Day();
-                    day1.Events = l;
-                    day1.day = "Event Not Found";
-                    Days.Add(day1);
+                    Day day = new Day();
+                    day.Events = l;
+                    day.day = "Event Not Found";
+                    Days.Add(day);
                 }
                 else
                 {
                     l.Add(eve);
                     Days.Clear();
-                    Day day1 = new Day();
-                    day1.Events = l;
-                    day1.day = "Event Found";
-                    Days.Add(day1);
+                    Day day = new Day();
+                    day.Events = l;
+                    day.day = "Event Found";
+                    Days.Add(day);
                 }
             }
+
+            List<EventClass> list = new List<EventClass>();
+
+            //Start of API Calls
+            if (IsInternet())
+            {
+
+                db.DeleteAllEvents();
+                List<EventClass> listevents = new List<EventClass>();
+                listevents = await GetEventsAPIAsync();
+                foreach (EventClass eventclass in listevents)
+                {
+                    db.Insert(eventclass);
+                }
+            }
+            else
+            {
+                if ((db.ReadEvents() as List<EventClass>).Count == 0)
+                    MainPage.Instance.ShowPopup();
+                else
+                    MainPage.Instance.HidePopup();
+            }
+
+            list = db.ReadEvents();
+
+            List<EventClass> Day1Events = new List<EventClass>();
+            List<EventClass> Day2Events = new List<EventClass>();
+            List<EventClass> Day3Events = new List<EventClass>();
+            List<EventClass> Day4Events = new List<EventClass>();
+
+            Day1Events = list.Where(p => p.Day == "1").ToList();
+            Day2Events = list.Where(p => p.Day == "2").ToList();
+            Day3Events = list.Where(p => p.Day == "3").ToList();
+            Day4Events = list.Where(p => p.Day == "4").ToList();
+
+            ObservableCollection<EventClass> Day1_Events = new ObservableCollection<EventClass>(Day1Events);
+            ObservableCollection<EventClass> Day2_Events = new ObservableCollection<EventClass>(Day2Events);
+            ObservableCollection<EventClass> Day3_Events = new ObservableCollection<EventClass>(Day3Events);
+            ObservableCollection<EventClass> Day4_Events = new ObservableCollection<EventClass>(Day4Events);
+
+            Day day1 = new Day();
+            day1.Events = Day1_Events;
+            day1.day = "day 1";
+
+            Day day2 = new Day();
+            day2.Events = Day2_Events;
+            day2.day = "day 2";
+
+            Day day3 = new Day();
+            day3.Events = Day3_Events;
+            day3.day = "day 3";
+
+            Day day4 = new Day();
+            day4.Events = Day4_Events;
+            day4.day = "day 4";
+
+            this.Days.Add(day1);
+            this.Days.Add(day2);
+            this.Days.Add(day3);
+            this.Days.Add(day4);
         }
 
 
@@ -291,6 +355,49 @@ namespace Tech_Tatva_16__Windows_10_.Views
         {
             FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);
         }
+
+        public static bool IsInternet()
+        {
+            ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
+            bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
+            return internet;
+        }
+
+        private async Task<List<EventClass>> GetEventsAPIAsync()
+        {
+            List<EventClass> eve = new List<EventClass>();
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    ListEventAPI E1 = new ListEventAPI();
+                    ListSchedule E2 = new ListSchedule();
+                    var response = await client.GetStringAsync("http://api.mitportals.in/events");
+                    E1 = JsonConvert.DeserializeObject<ListEventAPI>(response);
+
+                    var response1 = await client.GetStringAsync("http://api.mitportals.in/schedule");
+                    E2 = JsonConvert.DeserializeObject<ListSchedule>(response1);
+
+                    foreach (EventAPI E in E1.data)
+                    {
+                        foreach (Schedule S in E2.data)
+                        {
+                            if (E.eid == S.eid)
+                            {
+                                eve.Add(App.MergeEvents(S, E));
+                            }
+                        }
+                    }
+                }
+                catch
+                {
+                    //Do nothing
+                }
+
+                return eve;
+            }
+        }
+
     }
 
 }
