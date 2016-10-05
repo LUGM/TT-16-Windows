@@ -127,7 +127,7 @@ namespace Tech_Tatva__16.Views
 
             //Checking Network
             bool isConnected = NetworkInterface.GetIsNetworkAvailable();
-            if (!isConnected)
+            if (isConnected)
             {
                 // Do Nothing    
             }
@@ -173,16 +173,28 @@ namespace Tech_Tatva__16.Views
                     db.DeleteAllEvents();
                     List<EventClass> listevents = new List<EventClass>();
                     listevents = await GetEventsAPIAsync();
-                    foreach (EventClass eventclass in listevents)
-                    {
-                        db.Insert(eventclass);
-                    }
+                    db.Insert(listevents);
                     //End of Events API Call
 
                     results = await GetResultsAsync(); //Results API Call
 
                     roamingSettings.Values["First"] = "1";
                 }
+            }
+            else
+            {
+                insta = await GetInstaAsync();
+                bmi.Clear();
+                foreach (Datum d in insta.data)
+                {
+                    BitmapImage b = new BitmapImage();
+                    b.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                    b.UriSource = new Uri(d.images.thumbnail.url);
+
+                    bmi.Add(b);
+                }
+
+                results = await GetResultsAsync();
             }
 
             List<EventClass> l = new List<EventClass>();
@@ -360,18 +372,15 @@ namespace Tech_Tatva__16.Views
                     var response1 = await client.GetStringAsync("http://api.mitportals.in/schedule");
                     E2 = JsonConvert.DeserializeObject<ListSchedule>(response1);
 
-                    
+                    HashSet<Schedule> hash2 = new HashSet<Schedule>(E2.data);
 
-                    foreach (EventAPI E in E1.data)
+                    foreach(Schedule schedule in hash2)
                     {
-                        foreach (Schedule S in E2.data)
-                        {
-                            if (E.eid == S.eid)
-                            {
-                                eve.Add(new EventClass(S, E));
-                            }
-                        }
+                        List<EventAPI> eventList = new HashSet<EventAPI>(E1.data).Where(even => even.eid == schedule.eid).ToList();
+                        EventClass eventObject = new EventClass(schedule, eventList.First());
+                        eve.Add(eventObject);
                     }
+                                  
                 }
                 catch (Exception e)
                 {
@@ -381,7 +390,6 @@ namespace Tech_Tatva__16.Views
                 return eve;
             }
         }
-
 
         private async Task<Insta> GetInstaAsync()
         {

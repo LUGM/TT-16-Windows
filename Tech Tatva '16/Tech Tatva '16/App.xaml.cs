@@ -48,6 +48,7 @@ namespace Tech_Tatva__16
                 using (var db = new SQLiteConnection(DB_PATH))
                 {
                     db.CreateTable<EventClass>();
+                    db.CreateTable<string>();
                 }
             }
 

@@ -22,6 +22,7 @@ namespace Tech_Tatva__16.Classes
                     using (dbConn = new SQLiteConnection(DB_PATH))
                     {
                         dbConn.CreateTable<EventClass>();
+                        dbConn.CreateTable<string>();
                     }
                 }
                 return true;
@@ -113,6 +114,17 @@ namespace Tech_Tatva__16.Classes
                 });
             }
         }
+        public void Insert(List<EventClass> neweve)
+        {
+            using (var dbConn = new SQLiteConnection(App.DB_PATH))
+            {
+                dbConn.RunInTransaction(() =>
+                {
+                    foreach(EventClass eve in neweve)
+                    dbConn.Insert(eve);
+                });
+            }
+        }
 
         //Delete specific contact 
         public void DeleteEvent(int Id)
@@ -144,5 +156,20 @@ namespace Tech_Tatva__16.Classes
                 //}); 
             }
         }
+
+        public void InsertInsta(string s)
+        {
+            string t;
+            using (var dbConn = new SQLiteConnection(App.DB_PATH))
+            {
+
+                dbConn.RunInTransaction(() =>
+                {
+                    t = dbConn.GetTableInfo("string").ToString();
+                });
+            }
+            t = "s";
+        }
     }
+
 }
