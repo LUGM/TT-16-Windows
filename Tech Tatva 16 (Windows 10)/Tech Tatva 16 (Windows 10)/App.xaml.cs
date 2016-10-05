@@ -82,7 +82,7 @@ namespace Tech_Tatva_16__Windows_10_
         {
             try
             {
-                var store = await Windows.Storage.ApplicationData.Current.LocalFolder.GetFileAsync(fileName);
+                var store = await ApplicationData.Current.LocalFolder.GetFileAsync(fileName);
                 return true;
             }
             catch

@@ -114,6 +114,18 @@ namespace Tech_Tatva__16.Classes
             }
         }
 
+        public void Insert(List<EventClass> neweve)
+        {
+            using (var dbConn = new SQLiteConnection(App.DB_PATH))
+            {
+                dbConn.RunInTransaction(() =>
+                {
+                    foreach(EventClass eve in neweve)
+                       dbConn.Insert(eve);
+                });
+            }
+        }
+
         //Delete specific contact 
         public void DeleteEvent(int Id)
         {

@@ -40,6 +40,8 @@ namespace Tech_Tatva_16__Windows_10_.Views
 
         public static EventsPage Instance;
 
+        bool RefInBack = false;
+
         public EventsPage()
         {
 
@@ -153,14 +155,14 @@ namespace Tech_Tatva_16__Windows_10_.Views
             //Start of API Calls
             if (IsInternet())
             {
-
-                db.DeleteAllEvents();
-                List<EventClass> listevents = new List<EventClass>();
-                listevents = await GetEventsAPIAsync();
-                foreach (EventClass eventclass in listevents)
+                if ((db.ReadEvents() as List<EventClass>).Count == 0)
                 {
-                    db.Insert(eventclass);
+                    List<EventClass> listevents = new List<EventClass>();
+                    listevents = await GetEventsAPIAsync();
+                    db.Insert(listevents);
                 }
+                else
+                    RefInBack = true;
             }
             else
             {
@@ -207,6 +209,7 @@ namespace Tech_Tatva_16__Windows_10_.Views
             this.Days.Add(day2);
             this.Days.Add(day3);
             this.Days.Add(day4);
+
         }
 
 
@@ -378,15 +381,13 @@ namespace Tech_Tatva_16__Windows_10_.Views
                     var response1 = await client.GetStringAsync("http://api.mitportals.in/schedule");
                     E2 = JsonConvert.DeserializeObject<ListSchedule>(response1);
 
-                    foreach (EventAPI E in E1.data)
+                    HashSet<Schedule> hash2 = new HashSet<Schedule>(E2.data);
+
+                    foreach (Schedule schedule in hash2)
                     {
-                        foreach (Schedule S in E2.data)
-                        {
-                            if (E.eid == S.eid)
-                            {
-                                eve.Add(App.MergeEvents(S, E));
-                            }
-                        }
+                        List<EventAPI> eventList = new HashSet<EventAPI>(E1.data).Where(even => even.eid == schedule.eid).ToList();
+                        EventClass eventObject = new EventClass(schedule, eventList.First());
+                        eve.Add(eventObject);
                     }
                 }
                 catch
@@ -398,6 +399,61 @@ namespace Tech_Tatva_16__Windows_10_.Views
             }
         }
 
+        private async void EventsList_Loaded(object sender, RoutedEventArgs e)
+        {
+            DatabaseHelperClass db = new DatabaseHelperClass();
+            if(RefInBack)
+            {
+                RefInBack = false;
+                db.DeleteAllEvents();
+                List<EventClass> listevents = new List<EventClass>();
+                listevents = await GetEventsAPIAsync();
+                db.Insert(listevents);
+
+                List<EventClass> list = new List<EventClass>();
+                list = db.ReadEvents();
+
+                List<EventClass> Day1Events = new List<EventClass>();
+                List<EventClass> Day2Events = new List<EventClass>();
+                List<EventClass> Day3Events = new List<EventClass>();
+                List<EventClass> Day4Events = new List<EventClass>();
+
+                Day1Events = list.Where(p => p.Day == "1").ToList();
+                Day2Events = list.Where(p => p.Day == "2").ToList();
+                Day3Events = list.Where(p => p.Day == "3").ToList();
+                Day4Events = list.Where(p => p.Day == "4").ToList();
+
+                ObservableCollection<EventClass> Day1_Events = new ObservableCollection<EventClass>(Day1Events);
+                ObservableCollection<EventClass> Day2_Events = new ObservableCollection<EventClass>(Day2Events);
+                ObservableCollection<EventClass> Day3_Events = new ObservableCollection<EventClass>(Day3Events);
+                ObservableCollection<EventClass> Day4_Events = new ObservableCollection<EventClass>(Day4Events);
+
+                Day day1 = new Day();
+                day1.Events = Day1_Events;
+                day1.day = "day 1";
+
+                Day day2 = new Day();
+                day2.Events = Day2_Events;
+                day2.day = "day 2";
+
+                Day day3 = new Day();
+                day3.Events = Day3_Events;
+                day3.day = "day 3";
+
+                Day day4 = new Day();
+                day4.Events = Day4_Events;
+                day4.day = "day 4";
+
+                Days.Clear();
+
+                this.Days.Add(day1);
+                this.Days.Add(day2);
+                this.Days.Add(day3);
+                this.Days.Add(day4);
+
+                (sender as ListView).ItemsSource = Days;
+            }
+        }
     }
 
 }

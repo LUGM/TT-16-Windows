@@ -26,7 +26,32 @@ namespace Tech_Tatva_16__Windows_10_.Classes
         public string Image { get; set; }
         public string Fav_Image { get; set; }
 
-        
+        public EventClass()
+        {
+
+        }
+
+        public EventClass(Schedule Sched, EventAPI eve)
+        {
+            id = (int.Parse(eve.eid) * 1000000) + (int.Parse(GetNumbers(Sched.day)) * 10000) + int.Parse(GetNumbers(Sched.stime));
+            Name = eve.ename;
+            Description = eve.edesc;
+            Venue = Sched.venue;
+            Stime = Sched.stime;
+            Etime = Sched.etime;
+            Date = Sched.date;
+            TeamSize = eve.emaxteamsize;
+            Contact = eve.cntctno;
+            Day = Sched.day;
+            Round = Sched.round;
+            Image = "ms-appx:///Assets/Category Icons/TT-" + eve.cname + ".png";
+            Fav_Image = "ms-appx:///Assets/Icons/fav-icon_disabled.png";
+        }
+
+        private string GetNumbers(string input)
+        {
+            return new string(input.Where(c => char.IsDigit(c)).ToArray());
+        }
     }
 
     public class Day
