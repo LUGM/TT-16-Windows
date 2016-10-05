@@ -49,8 +49,8 @@
         </Grid.ChildrenTransitions>
 
         <StackPanel x:Name="PPanel" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <ProgressRing IsActive="True" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource AppAccentColorBrush}" />
-            <TextBlock Text="fixing the airwaves.." FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10"/>
+            <ProgressRing IsActive="True" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource AppAccentColorBrush}" Background="Transparent"/>
+            <TextBlock Text="fixing the airwaves.." FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10"/>
         </StackPanel>
         
         <Hub x:Name="MyHub"  Header="techtatva" DataContext="{Binding}">
@@ -64,9 +64,9 @@
                 <ImageBrush ImageSource="/Assets/back_main.jpg" Stretch="UniformToFill" Opacity="0.3"/>
             </Hub.Background>
 
-            <HubSection x:Name="Trending" Header="trending" DataContext="{Binding}">
+            <!--<HubSection x:Name="Trending" Header="trending" DataContext="{Binding}">
                 
-            </HubSection>
+            </HubSection>-->
 
             <HubSection x:Name="Events" Header="events" DataContext="{Binding}">
                 <DataTemplate>

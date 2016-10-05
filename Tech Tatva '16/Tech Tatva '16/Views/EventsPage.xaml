@@ -62,7 +62,7 @@
                                     </Grid.ColumnDefinitions>
                                     <StackPanel Orientation="Horizontal" Grid.Column="0">
                                         <Image Source="{Binding Image}" Height="40" Width="40" />
-                                        <TextBlock Text="{Binding Name}" FontSize="30" FontFamily="Segoe WP" Margin="10,0,0,5" FontWeight="Light" VerticalAlignment="Center"/>
+                                        <TextBlock Text="{Binding Name}" FontSize="30" FontFamily="Segoe WP" Margin="10,0,5,5" FontWeight="Light" VerticalAlignment="Center"/>
                                     </StackPanel>
 
                                     <Image x:Name="Img" Grid.Column="1" Source="{Binding Fav_Image}" Height="30" Width="30" VerticalAlignment="Center"/>
@@ -88,7 +88,7 @@
                                     </Grid.ColumnDefinitions>
                                     <StackPanel Orientation="Horizontal" Grid.Column="0">
                                         <Image Source="{Binding Image}" Height="40" Width="40" />
-                                        <TextBlock Text="{Binding Name}" FontSize="30" FontFamily="Segoe WP" Margin="10,0,0,5" FontWeight="Light" VerticalAlignment="Center"/>
+                                        <TextBlock Text="{Binding Name}" FontSize="30" FontFamily="Segoe WP" Margin="10,0,5,5" FontWeight="Light" VerticalAlignment="Center"/>
                                     </StackPanel>
 
                                     <Image x:Name="Img" Grid.Column="1" Source="{Binding Fav_Image}" Height="30" Width="30" VerticalAlignment="Center"/>
@@ -114,7 +114,7 @@
                                     </Grid.ColumnDefinitions>
                                     <StackPanel Orientation="Horizontal" Grid.Column="0">
                                         <Image Source="{Binding Image}" Height="40" Width="40" />
-                                        <TextBlock Text="{Binding Name}" FontSize="30" FontFamily="Segoe WP" Margin="10,0,0,5" FontWeight="Light" VerticalAlignment="Center"/>
+                                        <TextBlock Text="{Binding Name}" FontSize="30" FontFamily="Segoe WP" Margin="10,0,5,5" FontWeight="Light" VerticalAlignment="Center"/>
                                     </StackPanel>
 
                                     <Image x:Name="Img" Grid.Column="1" Source="{Binding Fav_Image}" Height="30" Width="30" VerticalAlignment="Center"/>
@@ -140,7 +140,7 @@
                                     </Grid.ColumnDefinitions>
                                     <StackPanel Orientation="Horizontal" Grid.Column="0">
                                         <Image Source="{Binding Image}" Height="40" Width="40" />
-                                        <TextBlock Text="{Binding Name}" FontSize="30" FontFamily="Segoe WP" Margin="10,0,0,5" FontWeight="Light" VerticalAlignment="Center"/>
+                                        <TextBlock Text="{Binding Name}" FontSize="30" FontFamily="Segoe WP" Margin="10,0,5,5" FontWeight="Light" VerticalAlignment="Center"/>
                                     </StackPanel>
 
                                     <Image x:Name="Img" Grid.Column="1" Source="{Binding Fav_Image}" Height="30" Width="30" VerticalAlignment="Center"/>

@@ -31,6 +31,7 @@ namespace Tech_Tatva__16.Classes
                 return false;
             }
         }
+
         private async Task<bool> CheckFileExists(string fileName)
         {
             try
@@ -44,7 +45,7 @@ namespace Tech_Tatva__16.Classes
             }
         }
 
-        // Retrieve the specific contact from the database. 
+        // Retrieve the specific Event from the database. 
         public EventClass ReadEventByName(String name)
         {
             using (var dbConn = new SQLiteConnection(App.DB_PATH))
@@ -100,6 +101,7 @@ namespace Tech_Tatva__16.Classes
                 }
             }
         }
+
         // Insert the new contact in the EventClass table. 
         public void Insert(EventClass neweve)
         {
@@ -127,6 +129,7 @@ namespace Tech_Tatva__16.Classes
                 }
             }
         }
+
         //Delete all contactlist or delete EventClass table 
         public void DeleteAllEvents()
         {
