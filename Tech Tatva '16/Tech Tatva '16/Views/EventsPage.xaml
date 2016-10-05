@@ -56,16 +56,14 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="0,0,0,20">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <StackPanel Orientation="Horizontal" Grid.Column="0">
+                                    <Grid Grid.Column="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
                                         <Image Source="{Binding Image}" Height="50" Width="50" VerticalAlignment="Center"/>
-                                        <TextBlock Text="{Binding Name}" FontSize="30" TextWrapping="Wrap" FontFamily="Segoe WP" Margin="10,0,5,5" FontWeight="Light" VerticalAlignment="Center"/>
-                                    </StackPanel>
-
-                                    <Image x:Name="Img" Grid.Column="1" Source="{Binding Fav_Image}" Height="30" Width="30" VerticalAlignment="Center"/>
+                                        <TextBlock Grid.Column="1" Text="{Binding Name}" FontSize="30" TextWrapping="Wrap" FontFamily="Segoe WP" Margin="10,0,5,5" FontWeight="Light" VerticalAlignment="Center"/>
+                                    </Grid>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -82,16 +80,14 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="0,0,0,20">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
+                                    <Grid Grid.Column="0">
+                                        <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <StackPanel Orientation="Horizontal" Grid.Column="0">
+                                        <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
                                         <Image Source="{Binding Image}" Height="50" Width="50" VerticalAlignment="Center"/>
-                                        <TextBlock Text="{Binding Name}" FontSize="30" TextWrapping="Wrap" FontFamily="Segoe WP" Margin="10,0,5,5" FontWeight="Light" VerticalAlignment="Center"/>
-                                    </StackPanel>
-
-                                    <Image x:Name="Img" Grid.Column="1" Source="{Binding Fav_Image}" Height="30" Width="30" VerticalAlignment="Center"/>
+                                        <TextBlock Grid.Column="1" Text="{Binding Name}" FontSize="30" TextWrapping="Wrap" FontFamily="Segoe WP" Margin="10,0,5,5" FontWeight="Light" VerticalAlignment="Center"/>
+                                    </Grid>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -108,16 +104,14 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="0,0,0,20">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <StackPanel Orientation="Horizontal" Grid.Column="0">
+                                    <Grid Grid.Column="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
                                         <Image Source="{Binding Image}" Height="50" Width="50" VerticalAlignment="Center"/>
-                                        <TextBlock Text="{Binding Name}" FontSize="30" TextWrapping="Wrap" FontFamily="Segoe WP" Margin="10,0,5,5" FontWeight="Light" VerticalAlignment="Center"/>
-                                    </StackPanel>
-
-                                    <Image x:Name="Img" Grid.Column="1" Source="{Binding Fav_Image}" Height="30" Width="30" VerticalAlignment="Center"/>
+                                        <TextBlock Grid.Column="1" Text="{Binding Name}" FontSize="30" TextWrapping="Wrap" FontFamily="Segoe WP" Margin="10,0,5,5" FontWeight="Light" VerticalAlignment="Center"/>
+                                    </Grid>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -134,16 +128,14 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="0,0,0,20">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <StackPanel Orientation="Horizontal" Grid.Column="0">
+                                    <Grid Grid.Column="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
                                         <Image Source="{Binding Image}" Height="50" Width="50" VerticalAlignment="Center"/>
-                                        <TextBlock Text="{Binding Name}" FontSize="30" TextWrapping="WrapWholeWords" FontFamily="Segoe WP" Margin="10,0,5,5" FontWeight="Light" VerticalAlignment="Center"/>
-                                    </StackPanel>
-
-                                    <Image x:Name="Img" Grid.Column="1" Source="{Binding Fav_Image}" Height="30" Width="30" VerticalAlignment="Center"/>
+                                        <TextBlock Text="{Binding Name}" FontSize="30" TextWrapping="Wrap" FontFamily="Segoe WP" Margin="10,0,5,5" FontWeight="Light" VerticalAlignment="Center"/>
+                                    </Grid>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>

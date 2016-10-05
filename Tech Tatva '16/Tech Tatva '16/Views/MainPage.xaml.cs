@@ -173,6 +173,7 @@ namespace Tech_Tatva__16.Views
                     db.DeleteAllEvents();
                     List<EventClass> listevents = new List<EventClass>();
                     listevents = await GetEventsAPIAsync();
+
                     db.Insert(listevents);
                     //End of Events API Call
 
@@ -205,10 +206,10 @@ namespace Tech_Tatva__16.Views
             List<EventClass> Day3_Events = new List<EventClass>();
             List<EventClass> Day4_Events = new List<EventClass>();
 
-            Day1_Events = l.Where(p => p.Day == "1").ToList() ;
-            Day2_Events = l.Where(p => p.Day == "2").ToList();
-            Day3_Events = l.Where(p => p.Day == "3").ToList();
-            Day4_Events = l.Where(p => p.Day == "4").ToList();
+            Day1_Events = (l.Where(p => p.Day == "1").ToList()).OrderBy(eve => eve.Name).ToList();
+            Day2_Events = (l.Where(p => p.Day == "2").ToList()).OrderBy(eve => eve.Name).ToList();
+            Day3_Events = (l.Where(p => p.Day == "3").ToList()).OrderBy(eve => eve.Name).ToList();
+            Day4_Events = (l.Where(p => p.Day == "4").ToList()).OrderBy(eve => eve.Name).ToList();
 
             List<Day> list = new List<Day>();
             Day day1 = new Day();
@@ -455,5 +456,12 @@ namespace Tech_Tatva__16.Views
             Frame.Navigate(typeof(ResultsPage), (e.ClickedItem as Results));
         }
 
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            var roamingSettings = ApplicationData.Current.RoamingSettings;
+            roamingSettings.Values["First"] = "0";
+
+            Frame.Navigate(typeof(MainPage));
+        }
     }
 }

@@ -19,7 +19,7 @@
                 <AppBarButton x:Name="Dev" Label="developers" Click="Dev_Click"/>
                 <AppBarButton x:Name="Abt" Label="about" Click="Abt_Click"/>
             </CommandBar.SecondaryCommands>
-            <AppBarButton Icon="Refresh" Label="refresh"/>
+            <AppBarButton Icon="Refresh" Label="refresh" Click="Refresh_Click"/>
             <AppBarButton Icon="Find" Label="search" Click="Search_Clicked"/>
         </CommandBar>
     </Page.BottomAppBar>
@@ -119,31 +119,13 @@
 
             <HubSection x:Name="Register" Header="register">
                 <DataTemplate>
-                    <ListView x:Name="List4" SelectionMode="None" IsItemClickEnabled="True">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
-                                    <Image Source="{Binding Image}" Stretch="Fill" Height="51" Width="51"></Image>
-                                    <TextBlock Text="{Binding Name}" TextAlignment="Center" VerticalAlignment="Center" Margin="20,0,0,0" FontFamily="Segoe WP Light" FontSize="22" ></TextBlock>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                    <WebView Margin="0,0,0,10" Source="http://manipal.edu"/>
                 </DataTemplate>
             </HubSection>
 
             <HubSection x:Name="Online_Events" Header="online events">
                 <DataTemplate>
-                    <ListView x:Name="List4" SelectionMode="None" IsItemClickEnabled="True" >
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
-                                    <Image Source="{Binding Image}" Stretch="Fill" Height="51" Width="51"></Image>
-                                    <TextBlock Text="{Binding Name}" TextAlignment="Center" VerticalAlignment="Center" Margin="20,0,0,0" FontFamily="Segoe WP Light" FontSize="22" ></TextBlock>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                    <WebView Margin="0,0,0,10" Source="http://manipal.edu"/>
                 </DataTemplate>
             </HubSection>
         </Hub>
