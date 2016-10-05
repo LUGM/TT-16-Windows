@@ -51,6 +51,9 @@ namespace Tech_Tatva__16
                 }
             }
 
+            var roamingSettings = ApplicationData.Current.RoamingSettings;
+            roamingSettings.Values["First"] = "0";
+
         }
 
         private async Task<bool> CheckFileExists(string fileName)
@@ -131,7 +134,8 @@ namespace Tech_Tatva__16
 
             // Ensure the current window is active
             Window.Current.Activate();
-        }
+
+            }
 
         /// <summary>
         /// Restores the content transitions after the app has launched.
@@ -158,30 +162,6 @@ namespace Tech_Tatva__16
 
             // TODO: Save application state and stop any background activity
             deferral.Complete();
-        }
-
-        public static EventClass MergeEvents(Schedule Sched, EventAPI eve)
-        {
-            EventClass Evnt = new EventClass();
-
-            if(Sched.eid == eve.eid)
-            { 
-                Evnt.id = (int.Parse(eve.eid) * 1000000) + (int.Parse(GetNumbers(Sched.day)) * 10000)  + int.Parse(GetNumbers(Sched.stime));
-                Evnt.Name = eve.ename;
-                Evnt.Description = eve.edesc;
-                Evnt.Venue = Sched.venue;
-                Evnt.Stime = Sched.stime;
-                Evnt.Etime = Sched.etime;
-                Evnt.Date = Sched.date;
-                Evnt.TeamSize = eve.emaxteamsize;
-                Evnt.Contact = eve.cntctno;
-                Evnt.Day = Sched.day;
-                Evnt.Round = Sched.round.Trim();
-                Evnt.Image = "ms-appx:///Assets/Category Icons/TT-" + eve.cname + ".png";
-                Evnt.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_disabled.png";
-            }
-
-            return Evnt;
         }
 
         public static List<Results> MergeResults(ListResultAPI res)
@@ -221,11 +201,6 @@ namespace Tech_Tatva__16
             }
 
             return results;
-        }
-
-        private static string GetNumbers(string input)
-        {
-            return new string(input.Where(c => char.IsDigit(c)).ToArray());
         }
     }
 }

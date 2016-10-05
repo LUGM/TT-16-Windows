@@ -26,6 +26,7 @@ using Windows.UI;
 using Windows.Phone.UI.Input;
 using System.Collections.ObjectModel;
 using Windows.Networking.Connectivity;
+using Windows.Storage;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -139,42 +140,49 @@ namespace Tech_Tatva__16.Views
                     isConnected = false;
                 }
             }
+            var roamingSettings = ApplicationData.Current.RoamingSettings;
+
             //Nettwork availability checked
 
-            if (!isConnected)
+            if (roamingSettings.Values["First"].ToString() == "0")
             {
-                if ((db.ReadEvents() as List<EventClass>).Count == 0)
-                    ShowPopupAsync();
+                if (!isConnected)
+                {
+                    if ((db.ReadEvents() as List<EventClass>).Count == 0)
+                        ShowPopupAsync();
+                    else
+                        HidePopupAsync();
+                }
                 else
-                    HidePopupAsync();
-            }
-            else
-            {
-                //Start Of Insta API Call
-                insta = await GetInstaAsync();
-                bmi.Clear();
-                foreach (Datum d in insta.data)
                 {
-                    BitmapImage b = new BitmapImage();
-                    b.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
-                    b.UriSource = new Uri(d.images.thumbnail.url);
+                    //Start Of Insta API Call
+                    insta = await GetInstaAsync();
+                    bmi.Clear();
+                    foreach (Datum d in insta.data)
+                    {
+                        BitmapImage b = new BitmapImage();
+                        b.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                        b.UriSource = new Uri(d.images.thumbnail.url);
 
-                    bmi.Add(b);
+                        bmi.Add(b);
+                    }
+
+                    //End Of Insta API call and formatting
+
+                    //Start Of EventsAPI call
+                    db.DeleteAllEvents();
+                    List<EventClass> listevents = new List<EventClass>();
+                    listevents = await GetEventsAPIAsync();
+                    foreach (EventClass eventclass in listevents)
+                    {
+                        db.Insert(eventclass);
+                    }
+                    //End of Events API Call
+
+                    results = await GetResultsAsync(); //Results API Call
+
+                    roamingSettings.Values["First"] = "1";
                 }
-
-                //End Of Insta API call and formatting
-
-                //Start Of EventsAPI call
-                db.DeleteAllEvents();
-                List<EventClass> listevents = new List<EventClass>();
-                listevents = await GetEventsAPIAsync();
-                foreach (EventClass eventclass in listevents)
-                {
-                    db.Insert(eventclass);
-                }
-                //End of Events API Call
-
-                results = await GetResultsAsync(); //Results API Call
             }
 
             List<EventClass> l = new List<EventClass>();
@@ -339,7 +347,6 @@ namespace Tech_Tatva__16.Views
 
         private async Task<List<EventClass>> GetEventsAPIAsync()
         {
-            int i = 0;
             List<EventClass> eve = new List<EventClass>();
             using (HttpClient client = new HttpClient())
             {
@@ -353,14 +360,15 @@ namespace Tech_Tatva__16.Views
                     var response1 = await client.GetStringAsync("http://api.mitportals.in/schedule");
                     E2 = JsonConvert.DeserializeObject<ListSchedule>(response1);
 
-                    foreach(EventAPI E in E1.data)
+                    
+
+                    foreach (EventAPI E in E1.data)
                     {
-                        i++;
-                        foreach(Schedule S in E2.data)
+                        foreach (Schedule S in E2.data)
                         {
-                            if(E.eid == S.eid)
+                            if (E.eid == S.eid)
                             {
-                                eve.Add(App.MergeEvents(S, E));
+                                eve.Add(new EventClass(S, E));
                             }
                         }
                     }
@@ -373,6 +381,7 @@ namespace Tech_Tatva__16.Views
                 return eve;
             }
         }
+
 
         private async Task<Insta> GetInstaAsync()
         {
@@ -437,5 +446,6 @@ namespace Tech_Tatva__16.Views
         {
             Frame.Navigate(typeof(ResultsPage), (e.ClickedItem as Results));
         }
+
     }
 }
