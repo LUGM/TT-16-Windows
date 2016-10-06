@@ -51,33 +51,6 @@ namespace Tech_Tatva_16__Windows_10_.Views
 
             if (AnalyticsInfo.VersionInfo.DeviceFamily != "WindowsMobile")
                 Filter_Fav.SelectedIndex = 0;
-            //EventClass event1 = new EventClass();
-            //event1.id = 1;
-            //event1.Name = "Hello";
-            //event1.Image = "ms-appx:///Assets/Square44x44Logo.scale-200.png";
-            //event1.Fav_Image = "";
-
-            //EventClass event2 = new EventClass();
-            //event2.id = 2;
-            //event2.Name = "Hello1";
-            //event2.Image = "ms-appx:///Assets/Square44x44Logo.scale-200.png";
-            //event2.Fav_Image = "";
-
-            //DatabaseHelperClass db = new DatabaseHelperClass();
-            //db.DeleteAllEvents();
-            //db.Insert(event1);
-            //db.Insert(event2);
-
-            //List<EventClass> l1 = new List<EventClass>();
-            //l1 = db.ReadEvents();
-
-            //ObservableCollection<EventClass> l = new ObservableCollection<EventClass>(l1);
-
-            //Day day1 = new Day();
-            //day1.Events = l;
-            //day1.day = "Day 1";
-
-            //this.Days.Add(day1);
 
             Day dayfav = new Day();
             dayfav.day = "";
@@ -211,9 +184,6 @@ namespace Tech_Tatva_16__Windows_10_.Views
             this.Days.Add(day4);
 
         }
-
-
-
 
         private void Event_Clicked(object sender, SelectionChangedEventArgs e)
         {

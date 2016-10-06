@@ -45,7 +45,7 @@ namespace Tech_Tatva_16__Windows_10_.Classes
             Day = Sched.day;
             Round = Sched.round;
             Image = "ms-appx:///Assets/Category Icons/TT-" + eve.cname + ".png";
-            Fav_Image = "ms-appx:///Assets/Icons/fav-icon_disabled.png";
+            Fav_Image = "";
         }
 
         private string GetNumbers(string input)
@@ -60,10 +60,18 @@ namespace Tech_Tatva_16__Windows_10_.Classes
         public ObservableCollection<EventClass> Events { get; set; }
     }
 
+    public class Team
+    {
+        public string Teamid { get; set; }
+        public string Round { get; set; }
+        public string Position { get; set; }
+    }
+
     public class Results
     {
-            public string EventName { get; set; }
-            public string Image { get; set; }
+        public string EventName { get; set; }
+        public string Image { get; set; }
+        public List<Team> Teams { get; set; }
     }
 
     public class Schedule
@@ -104,5 +112,20 @@ namespace Tech_Tatva_16__Windows_10_.Classes
     public class ListEventAPI
     {
         public List<EventAPI> data { get; set; }
+    }
+
+    public class ResultAPI
+    {
+        public string eve { get; set; }
+        public string Image { get; set; }
+        public string tid { get; set; }
+        public string cat { get; set; }
+        public string round { get; set; }
+        public string pos { get; set; }
+    }
+
+    public class ListResultAPI
+    {
+        public List<ResultAPI> data { get; set; }
     }
 }

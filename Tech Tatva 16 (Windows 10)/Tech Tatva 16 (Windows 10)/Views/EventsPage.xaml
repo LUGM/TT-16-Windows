@@ -59,28 +59,35 @@
 
                                             <StackPanel Name="DetailsPanel" Visibility="Collapsed">
                                                 <Line X1="0" X2="1" Stretch="Fill" Stroke="{StaticResource SystemControlBackgroundBaseHighBrush}" StrokeThickness="1" Margin="-10,10,10,20"/>
-                                                <TextBlock Text="The data provided by admin/server is placed here" Style="{StaticResource SubtitleTextBlockStyle}" TextWrapping="Wrap" TextAlignment="Center"/>
+                                                <TextBlock Text="{x:Bind Description}" Style="{StaticResource SubtitleTextBlockStyle}" TextWrapping="Wrap" TextAlignment="Center"/>
                                                 <Line X1="0" X2="1" Stretch="Fill" Stroke="{StaticResource SystemControlBackgroundBaseHighBrush}" StrokeThickness="1" Margin="-10,20,10,10"/>
 
                                                 <StackPanel Margin="10,20,0,3" Orientation="Horizontal">
                                                     <TextBlock Text="&#xE707;" FontFamily="Segoe MDL2 Assets" FontSize="15" Height="15" Width="15"></TextBlock>
-                                                    <TextBlock Text="NLH 203" Style="{StaticResource BodyTextBlockStyle}" Margin="10,0,0,0" VerticalAlignment="Center"></TextBlock>
+                                                    <TextBlock Text="{x:Bind Venue}" Style="{StaticResource BodyTextBlockStyle}" Margin="10,0,0,0" VerticalAlignment="Center"></TextBlock>
                                                 </StackPanel>
                                                 <StackPanel Margin="10,0,0,3" Orientation="Horizontal">
                                                     <TextBlock Text="&#xE2AD;" FontFamily="Segoe MDL2 Assets" FontSize="15" Height="15" Width="15"></TextBlock>
-                                                    <TextBlock Text="2 pm and 5 pm" Style="{StaticResource BodyTextBlockStyle}" Margin="10,0,0,0" VerticalAlignment="Center"></TextBlock>
+                                                    <TextBlock Style="{StaticResource BodyTextBlockStyle}" Margin="10,0,0,0" VerticalAlignment="Center">
+                                                        <Run Text="{x:Bind Stime}" />
+                                                        <Run Text="to" />
+                                                        <Run Text="{x:Bind Etime}" />
+                                                    </TextBlock>
                                                 </StackPanel>
                                                 <StackPanel Margin="10,0,0,3" Orientation="Horizontal">
                                                     <TextBlock Text="&#xE163;" FontFamily="Segoe MDL2 Assets" FontSize="15" Height="15" Width="15"></TextBlock>
-                                                    <TextBlock Text="26 May 2016" Style="{StaticResource BodyTextBlockStyle}" Margin="10,0,0,0" VerticalAlignment="Center"></TextBlock>
+                                                    <TextBlock Text="{x:Bind Date}" Style="{StaticResource BodyTextBlockStyle}" Margin="10,0,0,0" VerticalAlignment="Center"></TextBlock>
                                                 </StackPanel>
                                                 <StackPanel Margin="10,0,0,3" Orientation="Horizontal">
                                                     <TextBlock Text="&#xE716;" FontFamily="Segoe MDL2 Assets" FontSize="15" Height="15" Width="15"></TextBlock>
-                                                    <TextBlock Text="2-3 per team" Style="{StaticResource BodyTextBlockStyle}" Margin="10,0,0,0" VerticalAlignment="Center"></TextBlock>
+                                                    <TextBlock Style="{StaticResource BodyTextBlockStyle}" Margin="10,0,0,0" VerticalAlignment="Center">
+                                                        <Run Text="{x:Bind TeamSize}" />
+                                                        <Run Text="per team" />
+                                                    </TextBlock>
                                                 </StackPanel>
                                                 <StackPanel Margin="10,0,0,3" Orientation="Horizontal">
                                                     <TextBlock Text="&#xE717;" FontFamily="Segoe MDL2 Assets" FontSize="15" Height="15" Width="15"></TextBlock>
-                                                    <TextBlock Text="9945016566" Style="{StaticResource BodyTextBlockStyle}" Margin="10,0,0,0" VerticalAlignment="Center"></TextBlock>
+                                                    <TextBlock Text="{x:Bind Contact}" Style="{StaticResource BodyTextBlockStyle}" Margin="10,0,0,0" VerticalAlignment="Center"></TextBlock>
                                                 </StackPanel>
 
                                                 <StackPanel>

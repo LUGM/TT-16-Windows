@@ -165,28 +165,43 @@ namespace Tech_Tatva_16__Windows_10_
             deferral.Complete();
         }
 
-        public static EventClass MergeEvents(Schedule Sched, EventAPI eve)
+        public static List<Results> MergeResults(ListResultAPI res)
         {
-            EventClass Evnt = new EventClass();
+            List<Results> results = new List<Results>();
 
-            if (Sched.eid == eve.eid)
+
+            List<string> dummynames = new List<string>();
+            List<string> names = new List<string>();
+
+            dummynames = res.data.Select(p => p.eve).ToList();
+            names = dummynames.Distinct().ToList();
+
+            res.data.GroupBy(n => n.eve);
+
+            for (int i = 0; i < names.Count; i++)
             {
-                Evnt.id = ((int.Parse(eve.eid)) * 100 + int.Parse(Sched.day));
-                Evnt.Name = eve.ename;
-                Evnt.Description = eve.edesc;
-                Evnt.Venue = Sched.venue;
-                Evnt.Stime = Sched.stime;
-                Evnt.Etime = Sched.etime;
-                Evnt.Date = Sched.date;
-                Evnt.TeamSize = eve.emaxteamsize;
-                Evnt.Contact = eve.cntctno;
-                Evnt.Day = Sched.day;
-                Evnt.Round = Sched.round.Trim();
-                Evnt.Image = "ms-appx:///Assets/Category Icons/TT-" + eve.cname + ".png";
-                Evnt.Fav_Image = "ms-appx:///Assets/Icons/fav-icon_disabled.png";
+                List<Team> teams = new List<Team>();
+                Results result = new Results();
+
+                foreach (ResultAPI resultapi in res.data)
+                {
+                    if (names[i] == resultapi.eve)
+                    {
+                        Team team = new Team();
+                        team.Teamid = resultapi.tid;
+                        team.Round = resultapi.round;
+                        team.Position = resultapi.pos;
+                        teams.Add(team);
+                    }
+                }
+                result.EventName = names[i];
+                result.Image = "ms-appx:///Assets/Category Icons/TT-" + result.EventName + ".png";
+                result.Teams = teams;
+
+                results.Add(result);
             }
 
-            return Evnt;
+            return results;
         }
 
     }
