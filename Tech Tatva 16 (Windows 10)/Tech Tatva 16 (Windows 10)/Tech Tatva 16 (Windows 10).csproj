@@ -108,6 +108,9 @@
     <Compile Include="Views\DevelopersPage.xaml.cs">
       <DependentUpon>DevelopersPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\EasterEggPage.xaml.cs">
+      <DependentUpon>EasterEggPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ErrorPopup.xaml.cs">
       <DependentUpon>ErrorPopup.xaml</DependentUpon>
     </Compile>
@@ -157,6 +160,7 @@
     <Content Include="Assets\Icons\insta-icon.png" />
     <Content Include="Assets\Icons\twitter-icon.png" />
     <Content Include="Assets\Icons\youtube-icon.png" />
+    <Content Include="Assets\Icons\Linux.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -216,6 +220,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\DeviceFamily-Mobile\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EasterEggPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

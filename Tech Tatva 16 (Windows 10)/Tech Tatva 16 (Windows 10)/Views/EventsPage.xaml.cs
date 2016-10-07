@@ -99,11 +99,11 @@ namespace Tech_Tatva_16__Windows_10_.Views
                     AppViewBackButtonVisibility.Collapsed;
             }
 
-            if((string)e.Parameter != "" && e.Parameter != null && e.Parameter.GetType() == typeof(string))
+            if ((string)e.Parameter != "" && e.Parameter != null && e.Parameter.GetType() == typeof(string))
             {
                 ObservableCollection<EventClass> l = new ObservableCollection<EventClass>();
                 EventClass eve = db.ReadEventByName((string)e.Parameter);
-                if(eve == null)
+                if (eve == null)
                 {
                     l.Add(eve);
                     Days.Clear();
@@ -122,67 +122,69 @@ namespace Tech_Tatva_16__Windows_10_.Views
                     Days.Add(day);
                 }
             }
-
-            List<EventClass> list = new List<EventClass>();
-
-            //Start of API Calls
-            if (IsInternet())
-            {
-                if ((db.ReadEvents() as List<EventClass>).Count == 0)
-                {
-                    List<EventClass> listevents = new List<EventClass>();
-                    listevents = await GetEventsAPIAsync();
-                    db.Insert(listevents);
-                }
-                else
-                    RefInBack = true;
-            }
             else
             {
-                if ((db.ReadEvents() as List<EventClass>).Count == 0)
-                    MainPage.Instance.ShowPopup();
+
+                List<EventClass> list = new List<EventClass>();
+
+                //Start of API Calls
+                if (IsInternet())
+                {
+                    if ((db.ReadEvents() as List<EventClass>).Count == 0)
+                    {
+                        List<EventClass> listevents = new List<EventClass>();
+                        listevents = await GetEventsAPIAsync();
+                        db.Insert(listevents);
+                    }
+                    else
+                        RefInBack = true;
+                }
                 else
-                    MainPage.Instance.HidePopup();
+                {
+                    if ((db.ReadEvents() as List<EventClass>).Count == 0)
+                        MainPage.Instance.ShowPopup();
+                    else
+                        MainPage.Instance.HidePopup();
+                }
+
+                list = db.ReadEvents();
+
+                List<EventClass> Day1Events = new List<EventClass>();
+                List<EventClass> Day2Events = new List<EventClass>();
+                List<EventClass> Day3Events = new List<EventClass>();
+                List<EventClass> Day4Events = new List<EventClass>();
+
+                Day1Events = list.Where(p => p.Day == "1").ToList();
+                Day2Events = list.Where(p => p.Day == "2").ToList();
+                Day3Events = list.Where(p => p.Day == "3").ToList();
+                Day4Events = list.Where(p => p.Day == "4").ToList();
+
+                ObservableCollection<EventClass> Day1_Events = new ObservableCollection<EventClass>(Day1Events);
+                ObservableCollection<EventClass> Day2_Events = new ObservableCollection<EventClass>(Day2Events);
+                ObservableCollection<EventClass> Day3_Events = new ObservableCollection<EventClass>(Day3Events);
+                ObservableCollection<EventClass> Day4_Events = new ObservableCollection<EventClass>(Day4Events);
+
+                Day day1 = new Day();
+                day1.Events = Day1_Events;
+                day1.day = "day 1";
+
+                Day day2 = new Day();
+                day2.Events = Day2_Events;
+                day2.day = "day 2";
+
+                Day day3 = new Day();
+                day3.Events = Day3_Events;
+                day3.day = "day 3";
+
+                Day day4 = new Day();
+                day4.Events = Day4_Events;
+                day4.day = "day 4";
+
+                this.Days.Add(day1);
+                this.Days.Add(day2);
+                this.Days.Add(day3);
+                this.Days.Add(day4);
             }
-
-            list = db.ReadEvents();
-
-            List<EventClass> Day1Events = new List<EventClass>();
-            List<EventClass> Day2Events = new List<EventClass>();
-            List<EventClass> Day3Events = new List<EventClass>();
-            List<EventClass> Day4Events = new List<EventClass>();
-
-            Day1Events = list.Where(p => p.Day == "1").ToList();
-            Day2Events = list.Where(p => p.Day == "2").ToList();
-            Day3Events = list.Where(p => p.Day == "3").ToList();
-            Day4Events = list.Where(p => p.Day == "4").ToList();
-
-            ObservableCollection<EventClass> Day1_Events = new ObservableCollection<EventClass>(Day1Events);
-            ObservableCollection<EventClass> Day2_Events = new ObservableCollection<EventClass>(Day2Events);
-            ObservableCollection<EventClass> Day3_Events = new ObservableCollection<EventClass>(Day3Events);
-            ObservableCollection<EventClass> Day4_Events = new ObservableCollection<EventClass>(Day4Events);
-
-            Day day1 = new Day();
-            day1.Events = Day1_Events;
-            day1.day = "day 1";
-
-            Day day2 = new Day();
-            day2.Events = Day2_Events;
-            day2.day = "day 2";
-
-            Day day3 = new Day();
-            day3.Events = Day3_Events;
-            day3.day = "day 3";
-
-            Day day4 = new Day();
-            day4.Events = Day4_Events;
-            day4.day = "day 4";
-
-            this.Days.Add(day1);
-            this.Days.Add(day2);
-            this.Days.Add(day3);
-            this.Days.Add(day4);
-
         }
 
         private void Event_Clicked(object sender, SelectionChangedEventArgs e)

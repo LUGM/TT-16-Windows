@@ -341,7 +341,13 @@ namespace Tech_Tatva_16__Windows_10_
 
         private void Search_Textbox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
-            this.contentFrame.Navigate(typeof(EventsPage), (args.QueryText as string));
+            if ((args.QueryText as string) == "Harambe" || (args.QueryText as string) == "harambe")
+            {
+                this.contentFrame.Navigate(typeof(EasterEggPage));
+                this.HamburgerMenu.IsPaneOpen = false;
+            }
+            else
+                this.contentFrame.Navigate(typeof(EventsPage), (args.QueryText as string));
         }
 
         private void Filter_Button_Clicked(object sender, RoutedEventArgs e)

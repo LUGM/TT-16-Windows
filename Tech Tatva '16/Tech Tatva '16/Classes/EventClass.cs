@@ -71,11 +71,6 @@ namespace Tech_Tatva__16
         public string Image { get; set; }
         public List<Team> Teams { get; set; }
 
-        public Results()
-        {
-            Image = "ms-appx:///Assets/Square71x71Logo.scale-240.png";
-        }
-
     }       
 
     public class Schedule

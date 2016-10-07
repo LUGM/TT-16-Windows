@@ -54,7 +54,12 @@
                                         <StackPanel  Grid.Column="0">
                                             <StackPanel Orientation="Horizontal">
                                                 <Image Source="{x:Bind Image}" Height="35" Width="35" />
-                                                <TextBlock Text="{x:Bind Name}" Style="{StaticResource TitleTextBlockStyle}" Margin="20,0,0,0" VerticalAlignment="Center"/>
+                                                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="20,0,0,0" VerticalAlignment="Center">
+                                                    <Run Text="{x:Bind Name}" />
+                                                    <Run Text="( Round" />
+                                                    <Run Text="{x:Bind Round}" />
+                                                    <Run Text=")" />
+                                                </TextBlock>
                                             </StackPanel>
 
                                             <StackPanel Name="DetailsPanel" Visibility="Collapsed">
@@ -100,12 +105,9 @@
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-                            
-                            
                         </ListView>
                     </DataTemplate>
                 </Pivot.ItemTemplate>
-
             </Pivot>
         </Grid>
     </Grid>
