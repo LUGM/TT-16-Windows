@@ -287,7 +287,6 @@ namespace Tech_Tatva__16.Views
 
         #endregion
 
-
         private void Day_Clicked(object sender, ItemClickEventArgs e)
         {
             Frame.Navigate(typeof(EventsPage), e.ClickedItem as Day);

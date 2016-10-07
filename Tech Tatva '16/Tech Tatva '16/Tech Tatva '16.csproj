@@ -187,7 +187,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\back.jpg" />
-    <Content Include="Assets\back_main.jpg" />
     <Content Include="Assets\back_main.png" />
     <Content Include="Assets\banner.jpg" />
     <Content Include="Assets\Category Icons\TT-acumen.png" />
@@ -214,15 +213,14 @@
     <Content Include="Assets\Icons\fav-icon_disabled.png" />
     <Content Include="Assets\Icons\fav-icon_enabled.png" />
     <Content Include="Assets\Icons\group-icon.png" />
-    <Content Include="Assets\Icons\g_plus-icon.png" />
     <Content Include="Assets\Icons\insta-comment.png" />
     <Content Include="Assets\Icons\insta-icon.png" />
     <Content Include="Assets\Icons\insta-like.png" />
     <Content Include="Assets\Icons\Linux.png" />
     <Content Include="Assets\Icons\loc-icon.png" />
     <Content Include="Assets\Icons\search-icon.png" />
+    <Content Include="Assets\Icons\snap_icon.png" />
     <Content Include="Assets\Icons\twitter-icon.png" />
-    <Content Include="Assets\Icons\youtube-icon.png" />
     <Content Include="Assets\Logo.scale-240.png" />
     <Content Include="Assets\Icons\phone-icon.png" />
     <Content Include="Assets\SmallLogo.scale-240.png" />

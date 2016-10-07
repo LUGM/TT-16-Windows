@@ -128,35 +128,30 @@
             </TextBlock>
 
             <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
-                <Button Style="{StaticResource BorderlessButton}">
+                <Button Style="{StaticResource BorderlessButton}" Click="Facebook_Click">
                     <Button.Content>
                         <Image Source="/Assets/Icons/facebook-icon.png"></Image>
                     </Button.Content>
                 </Button>
 
-                <Button Style="{StaticResource BorderlessButton}">
-                    <Button.Content>
-                        <Image Source="/Assets/Icons/g_plus-icon.png"></Image>
-                    </Button.Content>
-                </Button>
-
-                <Button Style="{StaticResource BorderlessButton}">
+                <Button Style="{StaticResource BorderlessButton}" Click="Insta_Click">
                     <Button.Content>
                         <Image Source="/Assets/Icons/insta-icon.png"></Image>
                     </Button.Content>
                 </Button>
 
-                <Button Style="{StaticResource BorderlessButton}">
+                <Button Style="{StaticResource BorderlessButton}" Click="Snapchat_Click">
+                    <Button.Content>
+                        <Image Source="/Assets/Icons/snap_icon.png"></Image>
+                    </Button.Content>
+                </Button>
+
+                <Button Style="{StaticResource BorderlessButton}" Click="Twitter_Click">
                     <Button.Content>
                         <Image Source="/Assets/Icons/twitter-icon.png"></Image>
                     </Button.Content>
                 </Button>
 
-                <Button Style="{StaticResource BorderlessButton}">
-                    <Button.Content>
-                        <Image Source="/Assets/Icons/youtube-icon.png"></Image>
-                    </Button.Content>
-                </Button>
             </StackPanel>
         </Grid>
     </Grid>

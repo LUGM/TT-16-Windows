@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.System;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -107,5 +108,25 @@ namespace Tech_Tatva__16.Views
         }
 
         #endregion
+
+        private async void Facebook_Click(object sender, RoutedEventArgs e)
+        {
+            await Launcher.LaunchUriAsync(new Uri("https://facebook.com/MITTechtatva"));
+        }
+
+        private async void Twitter_Click(object sender, RoutedEventArgs e)
+        {
+            await Launcher.LaunchUriAsync(new Uri("https://twitter.com/@mittechtatva"));
+        }
+
+        private async void Snapchat_Click(object sender, RoutedEventArgs e)
+        {
+            await Launcher.LaunchUriAsync(new Uri("https://snapchat.com/add/mittt16"));
+        }
+
+        private async void Insta_Click(object sender, RoutedEventArgs e)
+        {
+            await Launcher.LaunchUriAsync(new Uri("https://instagram.com/mittechtatva"));
+        }
     }
 }
