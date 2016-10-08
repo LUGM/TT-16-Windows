@@ -195,7 +195,7 @@ namespace Tech_Tatva__16
                     }                    
                 }
                 result.eve = names[i];
-                result.Image = "ms-appx:///Assets/Category Icons/TT-" + result.eve + ".png";
+                result.Image = "ms-appx:///Assets/Square71x71Logo.scale-100.png";
                 result.Teams = teams;
 
                 results.Add(result);

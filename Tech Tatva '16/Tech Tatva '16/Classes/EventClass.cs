@@ -25,6 +25,7 @@ namespace Tech_Tatva__16
         public string Contact { get; set; }
         public string Image { get; set; }
         public string Fav_Image { get; set; }
+        public string Category { get; set; }
 
         public EventClass()
         {
@@ -44,10 +45,24 @@ namespace Tech_Tatva__16
             Contact = eve.cntctno.Trim();
             Day = Sched.day;
             Round = Sched.round;
+            Category = eve.cname;
+
             Image = "ms-appx:///Assets/Category Icons/TT-" + eve.cname + ".png";
 
-         
-
+            switch (eve.cname)
+            {
+                case "Chrysalis":
+                case "Questionable Intelligence":
+                case "Robowars":
+                case "The Manipal Conclave":
+                case "Energia":
+                case "Fuel RC 5":
+                case "Open category":
+                case "Featured Event-Paper Presentation":
+                    Image = "ms-appx:///Assets/Square71x71Logo.scale-100.png";
+                    break;
+             }
+        
             Fav_Image = "ms-appx:///Assets/Icons/fav-icon_disabled.png";
         }
 
@@ -75,7 +90,6 @@ namespace Tech_Tatva__16
         public string eve { get; set; }
         public string Image { get; set; }
         public List<Team> Teams { get; set; }
-
     }       
 
     public class Schedule
