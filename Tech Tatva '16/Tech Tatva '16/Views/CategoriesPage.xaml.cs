@@ -15,6 +15,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -65,8 +68,33 @@ namespace Tech_Tatva__16.Views
         /// <see cref="Frame.Navigate(Type, Object)"/> when this page was initially requested and
         /// a dictionary of state preserved by this page during an earlier
         /// session.  The state will be null the first time a page is visited.</param>
-        private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
+        private async void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
+            ListCategory list = new ListCategory();
+            list =await GetCatAsync();
+            foreach (Category cat in list.data)
+            {
+                cat.Image = "ms-appx:///Assets/Category Icons/TT-" + cat.cname + ".png";
+
+                switch (cat.cname)
+                {
+
+
+                    case "Chrysalis":
+                    case "Questionable Intelligence":
+                    case "Robowars":
+                    case "The Manipal Conclave":
+                    case "Energia":
+                    case "Fuel RC 5":
+                    case "Open category":
+                    case "Featured Event-Paper Presentation":
+                        cat.Image = "ms-appx:///Assets/Square71x71Logo.scale-100.png";
+                        break;
+                }
+            }
+                
+
+            Categories_ListView.ItemsSource = list.data;
         }
 
         /// <summary>
@@ -107,5 +135,25 @@ namespace Tech_Tatva__16.Views
         }
 
         #endregion
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+        }
+
+        private async Task<ListCategory> GetCatAsync()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    ListCategory list = new ListCategory();
+                    var response = await client.GetStringAsync("http://api.mitportals.in/categories/");
+                    list = JsonConvert.DeserializeObject<ListCategory>(response);
+                    return list;
+                }catch { }
+
+                return null;
+            }
+        }
     }
 }

@@ -29,8 +29,24 @@
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <ListView>
-                    <ListViewItem>
+                <ListView x:Name="Categories_ListView" SelectionChanged="ListView_SelectionChanged">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,5,1,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Height="60" Width="60">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="{Binding Image}"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                                <TextBlock Grid.Column="1" TextWrapping="Wrap" Text="{Binding cname}" FontFamily="Segoe WP" FontWeight="Light" VerticalAlignment="Center" FontSize="30" Margin="10,0,0,0"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <!--<ListViewItem>
                         <StackPanel Orientation="Horizontal" Margin="0,5,1,5">
                             <Image Source="/Assets/Category Icons/TT-cryptoss.png" Height="60"/>
                             <TextBlock Text="Cryptoss" FontFamily="Segoe WP" FontWeight="Light" VerticalAlignment="Center" FontSize="30" Margin="10,0,0,0"/>
@@ -124,7 +140,7 @@
                     <ListViewItem>
                         <StackPanel Orientation="Horizontal" Margin="0,5,1,5">
                             <Image Source="/Assets/Category Icons/TT-cosmicon.png" Height="60"/>
-                            <TextBlock Text="Cosmicon" FontFamily="Segoe WP" FontWeight="Light" VerticalAlignment="Center" FontSize="30" Margin="10,0,0,0"/>
+                            <TextBlock Text="Cosmiccon" FontFamily="Segoe WP" FontWeight="Light" VerticalAlignment="Center" FontSize="30" Margin="10,0,0,0"/>
                         </StackPanel>
                     </ListViewItem>
 
@@ -147,7 +163,7 @@
                             <Image Source="/Assets/Category Icons/TT-turing.png" Height="60"/>
                             <TextBlock Text="Turing" FontFamily="Segoe WP" FontWeight="Light" VerticalAlignment="Center" FontSize="30" Margin="10,0,0,0"/>
                         </StackPanel>
-                    </ListViewItem>
+                    </ListViewItem>-->
                 </ListView>
             </ScrollViewer>
         </Grid>
