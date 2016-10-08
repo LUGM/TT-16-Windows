@@ -44,7 +44,8 @@ namespace Tech_Tatva__16.Views
         Popup searchpopup;
         StatusBar statusbar = StatusBar.GetForCurrentView();
         Insta insta = new Insta();
-        
+
+        private bool RefInBack = false;
 
 
         public MainPage()
@@ -155,8 +156,24 @@ namespace Tech_Tatva__16.Views
                 }
                 else
                 {
-                    //Start Of Insta API Call
-                    insta = await GetInstaAsync();
+                    //Checking Database
+                    if ((db.ReadEvents() as List<EventClass>).Count == 0)
+                    {
+                        //Start Of EventsAPI call
+                        db.DeleteAllEvents();
+                        List<EventClass> listevents = new List<EventClass>();
+                        listevents = await GetEventsAPIAsync();
+
+                        db.Insert(listevents);
+                        //End of Events API Call
+                    }
+                    else
+                    {
+                        RefInBack = true;
+                    }
+
+                        //Start Of Insta API Call
+                        insta = await GetInstaAsync();
                     bmi.Clear();
                     foreach (Datum d in insta.data)
                     {
@@ -168,14 +185,6 @@ namespace Tech_Tatva__16.Views
                     }
 
                     //End Of Insta API call and formatting
-
-                    //Start Of EventsAPI call
-                    db.DeleteAllEvents();
-                    List<EventClass> listevents = new List<EventClass>();
-                    listevents = await GetEventsAPIAsync();
-
-                    db.Insert(listevents);
-                    //End of Events API Call
 
                     results = await GetResultsAsync(); //Results API Call
 
@@ -461,6 +470,64 @@ namespace Tech_Tatva__16.Views
             roamingSettings.Values["First"] = "0";
 
             Frame.Navigate(typeof(MainPage));
+        }
+
+        private async void ListViewItem_Loaded(object sender, RoutedEventArgs e)
+        {
+            DatabaseHelperClass db = new DatabaseHelperClass();
+            if(RefInBack)
+            {
+                //Start Of EventsAPI call
+                db.DeleteAllEvents();
+                List<EventClass> listevents = new List<EventClass>();
+                listevents = await GetEventsAPIAsync();
+
+                db.Insert(listevents);
+                //End of Events API Call
+
+            }
+
+            List<EventClass> l = new List<EventClass>();
+            l = db.ReadEvents();
+
+            List<EventClass> Day1_Events = new List<EventClass>();
+            List<EventClass> Day2_Events = new List<EventClass>();
+            List<EventClass> Day3_Events = new List<EventClass>();
+            List<EventClass> Day4_Events = new List<EventClass>();
+
+            Day1_Events = (l.Where(p => p.Day == "1").ToList()).OrderBy(eve => eve.Name).ToList();
+            Day2_Events = (l.Where(p => p.Day == "2").ToList()).OrderBy(eve => eve.Name).ToList();
+            Day3_Events = (l.Where(p => p.Day == "3").ToList()).OrderBy(eve => eve.Name).ToList();
+            Day4_Events = (l.Where(p => p.Day == "4").ToList()).OrderBy(eve => eve.Name).ToList();
+
+            List<Day> list = new List<Day>();
+            Day day1 = new Day();
+            day1.Events = Day1_Events;
+            day1.day = "day 1";
+
+            Day day2 = new Day();
+            day2.Events = Day2_Events;
+            day2.day = "day 2";
+
+            Day day3 = new Day();
+            day3.Events = Day3_Events;
+            day3.day = "day 3";
+
+            Day day4 = new Day();
+            day4.Events = Day4_Events;
+            day4.day = "day 4";
+
+
+            list.Add(day1);
+            list.Add(day2);
+            list.Add(day3);
+            list.Add(day4);
+
+
+
+            this.defaultViewModel["Days"] = list;
+            (sender as ListView).ItemsSource = this.defaultViewModel["Days"];
+
         }
     }
 }

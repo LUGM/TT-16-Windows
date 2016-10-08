@@ -70,7 +70,7 @@
 
             <HubSection x:Name="Events" Header="events" DataContext="{Binding}">
                 <DataTemplate>
-                    <ListView x:Name="List1" SelectionMode="None" IsItemClickEnabled="True" ItemClick="Day_Clicked" ItemsSource="{Binding Days}">
+                    <ListView x:Name="List1" SelectionMode="None" IsItemClickEnabled="True" ItemClick="Day_Clicked" ItemsSource="{Binding Days}" Loaded="ListViewItem_Loaded">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding day}" TextAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,5" FontFamily="Segoe WP" FontWeight="Light" FontSize="30" />
