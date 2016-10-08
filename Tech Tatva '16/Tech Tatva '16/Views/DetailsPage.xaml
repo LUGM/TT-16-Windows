@@ -85,9 +85,9 @@
                     </TextBlock>
                 </StackPanel>
 
-                <StackPanel Grid.Row="7" Margin="10,0,0,0" Orientation="Horizontal">
+                <StackPanel Grid.Row="7" Margin="10,0,0,0" Orientation="Horizontal" Tapped="Contact_Tapped">
                     <Image Source="/Assets/Icons/phone-icon.png" Height="45" Width="45"></Image>
-                    <TextBlock Text="{Binding Contact}" FontSize="25" Margin="10,0,0,0" VerticalAlignment="Center"></TextBlock>
+                    <TextBlock x:Name="Contact" Text="{Binding Contact}" FontSize="25" Margin="10,0,0,0" VerticalAlignment="Center"/>
                 </StackPanel>
 
                 <StackPanel Grid.Row="8" Margin="0,30,0,0">

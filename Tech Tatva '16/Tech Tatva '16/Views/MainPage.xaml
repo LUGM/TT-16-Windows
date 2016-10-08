@@ -119,13 +119,13 @@
 
             <HubSection x:Name="Register" Header="register">
                 <DataTemplate>
-                    <WebView Margin="0,0,0,10" Source="http://manipal.edu"/>
+                    <WebView Margin="0,0,0,10" Source="http://register.mitportals.in"/>
                 </DataTemplate>
             </HubSection>
 
             <HubSection x:Name="Online_Events" Header="online events">
                 <DataTemplate>
-                    <WebView Margin="0,0,0,10" Source="http://manipal.edu"/>
+                    <WebView Margin="0,0,0,10" Source="http://onlineevents.mitportals.com"/>
                 </DataTemplate>
             </HubSection>
         </Hub>

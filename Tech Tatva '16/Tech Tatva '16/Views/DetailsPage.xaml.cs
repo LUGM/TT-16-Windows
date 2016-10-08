@@ -175,5 +175,10 @@ namespace Tech_Tatva__16.Views
                 return (T)serializer.Deserialize(sw);
             }
         }
+
+        private void Contact_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Windows.ApplicationModel.Calls.PhoneCallManager.ShowPhoneCallUI(Contact.Text, (this.DataContext as EventClass).Name);
+        }
     }
 }

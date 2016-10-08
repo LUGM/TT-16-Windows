@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage;
+using Windows.Storage.Search;
 
 namespace Tech_Tatva__16
 {
@@ -39,10 +41,13 @@ namespace Tech_Tatva__16
             Etime = Sched.etime;
             Date = Sched.date;
             TeamSize = eve.emaxteamsize;
-            Contact = eve.cntctno;
+            Contact = eve.cntctno.Trim();
             Day = Sched.day;
             Round = Sched.round;
             Image = "ms-appx:///Assets/Category Icons/TT-" + eve.cname + ".png";
+
+         
+
             Fav_Image = "ms-appx:///Assets/Icons/fav-icon_disabled.png";
         }
 

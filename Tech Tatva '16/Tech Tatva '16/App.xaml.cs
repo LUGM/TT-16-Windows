@@ -47,9 +47,7 @@ namespace Tech_Tatva__16
             {
                 using (var db = new SQLiteConnection(DB_PATH))
                 {
-                    db.CreateTable<EventClass>();
-                    db.CreateTable<string>();
-                }
+                    db.CreateTable<EventClass>();                }
             }
 
             var roamingSettings = ApplicationData.Current.RoamingSettings;
@@ -61,12 +59,14 @@ namespace Tech_Tatva__16
         {
             try
             {
-                var store = await Windows.Storage.ApplicationData.Current.LocalFolder.GetFileAsync(fileName);
+                var store = await ApplicationData.Current.LocalFolder.GetFileAsync(fileName);
                 return true;
             }
             catch
             {
+
             }
+
             return false;
         }
 
