@@ -112,47 +112,48 @@
 
         <Image Source="/Assets/banner.jpg" Grid.Row="1"></Image>
 
-        <!--TODO: Content should be placed within the following grid-->
-        <Grid Grid.Row="2" x:Name="ContentRoot" Margin="19,9.5,19,5">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <TextBlock FontFamily="Segoe WP" FontSize="20" FontWeight="Normal" TextWrapping="Wrap">
-                Tech Tatva is the annual, student run, National
-                Level Technical Fest Of Manipal Institute Of Technology, Manipal.
-                It is one of the largest technical fests in the south zone 
-                of the country, witnessing participation from various prestigious 
-                institutes from across the nation. TechTatva comprises a plethora
-                of events, ranging across the various branches of engineering.
-            </TextBlock>
+        <ScrollViewer Grid.Row="2">
+            <!--TODO: Content should be placed within the following grid-->
+            <Grid x:Name="ContentRoot" Margin="19,9.5,19,5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TextBlock FontFamily="Segoe WP" FontSize="20" FontWeight="Normal" TextWrapping="Wrap">
+                TechTatva is a national level technical fest in India organized by Manipal Institute of Technology students every year. With a plethora of events and workshops from all the spheres of Engineering organized by experts, TechTatva Fest witnesses mass participation from other colleges.
 
-            <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
-                <Button Style="{StaticResource BorderlessButton}" Click="Facebook_Click">
-                    <Button.Content>
-                        <Image Source="/Assets/Icons/facebook-icon.png"></Image>
-                    </Button.Content>
-                </Button>
+                <LineBreak/> <LineBreak/>Curiosity is the quality that forms the foundation of all the other milestones of innovation. The insatiable thirst for knowledge gives rise to a never ending chain of questions, which further lead to imagination, thinking, experimentation and implementation.
+                <LineBreak/> <LineBreak/>This year, we celebrate the spirit of being "Passionately Curious", something that lies at the heart of every innovation. Join us from 12th to 15th October to witness this spirit among the engineers of tomorrow.
 
-                <Button Style="{StaticResource BorderlessButton}" Click="Insta_Click">
-                    <Button.Content>
-                        <Image Source="/Assets/Icons/insta-icon.png"></Image>
-                    </Button.Content>
-                </Button>
+                </TextBlock>
 
-                <Button Style="{StaticResource BorderlessButton}" Click="Snapchat_Click">
-                    <Button.Content>
-                        <Image Source="/Assets/Icons/snap_icon.png"></Image>
-                    </Button.Content>
-                </Button>
+                <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+                    <Button Style="{StaticResource BorderlessButton}" Click="Facebook_Click">
+                        <Button.Content>
+                            <Image Source="/Assets/Icons/facebook-icon.png"></Image>
+                        </Button.Content>
+                    </Button>
 
-                <Button Style="{StaticResource BorderlessButton}" Click="Twitter_Click">
-                    <Button.Content>
-                        <Image Source="/Assets/Icons/twitter-icon.png"></Image>
-                    </Button.Content>
-                </Button>
+                    <Button Style="{StaticResource BorderlessButton}" Click="Insta_Click">
+                        <Button.Content>
+                            <Image Source="/Assets/Icons/insta-icon.png"></Image>
+                        </Button.Content>
+                    </Button>
 
-            </StackPanel>
-        </Grid>
+                    <Button Style="{StaticResource BorderlessButton}" Click="Snapchat_Click">
+                        <Button.Content>
+                            <Image Source="/Assets/Icons/snap_icon.png"></Image>
+                        </Button.Content>
+                    </Button>
+
+                    <Button Style="{StaticResource BorderlessButton}" Click="Twitter_Click">
+                        <Button.Content>
+                            <Image Source="/Assets/Icons/twitter-icon.png"></Image>
+                        </Button.Content>
+                    </Button>
+
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Page>
