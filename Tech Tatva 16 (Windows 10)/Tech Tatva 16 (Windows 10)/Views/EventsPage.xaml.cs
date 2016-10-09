@@ -7,12 +7,14 @@ using System.Linq;
 using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using Tech_Tatva__16.Classes;
 using Tech_Tatva_16__Windows_10_.Classes;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
 using Windows.Networking.Connectivity;
+using Windows.Storage;
 using Windows.System.Profile;
 using Windows.UI;
 using Windows.UI.Core;
@@ -37,6 +39,7 @@ namespace Tech_Tatva_16__Windows_10_.Views
 
         public ObservableCollection<Day> Days = new ObservableCollection<Day>();
         public ObservableCollection<Day> Favourites = new ObservableCollection<Day>();
+        public List<int> Favs = new List<int>();
 
         public static EventsPage Instance;
 
@@ -78,6 +81,12 @@ namespace Tech_Tatva_16__Windows_10_.Views
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
+            var roamingSettings = ApplicationData.Current.RoamingSettings;
+            if (roamingSettings.Values["Favs"] != null)
+            {
+                Favs = Deserialize<List<int>>(roamingSettings.Values["Favs"].ToString());
+            }
+
             DatabaseHelperClass db = new DatabaseHelperClass();
             string myPages = "";
             foreach (PageStackEntry page in Frame.BackStack)
@@ -147,43 +156,7 @@ namespace Tech_Tatva_16__Windows_10_.Views
                         MainPage.Instance.HidePopup();
                 }
 
-                list = db.ReadEvents();
-
-                List<EventClass> Day1Events = new List<EventClass>();
-                List<EventClass> Day2Events = new List<EventClass>();
-                List<EventClass> Day3Events = new List<EventClass>();
-                List<EventClass> Day4Events = new List<EventClass>();
-
-                Day1Events = list.Where(p => p.Day == "1").ToList();
-                Day2Events = list.Where(p => p.Day == "2").ToList();
-                Day3Events = list.Where(p => p.Day == "3").ToList();
-                Day4Events = list.Where(p => p.Day == "4").ToList();
-
-                ObservableCollection<EventClass> Day1_Events = new ObservableCollection<EventClass>(Day1Events);
-                ObservableCollection<EventClass> Day2_Events = new ObservableCollection<EventClass>(Day2Events);
-                ObservableCollection<EventClass> Day3_Events = new ObservableCollection<EventClass>(Day3Events);
-                ObservableCollection<EventClass> Day4_Events = new ObservableCollection<EventClass>(Day4Events);
-
-                Day day1 = new Day();
-                day1.Events = Day1_Events;
-                day1.day = "day 1";
-
-                Day day2 = new Day();
-                day2.Events = Day2_Events;
-                day2.day = "day 2";
-
-                Day day3 = new Day();
-                day3.Events = Day3_Events;
-                day3.day = "day 3";
-
-                Day day4 = new Day();
-                day4.Events = Day4_Events;
-                day4.day = "day 4";
-
-                this.Days.Add(day1);
-                this.Days.Add(day2);
-                this.Days.Add(day3);
-                this.Days.Add(day4);
+                AssignItemSource();
             }
         }
 
@@ -228,35 +201,44 @@ namespace Tech_Tatva_16__Windows_10_.Views
 
         private void Fav_Button_Click(object sender, RoutedEventArgs e)
         {
-            EventClass events = new EventClass();
-            events = (sender as RadioButton).DataContext as EventClass;
+            List<int> Favs = new List<int>();
+            var roamingSettings = ApplicationData.Current.RoamingSettings;
+
+            if (roamingSettings.Values["Favs"] != null)
+            {
+                Favs = Deserialize<List<int>>(roamingSettings.Values["Favs"].ToString());
+            }
 
             DatabaseHelperClass db = new DatabaseHelperClass();
+            EventClass eve = (sender as RadioButton).DataContext as EventClass;
 
             if ((sender as RadioButton).Tag.Equals(""))
             {
                 (sender as RadioButton).Tag = ("");
                 (sender as RadioButton).Content = "Remove Bookmark";
+
+                if(Favs.Contains(eve.id))
+                {
+                    //Do Nothing
+                }
+                else
+                {
+                    Favs.Add(eve.id);
+                }
             }
 
             else if ((sender as RadioButton).Tag.Equals(""))
             {
                 (sender as RadioButton).Tag = ("");
                 (sender as RadioButton).Content = "Bookmark Event";
+
+                Favs.Remove(eve.id);
             }
 
-            foreach (Day day in Days)
-            {
-                foreach (EventClass ev in day.Events)
-                {
-                    if (ev.Name.Equals(events.Name))
-                    {
-                        ev.Fav_Image = (sender as RadioButton).Tag.ToString();
-                        db.UpdateEvent(ev);
-                        break;
-                    }
-                }
-            }
+
+            roamingSettings.Values["Favs"] = Serialize(Favs);
+
+            RefreshLayout();
 
         }
 
@@ -277,38 +259,54 @@ namespace Tech_Tatva_16__Windows_10_.Views
 
         public void Filter_Fav_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if((sender as ComboBox).SelectedIndex == 1)
+            List<int> Favs = new List<int>();
+            if ((sender as ComboBox).SelectedIndex == 1)
             {
                 Day dayfav = new Day();
                 dayfav.day = "";
 
-                ObservableCollection<EventClass> lis = new ObservableCollection<EventClass>();
+                ObservableCollection<EventClass> FavEvents = new ObservableCollection<EventClass>();
 
-                foreach (Day d in Days)
+
+                var roamingSettings = ApplicationData.Current.RoamingSettings;
+                if (roamingSettings.Values["Favs"] != null)
                 {
-                    foreach (EventClass events in d.Events)
-                    {
-                        if (events.Fav_Image.Equals(""))
-                        {
-                            lis.Add(events);
-                        }
-                    }
+                    Favs = Deserialize<List<int>>(roamingSettings.Values["Favs"].ToString());
                 }
 
-                dayfav.Events = lis;
-
-                if (lis.Count == 0)
+                if (Favs.Count == 0)
                     dayfav.day = "No Favourites Added Yet..";
+
+                else
+                {
+                    DatabaseHelperClass db = new DatabaseHelperClass();
+
+                    foreach (int id in Favs)
+                    {
+                        if (db.ReadEventById(id) != null)
+                        {
+                            FavEvents.Add(db.ReadEventById(id));
+                        }
+                    }
+
+                    foreach (EventClass eve in FavEvents)
+                    {
+                        eve.Fav_Image = "";
+                    }
+
+                }
+                dayfav.Events = FavEvents;
 
                 Favourites.Clear();
                 Favourites.Add(dayfav);
-
                 MyPivot.ItemsSource = Favourites;
-            }
 
-            if ((sender as ComboBox).SelectedIndex == 0)
+            }
+            else
             {
+                AssignItemSource();
                 MyPivot.ItemsSource = Days;
+
             }
         }
 
@@ -373,10 +371,17 @@ namespace Tech_Tatva_16__Windows_10_.Views
 
         private async void EventsList_Loaded(object sender, RoutedEventArgs e)
         {
+            var roamingSettings = ApplicationData.Current.RoamingSettings;
             DatabaseHelperClass db = new DatabaseHelperClass();
             if(RefInBack)
             {
                 RefInBack = false;
+
+                if (roamingSettings.Values["Favs"] != null)
+                {
+                    Favs = Deserialize<List<int>>(roamingSettings.Values["Favs"].ToString());
+                }
+
                 db.DeleteAllEvents();
                 List<EventClass> listevents = new List<EventClass>();
                 listevents = await GetEventsAPIAsync();
@@ -384,6 +389,14 @@ namespace Tech_Tatva_16__Windows_10_.Views
 
                 List<EventClass> list = new List<EventClass>();
                 list = db.ReadEvents();
+
+                foreach (EventClass eve in list)
+                {
+                    if (Favs.Contains(eve.id))
+                        eve.Fav_Image = "";
+                    else
+                        eve.Fav_Image = "";
+                }
 
                 List<EventClass> Day1Events = new List<EventClass>();
                 List<EventClass> Day2Events = new List<EventClass>();
@@ -425,6 +438,135 @@ namespace Tech_Tatva_16__Windows_10_.Views
 
                 (sender as ListView).ItemsSource = Days;
             }
+        }
+
+        public static string Serialize(object obj)
+
+        {
+            using (var sw = new StringWriter())
+            {
+                var serializer = new XmlSerializer(obj.GetType());
+                serializer.Serialize(sw, obj);
+                return sw.ToString();
+            }
+        }
+
+        public static T Deserialize<T>(string xml)
+        {
+            using (var sw = new StringReader(xml))
+            {
+                var serializer = new XmlSerializer(typeof(T));
+                return (T)serializer.Deserialize(sw);
+            }
+        }
+
+        public void RefreshLayout()
+        {
+            if (Filter_Fav.SelectedIndex == 1)
+            {
+                Day dayfav = new Day();
+                dayfav.day = "";
+
+                ObservableCollection<EventClass> FavEvents = new ObservableCollection<EventClass>();
+
+
+                var roamingSettings = ApplicationData.Current.RoamingSettings;
+                if (roamingSettings.Values["Favs"] != null)
+                {
+                    Favs = Deserialize<List<int>>(roamingSettings.Values["Favs"].ToString());
+                }
+
+                if (Favs.Count == 0)
+                    dayfav.day = "No Favourites Added Yet..";
+
+                else
+                {
+                    DatabaseHelperClass db = new DatabaseHelperClass();
+
+                    foreach (int id in Favs)
+                    {
+                        if (db.ReadEventById(id) != null)
+                        {
+                            FavEvents.Add(db.ReadEventById(id));
+                        }
+                    }
+
+                    foreach (EventClass eve in FavEvents)
+                    {
+                        eve.Fav_Image = "";
+                    }                    
+                }
+                dayfav.Events = FavEvents;
+
+                Favourites.Clear();
+                Favourites.Add(dayfav);
+                MyPivot.ItemsSource = Favourites;
+
+            }
+            else
+            {
+                AssignItemSource();
+                MyPivot.ItemsSource = Days;
+
+            }
+        }
+
+        public void AssignItemSource()
+        {
+            DatabaseHelperClass db = new DatabaseHelperClass();
+            List<EventClass> list = new List<EventClass>();
+            list = db.ReadEvents();
+
+            var roamingSettings = ApplicationData.Current.RoamingSettings;
+
+            if (roamingSettings.Values["Favs"] != null)
+                Favs = Deserialize<List<int>>(roamingSettings.Values["Favs"].ToString());
+
+            foreach (EventClass eve in list)
+            {
+                if (Favs.Contains(eve.id))
+                    eve.Fav_Image = "";
+                else
+                    eve.Fav_Image = "";
+            }
+
+            List<EventClass> Day1Events = new List<EventClass>();
+            List<EventClass> Day2Events = new List<EventClass>();
+            List<EventClass> Day3Events = new List<EventClass>();
+            List<EventClass> Day4Events = new List<EventClass>();
+
+            Day1Events = list.Where(p => p.Day == "1").ToList();
+            Day2Events = list.Where(p => p.Day == "2").ToList();
+            Day3Events = list.Where(p => p.Day == "3").ToList();
+            Day4Events = list.Where(p => p.Day == "4").ToList();
+
+            ObservableCollection<EventClass> Day1_Events = new ObservableCollection<EventClass>(Day1Events);
+            ObservableCollection<EventClass> Day2_Events = new ObservableCollection<EventClass>(Day2Events);
+            ObservableCollection<EventClass> Day3_Events = new ObservableCollection<EventClass>(Day3Events);
+            ObservableCollection<EventClass> Day4_Events = new ObservableCollection<EventClass>(Day4Events);
+
+            Day day1 = new Day();
+            day1.Events = Day1_Events;
+            day1.day = "day 1";
+
+            Day day2 = new Day();
+            day2.Events = Day2_Events;
+            day2.day = "day 2";
+
+            Day day3 = new Day();
+            day3.Events = Day3_Events;
+            day3.day = "day 3";
+
+            Day day4 = new Day();
+            day4.Events = Day4_Events;
+            day4.day = "day 4";
+
+            Days.Clear();
+
+            this.Days.Add(day1);
+            this.Days.Add(day2);
+            this.Days.Add(day3);
+            this.Days.Add(day4);
         }
     }
 
