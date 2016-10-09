@@ -138,6 +138,7 @@ namespace Tech_Tatva__16.Views
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            Frame.Navigate(typeof(CategoryDetailPage), (sender as ListView).SelectedItem as Category);
         }
 
         private async Task<ListCategory> GetCatAsync()
