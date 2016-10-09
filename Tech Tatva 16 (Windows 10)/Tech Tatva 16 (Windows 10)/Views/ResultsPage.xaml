@@ -43,7 +43,7 @@
                                 </Grid.RowDefinitions>
                                 <StackPanel  Grid.Column="0">
                                     <StackPanel Orientation="Horizontal">
-                                        <Ellipse  Height="35" Width="35" >
+                                        <Ellipse  Height="40" Width="40" >
                                             <Ellipse.Fill>
                                                 <ImageBrush ImageSource="{x:Bind Image}"/>
                                             </Ellipse.Fill>

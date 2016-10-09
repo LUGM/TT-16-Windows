@@ -66,7 +66,6 @@
                         <RadioButton Name="Events_Button" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Content="Events" Tag="&#xE11D;" Foreground="White" HorizontalAlignment="Stretch" Checked="Events_Button_Checked"/>
                         <RadioButton Name="Results_Button" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Content="Results" Tag="&#xE129;" Foreground="White" HorizontalAlignment="Stretch" Checked="Results_Button_Checked"/>
                         <RadioButton Name="Insta_Button"  GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Content="Instagram" Tag="&#xEC80;" Foreground="White" HorizontalAlignment="Stretch" Checked="Insta_Button_Checked"/>
-                        <RadioButton Name="Register_Button" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Content="Register" Tag="&#xE1E2;" Foreground="White" HorizontalAlignment="Stretch" Checked="Register_Button_Checked"/>
                         <RadioButton Name="Online_Button" GroupName="Group1" Style="{StaticResource NavigationButtonStyle}" Content="Online Events" Tag="&#xE128;" Foreground="White" HorizontalAlignment="Stretch" Checked="Online_Button_Checked"/>
                     </StackPanel>
 

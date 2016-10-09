@@ -128,4 +128,18 @@ namespace Tech_Tatva_16__Windows_10_.Classes
     {
         public List<ResultAPI> data { get; set; }
     }
+
+    public class Category
+    {
+        public string Image { get; set; }
+        public string cid { get; set; }
+        public string cname { get; set; }
+        public string cdesc { get; set; }
+    }
+
+    public class ListCategory
+    {
+        public List<Category> data;
+    }
+
 }
