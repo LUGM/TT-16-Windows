@@ -61,7 +61,11 @@
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <Image Source="{Binding Image}" Height="50" Width="50" VerticalAlignment="Center"/>
+                                        <Ellipse Height="50" Width="50" VerticalAlignment="Center">
+                                            <Ellipse.Fill>
+                                                <ImageBrush ImageSource="{Binding Image}"/>
+                                            </Ellipse.Fill>
+                                        </Ellipse>
                                         <TextBlock Grid.Column="1" Text="{Binding Name}" FontSize="30" TextWrapping="Wrap" FontFamily="Segoe WP" Margin="10,0,5,5" FontWeight="Light" VerticalAlignment="Center"/>
                                     </Grid>
                                 </Grid>
@@ -85,7 +89,11 @@
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <Image Source="{Binding Image}" Height="50" Width="50" VerticalAlignment="Center"/>
+                                        <Ellipse Height="50" Width="50" VerticalAlignment="Center">
+                                            <Ellipse.Fill>
+                                                <ImageBrush ImageSource="{Binding Image}"/>
+                                            </Ellipse.Fill>
+                                        </Ellipse>
                                         <TextBlock Grid.Column="1" Text="{Binding Name}" FontSize="30" TextWrapping="Wrap" FontFamily="Segoe WP" Margin="10,0,5,5" FontWeight="Light" VerticalAlignment="Center"/>
                                     </Grid>
                                 </Grid>
@@ -109,7 +117,11 @@
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <Image Source="{Binding Image}" Height="50" Width="50" VerticalAlignment="Center"/>
+                                        <Ellipse Height="50" Width="50" VerticalAlignment="Center">
+                                            <Ellipse.Fill>
+                                                <ImageBrush ImageSource="{Binding Image}"/>
+                                            </Ellipse.Fill>
+                                        </Ellipse>
                                         <TextBlock Grid.Column="1" Text="{Binding Name}" FontSize="30" TextWrapping="Wrap" FontFamily="Segoe WP" Margin="10,0,5,5" FontWeight="Light" VerticalAlignment="Center"/>
                                     </Grid>
                                 </Grid>
@@ -133,7 +145,11 @@
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <Image Source="{Binding Image}" Height="50" Width="50" VerticalAlignment="Center"/>
+                                        <Ellipse Height="50" Width="50" VerticalAlignment="Center">
+                                            <Ellipse.Fill>
+                                                <ImageBrush ImageSource="{Binding Image}"/>
+                                            </Ellipse.Fill>
+                                        </Ellipse>
                                         <TextBlock Grid.Column="1"  Text="{Binding Name}" FontSize="30" TextWrapping="Wrap" FontFamily="Segoe WP" Margin="10,0,5,5" FontWeight="Light" VerticalAlignment="Center"/>
                                     </Grid>
                                 </Grid>
