@@ -39,7 +39,7 @@
 
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal" Grid.Column="0">
+                        <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="0,5,5,5">
                             <Image Source="{Binding Image}" Height="40" Width="40" />
                             <TextBlock Text="{Binding Name}" FontSize="30" FontFamily="Segoe WP" Margin="20,0,0,0" FontWeight="Light" VerticalAlignment="Center"/>
                         </StackPanel>

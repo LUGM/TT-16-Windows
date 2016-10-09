@@ -116,7 +116,6 @@
                                     <Image Stretch="Fill" Source="{Binding}" Margin="1"/>
                                 </DataTemplate>
                             </GridView.ItemTemplate>
-
                         </GridView>
                     </Viewbox>
                 </DataTemplate>

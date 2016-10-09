@@ -79,6 +79,8 @@ namespace Tech_Tatva__16.Views
             {
                 this.instapop.IsOpen = false;
                 await statusbar.ShowAsync();
+                CmdBar.Visibility = Visibility.Visible;
+
                 e.Handled = true;
                 return;
             }
@@ -332,7 +334,7 @@ namespace Tech_Tatva__16.Views
                 await statusbar.HideAsync();
 
 
-                this.LayoutRoot.Opacity = 0.2;
+                this.LayoutRoot.Opacity = 0;
                 CmdBar.Visibility = Visibility.Collapsed;
 
                 InstaOverlay ovr = new InstaOverlay();

@@ -29,7 +29,16 @@
 
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
-            <Image Source="/Assets/Icons/Linux.png"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <HyperlinkButton HorizontalAlignment="Center" Content="Github" NavigateUri="http://github.com/LUGM" />
+            <HyperlinkButton HorizontalAlignment="Center" Grid.Row="1" Content="Facebook" NavigateUri="http://facebook.com/LUGManipal" />
+
+            <Image Grid.Row="2" Source="/Assets/Icons/Linux.png"/>
         </Grid>
     </Grid>
 </Page>

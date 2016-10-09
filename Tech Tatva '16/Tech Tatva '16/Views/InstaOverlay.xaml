@@ -8,16 +8,11 @@
     mc:Ignorable="d">
 
     
-    <Grid Margin="10" x:Name="LayoutRoot">
-        <Grid.Background>
-            <ImageBrush x:Name="Back" />
-        </Grid.Background>
+    <Grid Margin="10" x:Name="LayoutRoot" Background="Black">
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <TextBlock FontSize="50" Foreground="{StaticResource AppAccentColorBrush}" FontFamily="Segoe WP" FontWeight="SemiLight">
@@ -26,40 +21,49 @@
             </TextBlock.Text>
         </TextBlock>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="10">
-            <Ellipse Height="30" Width="30">
-                <Ellipse.Fill>
-                    <ImageBrush x:Name="Propic"/>
-                </Ellipse.Fill>
-            </Ellipse>
-            <TextBlock x:Name="User_Name" Margin="10,0,0,0" FontSize="25" VerticalAlignment="Center" Text="{Binding user.username}" FontFamily="Segoe WP" FontWeight="Light" />
-        </StackPanel>
+        <ScrollViewer Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
 
-        <Image x:Name="Img" Grid.Row="2" ></Image>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="10">
+                    <Ellipse Height="30" Width="30">
+                        <Ellipse.Fill>
+                            <ImageBrush x:Name="Propic"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <TextBlock x:Name="User_Name" Margin="10,0,0,0" FontSize="25" VerticalAlignment="Center" Text="{Binding user.username}" FontFamily="Segoe WP" FontWeight="Light" />
+                </StackPanel>
 
-        <ScrollViewer Grid.Row="3" MaxHeight="50">
-            <TextBlock x:Name="Caption" FontSize="15" Text="{Binding caption.text}" FontFamily="Segoe WP" FontWeight="SemiLight" TextWrapping="Wrap"/>
-        </ScrollViewer>
+                <Image x:Name="Img" Grid.Row="1" ></Image>
 
-        <StackPanel Grid.Row="4">
-            <StackPanel Orientation="Horizontal">
-                <Image Height="40" Width="40" Source="/Assets/Icons/insta-like.png"/>
-                <TextBlock x:Name="Likes" Margin="0,5,0,5" FontSize="20" FontFamily="Segoe WP" FontWeight="Light">
+                <TextBlock Grid.Row="2" x:Name="Caption" FontSize="20" Text="{Binding caption.text}" FontFamily="Segoe WP" FontWeight="SemiLight" TextWrapping="Wrap"/>
+
+                <StackPanel Grid.Row="3">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Height="40" Width="40" Source="/Assets/Icons/insta-like.png"/>
+                        <TextBlock x:Name="Likes" Margin="0,5,0,5" FontSize="20" FontFamily="Segoe WP" FontWeight="Light">
                 <Run Text="{Binding likes.count}" />
                 <Run Text=" likes" />
-                </TextBlock>
-            </StackPanel>
+                        </TextBlock>
+                    </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal">
 
-                <Image Height="40" Width="40" Source="/Assets/Icons/insta-comment.png" />
+                        <Image Height="40" Width="40" Source="/Assets/Icons/insta-comment.png" />
 
-                <TextBlock x:Name="Comments"  Margin="0,5,0,5" FontSize="20" FontFamily="Segoe WP" FontWeight="Light">
+                        <TextBlock x:Name="Comments"  Margin="0,5,0,5" FontSize="20" FontFamily="Segoe WP" FontWeight="Light">
                 <Run Text="{Binding comments.count}" />
                 <Run Text=" comments" />
-                </TextBlock>
-            </StackPanel>
-        </StackPanel>
+                        </TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 
 </UserControl>
