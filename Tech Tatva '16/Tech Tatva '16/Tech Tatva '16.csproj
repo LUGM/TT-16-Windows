@@ -194,7 +194,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\back.jpg" />
-    <Content Include="Assets\back_main.jpg" />
     <Content Include="Assets\back_main.png" />
     <Content Include="Assets\BadgeLogo.scale-100.png" />
     <Content Include="Assets\BadgeLogo.scale-140.png" />
@@ -209,13 +208,18 @@
     <Content Include="Assets\Category Icons\TT-cosmiccon.png" />
     <Content Include="Assets\Category Icons\TT-cryptoss.png" />
     <Content Include="Assets\Category Icons\TT-electrific.png" />
+    <Content Include="Assets\Category Icons\TT-Energia.png" />
     <Content Include="Assets\Category Icons\TT-epsilon.png" />
+    <Content Include="Assets\Category Icons\TT-Fuel RC 5.png" />
     <Content Include="Assets\Category Icons\TT-gaming.png" />
     <Content Include="Assets\Category Icons\TT-kraftwagen.png" />
     <Content Include="Assets\Category Icons\TT-mechanize.png" />
     <Content Include="Assets\Category Icons\TT-mechatron.png" />
-    <Content Include="Assets\Category Icons\TT-open events.png" />
+    <Content Include="Assets\Category Icons\TT-Open category.png" />
+    <Content Include="Assets\Category Icons\TT-Questionable Intelligence.png" />
     <Content Include="Assets\Category Icons\TT-robotrek.png" />
+    <Content Include="Assets\Category Icons\TT-Robowars.png" />
+    <Content Include="Assets\Category Icons\TT-The Manipal Conclave.png" />
     <Content Include="Assets\Category Icons\TT-turing.png" />
     <Content Include="Assets\DevImages\manas.jpg" />
     <Content Include="Assets\DevImages\android_anurag.jpg" />

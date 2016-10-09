@@ -78,15 +78,7 @@ namespace Tech_Tatva__16.Views
 
                 switch (cat.cname)
                 {
-
-
                     case "Chrysalis":
-                    case "Questionable Intelligence":
-                    case "Robowars":
-                    case "The Manipal Conclave":
-                    case "Energia":
-                    case "Fuel RC 5":
-                    case "Open category":
                     case "Featured Event-Paper Presentation":
                         cat.Image = "ms-appx:///Assets/Square71x71Logo.scale-100.png";
                         break;
