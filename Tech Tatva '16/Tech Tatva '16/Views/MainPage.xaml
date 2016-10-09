@@ -61,7 +61,8 @@
             </Hub.HeaderTemplate>
 
             <Hub.Background>
-                <ImageBrush ImageSource="/Assets/back_main.png" Stretch="UniformToFill" Opacity="0.3"/>
+                <!--<SolidColorBrush Color="#FFA42328" Opacity="0.3"/>-->
+                <ImageBrush ImageSource="/Assets/back_main.jpg" Stretch="UniformToFill" Opacity="0.3"/>
             </Hub.Background>
 
             <!--<HubSection x:Name="Trending" Header="trending" DataContext="{Binding}">

@@ -69,7 +69,12 @@
                                             <ImageBrush ImageSource="{Binding Image}"/>
                                         </Ellipse.Fill>
                                     </Ellipse>
-                                    <TextBlock Grid.Column="1" Text="{Binding Name}" FontSize="30" TextWrapping="Wrap" FontFamily="Segoe WP" Margin="10,0,5,5" FontWeight="Light" VerticalAlignment="Center"/>
+                                    <TextBlock Grid.Column="1" FontSize="30" TextWrapping="Wrap" FontFamily="Segoe WP" Margin="10,0,5,5" FontWeight="Light" VerticalAlignment="Center">
+                                        <Run Text="{Binding Name}" />
+                                        <Run Text="( Round" />
+                                        <Run Text="{Binding Round}" />
+                                        <Run Text=")" />
+                                    </TextBlock>
                                 </Grid>
                             </Grid>
                         </DataTemplate>

@@ -58,7 +58,7 @@
                     <Line X1="0" X2="1" Stretch="Fill" Stroke="{StaticResource AppAccentColorBrush}" StrokeThickness="1" Margin="-10,0,0,0"/>
                 </StackPanel>
 
-                <StackPanel Grid.Row="3" Margin="10,40,0,0" Orientation="Horizontal">
+                <StackPanel Grid.Row="3" Margin="10,25,0,0" Orientation="Horizontal">
                     <Image Source="/Assets/Icons/loc-icon.png" Height="45" Width="45"></Image>
                     <TextBlock Text="{Binding Venue}" FontSize="25" Margin="10,0,0,0" VerticalAlignment="Center"></TextBlock>
                 </StackPanel>
@@ -90,7 +90,7 @@
                     <TextBlock x:Name="Contact" Text="{Binding Contact}" FontSize="25" Margin="10,0,0,0" VerticalAlignment="Center"/>
                 </StackPanel>
 
-                <StackPanel Grid.Row="8" Margin="0,30,0,0">
+                <StackPanel Grid.Row="8" Margin="0,25,0,0">
                     <Line X1="0" X2="1" Stretch="Fill" Stroke="{StaticResource AppAccentColorBrush}" StrokeThickness="1"/>
                     <Button BorderThickness="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Click="Button_Click" DataContext="{Binding}">
                         <Button.Content>
