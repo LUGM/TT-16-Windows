@@ -195,7 +195,7 @@ namespace Tech_Tatva_16__Windows_10_
                     }
                 }
                 result.EventName = names[i];
-                result.Image = "ms-appx:///Assets/Category Icons/TT-" + result.EventName + ".png";
+                result.Image = "ms-appx:///Assets/Square150x150Logo.scale-200.png";
                 result.Teams = teams;
 
                 results.Add(result);

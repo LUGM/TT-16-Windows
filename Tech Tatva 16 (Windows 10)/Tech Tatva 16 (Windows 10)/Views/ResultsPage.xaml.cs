@@ -39,6 +39,8 @@ namespace Tech_Tatva_16__Windows_10_.Views
             Result = await GetResultsAsync(); //Results API Call
 
             Results.ItemsSource = Result;
+            PPanel.Visibility = Visibility.Collapsed;
+
         }
 
         private void Event_Clicked(object sender, SelectionChangedEventArgs e)
@@ -102,6 +104,8 @@ namespace Tech_Tatva_16__Windows_10_.Views
             return _List;
         }
 
-
+        private void Results_Loaded(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }
