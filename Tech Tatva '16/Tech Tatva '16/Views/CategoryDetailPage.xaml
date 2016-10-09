@@ -31,13 +31,12 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0" Orientation="Horizontal">
                     <Image Height="45" Source="{Binding Image}" Margin="10,6.5,10,15"/>
-                    <StackPanel>
-                        <TextBlock Text="{Binding cname}" Margin="0,6.5,0,0" FontSize="25" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Foreground="{StaticResource AppAccentColorBrush}" VerticalAlignment="Center" />
-                    </StackPanel>
+                        <TextBlock Text="{Binding cname}" Margin="0,6.5,5,15" FontSize="25" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Foreground="{StaticResource AppAccentColorBrush}" VerticalAlignment="Center" />
                 </StackPanel>
 
                 <Line Grid.Row="1" X1="0" X2="1" Stretch="Fill" Stroke="{StaticResource AppAccentColorBrush}" StrokeThickness="1" Margin="-10,3,0,0"/>
@@ -48,8 +47,33 @@
                     <Line X1="0" X2="1" Stretch="Fill" Stroke="{StaticResource AppAccentColorBrush}" StrokeThickness="1" Margin="-10,0,0,0"/>
                 </StackPanel>
 
-                <ListView Grid.Row="3">
+                <TextBlock Margin="10,2,0,0" Grid.Row="3" Text="Events" Style="{ThemeResource SubheaderTextBlockStyle}"/>
 
+                <ListView Margin="10" Grid.Row="4" x:Name="EventsList" SelectionChanged="EventsList_SelectionChanged">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                            <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,0,0,20">
+                                <Grid Grid.Column="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Ellipse Height="50" Width="50" VerticalAlignment="Center">
+                                        <Ellipse.Fill>
+                                            <ImageBrush ImageSource="{Binding Image}"/>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                    <TextBlock Grid.Column="1" Text="{Binding Name}" FontSize="30" TextWrapping="Wrap" FontFamily="Segoe WP" Margin="10,0,5,5" FontWeight="Light" VerticalAlignment="Center"/>
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                 </ListView>
             </Grid>
         </ScrollViewer>

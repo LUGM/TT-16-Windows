@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Tech_Tatva__16.Classes;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -69,6 +70,11 @@ namespace Tech_Tatva__16.Views
         {
             Category cat = e.NavigationParameter as Category;
             this.DataContext = cat;
+
+            DatabaseHelperClass db = new DatabaseHelperClass();
+            List<EventClass> list = db.ReadEvents();
+
+            EventsList.ItemsSource = list.Where(item => item.cid == cat.cid).ToList();
         }
 
         /// <summary>
@@ -109,5 +115,10 @@ namespace Tech_Tatva__16.Views
         }
 
         #endregion
+
+        private void EventsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Frame.Navigate(typeof(DetailsPage), (sender as ListView).SelectedItem as EventClass);
+        }
     }
 }

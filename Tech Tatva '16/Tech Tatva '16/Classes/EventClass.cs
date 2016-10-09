@@ -26,6 +26,7 @@ namespace Tech_Tatva__16
         public string Image { get; set; }
         public string Fav_Image { get; set; }
         public string Category { get; set; }
+        public string cid { get; set; }
 
         public EventClass()
         {
@@ -46,6 +47,7 @@ namespace Tech_Tatva__16
             Day = Sched.day;
             Round = Sched.round;
             Category = eve.cname;
+            cid = eve.cid;
 
             Image = "ms-appx:///Assets/Category Icons/TT-" + eve.cname + ".png";
 
