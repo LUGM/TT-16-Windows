@@ -163,6 +163,16 @@
     <Content Include="Assets\Category Icons\TT-Robowars.png" />
     <Content Include="Assets\Category Icons\TT-The Manipal Conclave.png" />
     <Content Include="Assets\Category Icons\TT-turing.png" />
+    <Content Include="Assets\DevImages\android_anurag.jpg" />
+    <Content Include="Assets\DevImages\anuraag.jpg" />
+    <Content Include="Assets\DevImages\Ayush.jpg" />
+    <Content Include="Assets\DevImages\manas.jpg" />
+    <Content Include="Assets\DevImages\Naman.jpg" />
+    <Content Include="Assets\DevImages\shubham.jpg" />
+    <Content Include="Assets\DevImages\vinayak.jpg" />
+    <Content Include="Assets\DevImages\vora.JPG" />
+    <Content Include="Assets\DevImages\windows_gautham.jpg" />
+    <Content Include="Assets\DevImages\ykl.jpg" />
     <Content Include="Assets\error.png" />
     <Content Include="Assets\Icons\facebook-icon.png" />
     <Content Include="Assets\Icons\g_plus-icon.png" />

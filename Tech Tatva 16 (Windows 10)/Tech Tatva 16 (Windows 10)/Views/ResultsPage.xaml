@@ -28,6 +28,10 @@
             <TextBlock Text="Poking Voldemort's Nose.." HorizontalAlignment="Center" Margin="10" Style="{StaticResource BaseTextBlockStyle}"/>
         </StackPanel>
 
+        <StackPanel Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Name="NoResult" Visibility="Collapsed">
+            <TextBlock Text="No Results have arrived :(" HorizontalAlignment="Center" Margin="10" Style="{StaticResource SubheaderTextBlockStyle}"/>
+        </StackPanel>
+
         <!--TODO: Content should be placed within the following grid-->
         <ScrollViewer Grid.Row="1" VerticalScrollMode="Enabled">
 

@@ -27,7 +27,7 @@ namespace Tech_Tatva_16__Windows_10_.Views
     /// </summary>
     public sealed partial class ResultsPage : Page
     {
-        public List<Results>  Result= new List<Results>();
+        public List<Results> Result= new List<Results>();
 
         public ResultsPage()
         {
@@ -38,6 +38,8 @@ namespace Tech_Tatva_16__Windows_10_.Views
         {
             Result = await GetResultsAsync(); //Results API Call
 
+            if (Result.Count == 0 || Result == null)
+                NoResult.Visibility = Visibility.Visible;
             Results.ItemsSource = Result;
             PPanel.Visibility = Visibility.Collapsed;
 

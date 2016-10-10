@@ -26,11 +26,11 @@
 
                         <DataTemplate>
                             <RelativePanel>
-                                <Image Name="1" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" Source="/Assets/Square44x44Logo.scale-200.png" Stretch="None"/>
-                                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Vinayak Agarwal" RelativePanel.AlignVerticalCenterWith="1" RelativePanel.RightOf="1" />
+                            <Image Name="1" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" Source="/Assets/DevImages/vinayak.jpg" Stretch="UniformToFill" Height="100" Width="100" Margin="0,10,10,10"/>
+                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Vinayak Agarwal" RelativePanel.AlignVerticalCenterWith="1" RelativePanel.RightOf="1" />
 
-                                <Image Name="2" RelativePanel.Below="1" Source="/Assets/Square44x44Logo.scale-200.png" Stretch="None"/>
-                                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Gautham Vinod" RelativePanel.AlignVerticalCenterWith="2" RelativePanel.RightOf="2" />
+                            <Image Name="2" RelativePanel.Below="1" Source="/Assets/DevImages/windows_gautham.jpg" Stretch="UniformToFill" Height="100" Width="100" Margin="0,10,10,10"/>
+                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Gautham Vinod" RelativePanel.AlignVerticalCenterWith="2" RelativePanel.RightOf="2" />
                             </RelativePanel>
                         </DataTemplate>
                     </HubSection>
@@ -44,14 +44,14 @@
 
                         <DataTemplate>
                             <RelativePanel>
-                                <Image Name="1" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" Source="/Assets/Square44x44Logo.scale-200.png" Stretch="None"/>
-                                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Yash Kumar Lal" RelativePanel.AlignVerticalCenterWith="1" RelativePanel.RightOf="1" />
+                            <Image Name="1" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" Source="/Assets/DevImages/ykl.jpg" Stretch="UniformToFill" Height="100" Width="100" Margin="0,10,10,10"/>
+                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Yash Kumar Lal" RelativePanel.AlignVerticalCenterWith="1" RelativePanel.RightOf="1"/>
 
-                                <Image Name="2" RelativePanel.Below="1" Source="/Assets/Square44x44Logo.scale-200.png" Stretch="None"/>
-                                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Manas Dresswalla" RelativePanel.AlignVerticalCenterWith="2" RelativePanel.RightOf="2" />
+                            <Image Name="2" RelativePanel.Below="1" Source="/Assets/DevImages/manas.jpg" Stretch="UniformToFill" Height="100" Width="100" Margin="0,10,10,10"/>
+                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Manas Dresswalla" RelativePanel.AlignVerticalCenterWith="2" RelativePanel.RightOf="2" />
 
-                                <Image Name="3" RelativePanel.Below="2" Source="/Assets/Square44x44Logo.scale-200.png" Stretch="None"/>
-                                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Abhishek Vora" RelativePanel.AlignVerticalCenterWith="3" RelativePanel.RightOf="3" />
+                            <Image Name="3" RelativePanel.Below="2" Source="/Assets/DevImages/vora.jpg" Stretch="UniformToFill" Height="100" Width="100" Margin="0,10,10,10"/>
+                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Abhishek Vora" RelativePanel.AlignVerticalCenterWith="3" RelativePanel.RightOf="3"/>
 
                             </RelativePanel>
                         </DataTemplate>
@@ -66,17 +66,17 @@
 
                         <DataTemplate>
                             <RelativePanel>
-                                <Image Name="1" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" Source="/Assets/Square44x44Logo.scale-200.png" Stretch="None"/>
-                                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Anuraag Bhaishya" RelativePanel.AlignVerticalCenterWith="1" RelativePanel.RightOf="1" />
+                            <Image Name="1" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" Source="/Assets/DevImages/anuraag.jpg" Stretch="UniformToFill" Height="100" Width="100" Margin="0,10,10,10"/>
+                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Anuraag Bhaishya" RelativePanel.AlignVerticalCenterWith="1" RelativePanel.RightOf="1" Margin="0,10,10,10"/>
 
-                                <Image Name="2" RelativePanel.Below="1" Source="/Assets/Square44x44Logo.scale-200.png" Stretch="None"/>
-                                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Anurag Choudhary" RelativePanel.AlignVerticalCenterWith="2" RelativePanel.RightOf="2" />
+                            <Image Name="2" RelativePanel.Below="1" Source="/Assets/DevImages/android_anurag.jpg" Stretch="UniformToFill" Height="100" Width="100" Margin="0,10,10,10"/>
+                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Anurag Choudhary" RelativePanel.AlignVerticalCenterWith="2" RelativePanel.RightOf="2" Margin="0,10,10,10"/>
 
-                                <Image Name="3" RelativePanel.Below="2" Source="/Assets/Square44x44Logo.scale-200.png" Stretch="None"/>
-                                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Ayush Agarwal" RelativePanel.AlignVerticalCenterWith="3" RelativePanel.RightOf="3" />
+                            <Image Name="3" RelativePanel.Below="2" Source="/Assets/DevImages/Ayush.jpg" Stretch="UniformToFill" Height="100" Width="100" Margin="0,10,10,10"/>
+                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Ayush Agarwal" RelativePanel.AlignVerticalCenterWith="3" RelativePanel.RightOf="3" Margin="0,10,10,10"/>
 
-                                <Image Name="4" RelativePanel.Below="3" Source="/Assets/Square44x44Logo.scale-200.png" Stretch="None"/>
-                                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Naman Yadav" RelativePanel.AlignVerticalCenterWith="4" RelativePanel.RightOf="4" />
+                            <Image Name="4" RelativePanel.Below="3" Source="/Assets/DevImages/Naman.jpg" Stretch="UniformToFill" Height="100" Width="100" Margin="0,10,10,10"/>
+                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Naman Yadav" RelativePanel.AlignVerticalCenterWith="4" RelativePanel.RightOf="4" />
 
                             </RelativePanel>
                         </DataTemplate>
@@ -92,7 +92,7 @@
 
                     <DataTemplate>
                         <RelativePanel>
-                            <Image Name="1" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" Source="/Assets/Square44x44Logo.scale-200.png" Stretch="None"/>
+                            <Image Name="1" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" Source="/Assets/DevImages/shubham.jpg" Stretch="UniformToFill" Margin="0,10,10,10" Height="100" Width="100"/>
                             <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Shubham Singhal" RelativePanel.AlignVerticalCenterWith="1" RelativePanel.RightOf="1" />
                         </RelativePanel>
                     </DataTemplate>
