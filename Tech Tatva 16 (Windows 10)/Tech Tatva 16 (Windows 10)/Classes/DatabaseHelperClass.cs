@@ -5,10 +5,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Tech_Tatva_16__Windows_10_;
-using Tech_Tatva_16__Windows_10_.Classes;
 
-namespace Tech_Tatva__16.Classes
+namespace Tech_Tatva_16__Windows_10_.Classes
 {
     public class DatabaseHelperClass
     {

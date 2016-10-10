@@ -25,6 +25,7 @@ namespace Tech_Tatva_16__Windows_10_.Classes
         public string Contact { get; set; }
         public string Image { get; set; }
         public string Fav_Image { get; set; }
+        public string cid { get; set; }
 
         public EventClass()
         {
@@ -44,7 +45,15 @@ namespace Tech_Tatva_16__Windows_10_.Classes
             Contact = eve.cntctno;
             Day = Sched.day;
             Round = Sched.round;
+            cid = eve.cid;
             Image = "ms-appx:///Assets/Category Icons/TT-" + eve.cname + ".png";
+
+            switch(eve.cname)
+            {
+                case "Featured Event-Paper Presentation":
+                    Image = "ms:appx///Assets/Square71x71Logo.scale-150.png";
+                    break;
+            }
             Fav_Image = "";
         }
 

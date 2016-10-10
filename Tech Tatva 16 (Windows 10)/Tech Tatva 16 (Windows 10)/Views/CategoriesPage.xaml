@@ -28,7 +28,7 @@
             <ScrollViewer>
                 <Viewbox HorizontalAlignment="Stretch">
                     <Grid>
-                        <GridView Name="Categories">
+                        <GridView Name="Categories" SelectionChanged="Categories_SelectionChanged">
                             
                             <GridView.ItemsPanel>
                                 <ItemsPanelTemplate>

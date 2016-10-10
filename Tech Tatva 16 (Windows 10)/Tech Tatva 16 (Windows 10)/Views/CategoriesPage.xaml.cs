@@ -67,6 +67,11 @@ namespace Tech_Tatva_16__Windows_10_.Views
                 return null;
             }
         }
+
+        private void Categories_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Frame.Navigate(typeof(CategoriesDetailsPage), (sender as GridView).SelectedItem as Category);
+        }
     }
 
 }

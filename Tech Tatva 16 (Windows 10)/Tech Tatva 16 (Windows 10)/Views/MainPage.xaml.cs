@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using Tech_Tatva__16.Classes;
 using Tech_Tatva_16__Windows_10_.Classes;
 using Tech_Tatva_16__Windows_10_.Views;
 using Windows.Foundation;
