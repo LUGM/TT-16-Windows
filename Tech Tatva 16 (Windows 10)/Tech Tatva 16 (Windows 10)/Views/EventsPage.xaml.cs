@@ -51,7 +51,7 @@ namespace Tech_Tatva_16__Windows_10_.Views
 
             Instance = this;
 
-            if (AnalyticsInfo.VersionInfo.DeviceFamily != "WindowsMobile")
+            if (AnalyticsInfo.VersionInfo.DeviceFamily != "Windows.Mobile")
                 Filter_Fav.SelectedIndex = 0;
 
             Day dayfav = new Day();
@@ -461,51 +461,58 @@ namespace Tech_Tatva_16__Windows_10_.Views
 
         public void RefreshLayout()
         {
-            if (Filter_Fav.SelectedIndex == 1)
+            if (AnalyticsInfo.VersionInfo.DeviceFamily != "Windows.Mobile")
             {
-                Day dayfav = new Day();
-                dayfav.day = "";
-
-                ObservableCollection<EventClass> FavEvents = new ObservableCollection<EventClass>();
-
-
-                var roamingSettings = ApplicationData.Current.RoamingSettings;
-                if (roamingSettings.Values["Favs"] != null)
+                if (Filter_Fav.SelectedIndex == 1)
                 {
-                    Favs = Deserialize<List<int>>(roamingSettings.Values["Favs"].ToString());
-                }
+                    Day dayfav = new Day();
+                    dayfav.day = "";
 
-                if (Favs.Count == 0)
-                    dayfav.day = "No Favourites Added Yet..";
+                    ObservableCollection<EventClass> FavEvents = new ObservableCollection<EventClass>();
 
-                else
-                {
-                    DatabaseHelperClass db = new DatabaseHelperClass();
 
-                    foreach (int id in Favs)
+                    var roamingSettings = ApplicationData.Current.RoamingSettings;
+                    if (roamingSettings.Values["Favs"] != null)
                     {
-                        if (db.ReadEventById(id) != null)
-                        {
-                            FavEvents.Add(db.ReadEventById(id));
-                        }
+                        Favs = Deserialize<List<int>>(roamingSettings.Values["Favs"].ToString());
                     }
 
-                    foreach (EventClass eve in FavEvents)
+                    if (Favs.Count == 0)
+                        dayfav.day = "No Favourites Added Yet..";
+
+                    else
                     {
-                        eve.Fav_Image = "";
-                    }                    
+                        DatabaseHelperClass db = new DatabaseHelperClass();
+
+                        foreach (int id in Favs)
+                        {
+                            if (db.ReadEventById(id) != null)
+                            {
+                                FavEvents.Add(db.ReadEventById(id));
+                            }
+                        }
+
+                        foreach (EventClass eve in FavEvents)
+                        {
+                            eve.Fav_Image = "";
+                        }
+                    }
+                    dayfav.Events = FavEvents;
+
+                    Favourites.Clear();
+                    Favourites.Add(dayfav);
+                    MyPivot.ItemsSource = Favourites;
+
                 }
-                dayfav.Events = FavEvents;
+                else
+                {
+                    AssignItemSource();
+                    MyPivot.ItemsSource = Days;
 
-                Favourites.Clear();
-                Favourites.Add(dayfav);
-                MyPivot.ItemsSource = Favourites;
-
+                }
             }
             else
             {
-                AssignItemSource();
-                MyPivot.ItemsSource = Days;
 
             }
         }

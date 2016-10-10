@@ -75,7 +75,6 @@ namespace Tech_Tatva_16__Windows_10_
                          this.HamburgerMenu.IsPaneOpen = false;
 
                          FilterFavButton.Visibility = Visibility.Visible;
-                         Filter_Fav.SelectedIndex = 0;
                      }
                  }
                  if (type == typeof(ResultsPage))
@@ -250,11 +249,6 @@ namespace Tech_Tatva_16__Windows_10_
                 this.contentFrame.Navigate(typeof(InstaPage));
         }
 
-        private void Register_Button_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Online_Button_Checked(object sender, RoutedEventArgs e)
         {
 
@@ -264,11 +258,6 @@ namespace Tech_Tatva_16__Windows_10_
         {
             if (contentFrame.SourcePageType != typeof(SettingsPage))
                 this.contentFrame.Navigate(typeof(SettingsPage));
-        }
-
-        private void TrendingButton_Checked(object sender, RoutedEventArgs e)
-        {
-
         }
 
         public void ShowPopup()

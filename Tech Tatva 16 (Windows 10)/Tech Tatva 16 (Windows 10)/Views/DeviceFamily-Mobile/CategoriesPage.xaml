@@ -5,6 +5,7 @@
     xmlns:local="using:Tech_Tatva_16__Windows_10_.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Classes="using:Tech_Tatva_16__Windows_10_.Classes"
     mc:Ignorable="d">
 
     <Grid Name="LayoutRoot" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -25,7 +26,7 @@
             <ScrollViewer>
                 <Viewbox HorizontalAlignment="Stretch">
                     <Grid>
-                        <GridView Name="Categories">
+                        <GridView Name="Categories" SelectionChanged="Categories_SelectionChanged">
                             <GridView.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <VariableSizedWrapGrid MaximumRowsOrColumns="2" Orientation="Horizontal" HorizontalChildrenAlignment="Stretch">
@@ -33,216 +34,24 @@
                                 </ItemsPanelTemplate>
                             </GridView.ItemsPanel>
 
-                            <GridViewItem>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
+                            <GridView.ItemTemplate>
+                                <DataTemplate x:DataType="Classes:Category">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
 
-                                    <Image Source="/Assets/Square44x44Logo.scale-200.png" Height="30" Width="30"/>
-                                    <TextBlock HorizontalAlignment="Center" Text="Kryptoss" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="5" Grid.Row="1" TextWrapping="Wrap"/>
-                                </Grid>
-                            </GridViewItem>
+                                        <Ellipse Height="30" Width="30">
+                                            <Ellipse.Fill>
+                                                <ImageBrush ImageSource="{x:Bind Image}" />
+                                            </Ellipse.Fill>
+                                        </Ellipse>
+                                        <TextBlock HorizontalAlignment="Center" Text="{x:Bind cname}" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="5" Grid.Row="1" TextWrapping="Wrap"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
 
-                            <GridViewItem>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-
-                                    <Image Source="/Assets/Square44x44Logo.scale-200.png" Height="30"/>
-                                    <TextBlock HorizontalAlignment="Center" Text="Robotrek" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="5" Grid.Row="1" TextWrapping="Wrap"/>
-                                </Grid>
-                            </GridViewItem>
-
-                            <GridViewItem>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-
-                                    <Image Source="/Assets/Square44x44Logo.scale-200.png" Height="30"/>
-                                    <TextBlock HorizontalAlignment="Center" Text="Alacrity" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="5" Grid.Row="1" TextWrapping="Wrap"/>
-                                </Grid>
-                            </GridViewItem>
-
-                            <GridViewItem>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-
-                                    <Image Source="/Assets/Square44x44Logo.scale-200.png" Height="30"/>
-                                    <TextBlock HorizontalAlignment="Center" Text="Constructure" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="5" Grid.Row="1" TextWrapping="Wrap"/>
-                                </Grid>
-                            </GridViewItem>
-
-                            <GridViewItem>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-
-                                    <Image Source="/Assets/Square44x44Logo.scale-200.png" Height="30"/>
-                                    <TextBlock HorizontalAlignment="Center" Text="Bizzmaestro" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="5" Grid.Row="1" TextWrapping="Wrap"/>
-                                </Grid>
-                            </GridViewItem>
-
-                            <GridViewItem>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-
-                                    <Image Source="/Assets/Square44x44Logo.scale-200.png" Height="30"/>
-                                    <TextBlock HorizontalAlignment="Center" Text="Energia" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="5" Grid.Row="1" TextWrapping="Wrap"/>
-                                </Grid>
-                            </GridViewItem>
-
-                            <GridViewItem>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-
-                                    <Image Source="/Assets/Square44x44Logo.scale-200.png" Height="30"/>
-                                    <TextBlock HorizontalAlignment="Center" Text="Eplsilon" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="5" Grid.Row="1" TextWrapping="Wrap"/>
-                                </Grid>
-                            </GridViewItem>
-
-                            <GridViewItem>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-
-                                    <Image Source="/Assets/Square44x44Logo.scale-200.png" Height="30"/>
-                                    <TextBlock HorizontalAlignment="Center" Text="Airborne" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="5" Grid.Row="1" TextWrapping="Wrap"/>
-                                </Grid>
-                            </GridViewItem>
-
-                            <GridViewItem>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-
-                                    <Image Source="/Assets/Square44x44Logo.scale-200.png" Height="30"/>
-                                    <TextBlock HorizontalAlignment="Center" Text="Mechanize" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="5" Grid.Row="1" TextWrapping="Wrap"/>
-                                </Grid>
-                            </GridViewItem>
-                            <GridViewItem>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-
-                                    <Image Source="/Assets/Square44x44Logo.scale-200.png" Height="30"/>
-                                    <TextBlock HorizontalAlignment="Center" Text="Cheminova" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="5" Grid.Row="1" TextWrapping="Wrap"/>
-                                </Grid>
-                            </GridViewItem>
-                            <GridViewItem>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-
-                                    <Image Source="/Assets/Square44x44Logo.scale-200.png" Height="30"/>
-                                    <TextBlock HorizontalAlignment="Center" Text="Kraftwagen" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="5" Grid.Row="1" TextWrapping="Wrap"/>
-                                </Grid>
-                            </GridViewItem>
-                            <GridViewItem>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-
-                                    <Image Source="/Assets/Square44x44Logo.scale-200.png" Height="30"/>
-                                    <TextBlock HorizontalAlignment="Center" Text="Electrific" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="5" Grid.Row="1" TextWrapping="Wrap"/>
-                                </Grid>
-                            </GridViewItem>
-
-                            <GridViewItem>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-
-                                    <Image Source="/Assets/Square44x44Logo.scale-200.png" Height="30"/>
-                                    <TextBlock HorizontalAlignment="Center" Text="Mechatron" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="5" Grid.Row="1" TextWrapping="Wrap"/>
-                                </Grid>
-                            </GridViewItem>
-
-                            <GridViewItem>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-
-                                    <Image Source="/Assets/Square44x44Logo.scale-200.png" Height="30"/>
-                                    <TextBlock HorizontalAlignment="Center" Text="Gaming" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="5" Grid.Row="1" TextWrapping="Wrap"/>
-                                </Grid>
-                            </GridViewItem>
-
-                            <GridViewItem>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-
-                                    <Image Source="/Assets/Square44x44Logo.scale-200.png" Height="30"/>
-                                    <TextBlock HorizontalAlignment="Center" Text="Featured Events" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="5" Grid.Row="1" TextWrapping="Wrap"/>
-                                </Grid>
-                            </GridViewItem>
-                            <GridViewItem>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-
-                                    <Image Source="/Assets/Square44x44Logo.scale-200.png" Height="30"/>
-                                    <TextBlock HorizontalAlignment="Center" Text="Open Events" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="5" Grid.Row="1" TextWrapping="Wrap"/>
-                                </Grid>
-                            </GridViewItem>
-                            <GridViewItem>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-
-                                    <Image Source="/Assets/Square44x44Logo.scale-200.png" Height="30"/>
-                                    <TextBlock HorizontalAlignment="Center" Text="Acumen" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="5" Grid.Row="1" TextWrapping="Wrap"/>
-                                </Grid>
-                            </GridViewItem>
-
-                            <GridViewItem>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-
-                                    <Image Source="/Assets/Square44x44Logo.scale-200.png" Height="30"/>
-                                    <TextBlock HorizontalAlignment="Center" Text="Turing" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="5" Grid.Row="1" TextWrapping="Wrap"/>
-                                </Grid>
-                            </GridViewItem>
                         </GridView>
                     </Grid>
                 </Viewbox>
