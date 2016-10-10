@@ -172,12 +172,6 @@
                         </Button.Content>
                     </Button>
 
-                    <Button Background="Transparent">
-                        <Button.Content>
-                            <Image Name="E" Source="/Assets/Icons/youtube-icon.png"></Image>
-                        </Button.Content>
-                    </Button>
-                    
                 </StackPanel>
             </Grid>
         </Grid>
