@@ -89,7 +89,7 @@
                                                         <Run Text="per team" />
                                                     </TextBlock>
                                                 </StackPanel>
-                                                <StackPanel Margin="10,0,0,3" Orientation="Horizontal">
+                                                <StackPanel Margin="10,0,0,3" Orientation="Horizontal" >
                                                     <TextBlock Text="&#xE717;" FontFamily="Segoe MDL2 Assets" FontSize="15" Height="15" Width="15"></TextBlock>
                                                     <TextBlock Text="{x:Bind Contact}" Style="{StaticResource BodyTextBlockStyle}" Margin="10,0,0,0" VerticalAlignment="Center"></TextBlock>
                                                 </StackPanel>
