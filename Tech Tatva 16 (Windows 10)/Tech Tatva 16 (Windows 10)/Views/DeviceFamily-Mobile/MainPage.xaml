@@ -7,28 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Page.Resources>
-        <Flyout x:Key="myFlyout">
-            <Grid>
-                <ComboBox Background="Transparent" Name="Filter_Fav" Style="{StaticResource ThemedComboBox}" SelectionChanged="Filter_Fav_SelectionChanged">
-                    <ComboBoxItem>
-                        <TextBlock Text="All" />
-                    </ComboBoxItem>
-
-                    <ComboBoxItem>
-                        <TextBlock Text="Favourites" />
-                    </ComboBoxItem>
-                </ComboBox>
-            </Grid>
-        </Flyout>
-    </Page.Resources>
-
-    <Page.BottomAppBar>
-        <CommandBar>
-            <AppBarButton Label="Refresh" Icon="Refresh" Tapped="Refresh_Tapped"/>
-            <AppBarButton Name="FilterFavButton" Visibility="Collapsed" Label="Filter" Icon="Filter" FlyoutBase.AttachedFlyout="{StaticResource myFlyout}" Click="Filter_Button_Clicked"/>
-        </CommandBar>
-    </Page.BottomAppBar>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Name="LayoutRoot" HorizontalAlignment="Stretch">
         <Grid.RowDefinitions>

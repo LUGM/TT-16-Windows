@@ -18,6 +18,7 @@
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
             <TextBlock Foreground="{StaticResource AppAccentColorBrush}" Text="techtatva" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
             <TextBlock Foreground="{StaticResource AppAccentColorBrush}" Text="LUG" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+            <MediaElement x:Name="mediaElement" Height="100"/>
         </StackPanel>
 
         <!--TODO: Content should be placed within the following grid-->

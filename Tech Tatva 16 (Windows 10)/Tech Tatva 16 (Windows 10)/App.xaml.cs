@@ -135,8 +135,8 @@ namespace Tech_Tatva_16__Windows_10_
                             // parameter
                             rootFrame.Navigate(typeof(Views.EventsPage), e.Arguments);
                         }
-                        // Ensure the current window is active
-                        Window.Current.Activate();
+                // Ensure the current window is active
+                Window.Current.Activate();
                     }
         }
 

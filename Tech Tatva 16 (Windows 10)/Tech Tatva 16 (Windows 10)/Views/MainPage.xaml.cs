@@ -63,8 +63,6 @@ namespace Tech_Tatva_16__Windows_10_
                  // update radiobuttons after frame navigates 
                  var type = frame.CurrentSourcePageType;
 
-                 if(AnalyticsInfo.VersionInfo.DeviceFamily == "Windows.Mobile")
-                    FilterFavButton.Visibility = Visibility.Collapsed;
 
                  if (type == typeof(EventsPage))
                  {
@@ -74,7 +72,8 @@ namespace Tech_Tatva_16__Windows_10_
                          this.Title.Text = "EVENTS";
                          this.HamburgerMenu.IsPaneOpen = false;
 
-                         FilterFavButton.Visibility = Visibility.Visible;
+                         
+
                      }
                  }
                  if (type == typeof(ResultsPage))
@@ -346,16 +345,6 @@ namespace Tech_Tatva_16__Windows_10_
             }
             else
                 this.contentFrame.Navigate(typeof(EventsPage), (args.QueryText as string));
-        }
-
-        private void Filter_Button_Clicked(object sender, RoutedEventArgs e)
-        {
-            FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);
-        }
-
-        private void Filter_Fav_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            EventsPage.Instance.Filter_Fav_SelectionChanged(sender, e);
         }
     }
 }

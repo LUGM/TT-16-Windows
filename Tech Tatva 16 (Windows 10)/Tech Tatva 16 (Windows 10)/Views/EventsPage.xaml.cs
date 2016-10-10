@@ -40,6 +40,7 @@ namespace Tech_Tatva_16__Windows_10_.Views
         public ObservableCollection<Day> Days = new ObservableCollection<Day>();
         public ObservableCollection<Day> Favourites = new ObservableCollection<Day>();
         public List<int> Favs = new List<int>();
+        private bool handle = true;
 
         public static EventsPage Instance;
 
@@ -52,8 +53,7 @@ namespace Tech_Tatva_16__Windows_10_.Views
 
             Instance = this;
 
-            if (AnalyticsInfo.VersionInfo.DeviceFamily != "Windows.Mobile")
-                Filter_Fav.SelectedIndex = 0;
+            Filter_Fav.SelectedIndex = 0;
 
             Day dayfav = new Day();
             dayfav.day = "";
@@ -62,7 +62,7 @@ namespace Tech_Tatva_16__Windows_10_.Views
 
             foreach (Day d in Days)
             {
-                foreach(EventClass events in d.Events)
+                foreach (EventClass events in d.Events)
                 {
                     if (events.Fav_Image.Equals(""))
                     {
@@ -96,7 +96,7 @@ namespace Tech_Tatva_16__Windows_10_.Views
 
             if (Frame.CanGoBack && Frame.BackStackDepth > 1)
             {
-                
+
                 // Show UI in title bar if opted-in and in-app backstack is not empty.
                 SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
                     AppViewBackButtonVisibility.Visible;
@@ -217,7 +217,7 @@ namespace Tech_Tatva_16__Windows_10_.Views
                 (sender as RadioButton).Tag = ("");
                 (sender as RadioButton).Content = "Remove Bookmark";
 
-                if(Favs.Contains(eve.id))
+                if (Favs.Contains(eve.id))
                 {
                     //Do Nothing
                 }
@@ -373,7 +373,7 @@ namespace Tech_Tatva_16__Windows_10_.Views
         {
             var roamingSettings = ApplicationData.Current.RoamingSettings;
             DatabaseHelperClass db = new DatabaseHelperClass();
-            if(RefInBack)
+            if (RefInBack)
             {
                 RefInBack = false;
 
@@ -462,8 +462,6 @@ namespace Tech_Tatva_16__Windows_10_.Views
 
         public void RefreshLayout()
         {
-            if (AnalyticsInfo.VersionInfo.DeviceFamily != "Windows.Mobile")
-            {
                 if (Filter_Fav.SelectedIndex == 1)
                 {
                     Day dayfav = new Day();
@@ -511,11 +509,6 @@ namespace Tech_Tatva_16__Windows_10_.Views
                     MyPivot.ItemsSource = Days;
 
                 }
-            }
-            else
-            {
-
-            }
         }
 
         public void AssignItemSource()
@@ -584,6 +577,13 @@ namespace Tech_Tatva_16__Windows_10_.Views
             PhoneLine phone = await PhoneLine.FromIdAsync(LineGuid);
             phone.Dial(((sender as StackPanel).DataContext as EventClass).Contact, ((sender as StackPanel).DataContext as EventClass).Name);
         }
-    }
 
+        private void Filter_Click(object sender, RoutedEventArgs e)
+        {
+            if (ApiInformation.IsPropertyPresent("Windows.UI.Xaml.FrameworkElement", "AllowFocusOnInteraction"))
+                (sender as AppBarButton).AllowFocusOnInteraction = true;
+            FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);
+        }
+       
+    }
 }
