@@ -301,6 +301,16 @@ namespace Tech_Tatva_16__Windows_10_
                 HidePopup();
                 contentFrame.Navigate(typeof(InstaPage));
             }
+            else if(contentFrame.SourcePageType == typeof(EventsPage))
+            {
+                HidePopup();
+                contentFrame.Navigate(typeof(EventsPage));
+            }
+            else if (contentFrame.SourcePageType == typeof(ResultsPage))
+            {
+                HidePopup();
+                contentFrame.Navigate(typeof(ResultsPage));
+            }
         }
 
         private void CategoriesButton_Checked(object sender, RoutedEventArgs e)
