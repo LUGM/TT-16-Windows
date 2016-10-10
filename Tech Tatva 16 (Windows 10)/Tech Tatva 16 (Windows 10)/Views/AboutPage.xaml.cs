@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -25,6 +26,21 @@ namespace Tech_Tatva_16__Windows_10_.Views
         public AboutPage()
         {
             this.InitializeComponent();
+        }
+
+        private async void Twitter_Click(object sender, RoutedEventArgs e)
+        {
+            await Launcher.LaunchUriAsync(new Uri("https://twitter.com/@mittechtatva"));
+        }
+
+        private async void Insta_Clicked(object sender, RoutedEventArgs e)
+        {
+            await Launcher.LaunchUriAsync(new Uri("https://instagram.com/mittechtatva"));
+        }
+
+        private async void Facebook_Clicked(object sender, RoutedEventArgs e)
+        {
+            await Launcher.LaunchUriAsync(new Uri("https://facebook.com/MITTechtatva"));
         }
     }
 }
