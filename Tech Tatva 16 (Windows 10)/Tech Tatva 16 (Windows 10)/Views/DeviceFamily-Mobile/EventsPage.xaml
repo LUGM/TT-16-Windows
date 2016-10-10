@@ -56,10 +56,14 @@
                                 <DataTemplate x:DataType="Classes:EventClass">
                                     <Grid Margin="0,10,0,10">
                                         <StackPanel  Grid.Column="0">
-                                            <StackPanel Orientation="Horizontal">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
                                                 <Image Source="{x:Bind Image}" Height="35" Width="35" />
-                                                <TextBlock Text="{x:Bind Name}" Style="{StaticResource TitleTextBlockStyle}" Margin="20,0,0,0" VerticalAlignment="Center"/>
-                                            </StackPanel>
+                                                <TextBlock Grid.Column="1" Text="{x:Bind Name}" Style="{StaticResource TitleTextBlockStyle}" Margin="20,0,0,0" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                                            </Grid>
 
                                             <StackPanel Name="DetailsPanel" Visibility="Collapsed">
                                                 <Line X1="0" X2="1" Stretch="Fill" Stroke="{StaticResource SystemControlBackgroundBaseHighBrush}" StrokeThickness="1" Margin="-10,10,-10,20"/>
