@@ -9,7 +9,6 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Tech_Tatva_16__Windows_10_.Classes;
-using Windows.ApplicationModel.Calls;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
@@ -313,14 +312,18 @@ namespace Tech_Tatva_16__Windows_10_.Views
         private void Fav_Button_Loaded(object sender, RoutedEventArgs e)
         {
             EventClass eve = (sender as RadioButton).DataContext as EventClass;
-            if ((sender as RadioButton).Tag.Equals(""))
-            {
-                (sender as RadioButton).Content = "Bookmark Event";
-            }
 
-            else if ((sender as RadioButton).Tag.Equals(""))
+            if (eve != null)
             {
-                (sender as RadioButton).Content = "Remove Bookmark";
+                if ((sender as RadioButton).Tag.Equals(""))
+                {
+                    (sender as RadioButton).Content = "Bookmark Event";
+                }
+
+                else if ((sender as RadioButton).Tag.Equals(""))
+                {
+                    (sender as RadioButton).Content = "Remove Bookmark";
+                }
             }
         }
 
@@ -567,15 +570,6 @@ namespace Tech_Tatva_16__Windows_10_.Views
             this.Days.Add(day2);
             this.Days.Add(day3);
             this.Days.Add(day4);
-        }
-
-        private async void Phone_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            PhoneCallStore PhoneCallStore = await PhoneCallManager.RequestStoreAsync();
-            Guid LineGuid = await PhoneCallStore.GetDefaultLineAsync();
-
-            PhoneLine phone = await PhoneLine.FromIdAsync(LineGuid);
-            phone.Dial(((sender as StackPanel).DataContext as EventClass).Contact, ((sender as StackPanel).DataContext as EventClass).Name);
         }
 
         private void Filter_Click(object sender, RoutedEventArgs e)

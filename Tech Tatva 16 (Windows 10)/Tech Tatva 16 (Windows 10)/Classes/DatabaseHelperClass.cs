@@ -49,8 +49,13 @@ namespace Tech_Tatva_16__Windows_10_.Classes
         {
             using (var dbConn = new SQLiteConnection(App.DB_PATH))
             {
-                var existingconact = dbConn.Query<EventClass>("select * from EventClass where Name = '" + name + "'").FirstOrDefault();
-                return existingconact;
+                try
+                {
+                    var existingconact = dbConn.Query<EventClass>("select * from EventClass where Name = '" + name + "'").FirstOrDefault();
+                    return existingconact;
+                }
+                catch
+                { return null; }
             }
         }
 
